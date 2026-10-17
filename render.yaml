@@ -1,0 +1,68 @@
+services:
+  - type: web
+    runtime: python
+    name: vesper-api
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: SITE_DB_PATH
+        value: /var/data/site.db
+      - key: SPEAKER_ID_ENABLED
+        value: "true"
+      - key: SPEAKER_ID_URL
+        value: http://vesper-voiceid:8788
+      - key: FREE_COMMAND_LIMIT
+        value: "3"
+      - key: CLERK_JWT_ISSUER
+        sync: false
+      - key: RIME_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: NVIDIA_API_KEY
+        sync: false
+      - key: CEREBRAS_API_KEY
+        sync: false
+      - key: LIVEKIT_URL
+        sync: false
+      - key: LIVEKIT_API_KEY
+        sync: false
+      - key: LIVEKIT_API_SECRET
+        sync: false
+    disk:
+      name: vesper-data
+      mountPath: /var/data
+      sizeGB: 1
+
+  - type: pserv
+    runtime: docker
+    name: vesper-voiceid
+    dockerfilePath: ./voiceid/Dockerfile
+    dockerContext: ./voiceid
+    envVars:
+      - key: SPEAKER_ID_THRESHOLD
+        value: "0.70"
+
+  - type: worker
+    runtime: python
+    name: vesper-livekit-agent
+    rootDir: agent
+    buildCommand: pip install -r requirements.txt
+    startCommand: python worker.py start
+    envVars:
+      - key: LIVEKIT_URL
+        sync: false
+      - key: LIVEKIT_API_KEY
+        sync: false
+      - key: LIVEKIT_API_SECRET
+        sync: false
+      - key: CEREBRAS_API_KEY
+        sync: false
+      - key: NVIDIA_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: RIME_API_KEY
+        sync: false

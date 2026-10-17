@@ -1,0 +1,144 @@
+[
+  {
+    "id": "N01",
+    "title": "C-7 tie spacing matches latest value but user cites superseded R1",
+    "turns": [
+      {"user": "C-7 column level 3 mein tie spacing 100 mm hai, SSB-STR-L3-201 rev one ke hisaab se", "barge_in": false, "noise": "drill"},
+      {"user": "samjha, latest R2 hai. observation log kar do, RFI nahi chahiye", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["revision_mismatch"],
+      "must_ask_clarification": true,
+      "final_decision": "log_observation",
+      "no_log": false,
+      "logged": {"drawing_id": "SSB-STR-L3-201@R2", "location_id": "NSK:C-7:L3", "element": "column", "attribute": "rebar_spacing", "value": 100, "unit": "mm", "revision_claimed": "R1"},
+      "forbidden_logged": {"drawing_id": "SSB-STR-L3-201@R1"}
+    },
+    "notes": "R1 is superseded. R2, issued through RFI-SSB-006, requires 100 mm ties at C-7 and C-8."
+  },
+  {
+    "id": "N02",
+    "title": "C-8 tie spacing 140 exceeds the R2 tolerance",
+    "turns": [
+      {"user": "C-8 column level 3 mein tie spacing 140 mm measure hua, STR 201 R2", "barge_in": false, "noise": "traffic"},
+      {"user": "haan 140 pakka hai, NCR raise karo aur rectification karao", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["dimension_mismatch"],
+      "must_ask_clarification": true,
+      "final_decision": "raise_ncr",
+      "no_log": false,
+      "logged": {"drawing_id": "SSB-STR-L3-201@R2", "location_id": "NSK:C-8:L3", "element": "column", "attribute": "rebar_spacing", "value": 140, "unit": "mm"}
+    },
+    "notes": "R2 requires 100 mm with a 10 mm tolerance; 140 mm is outside tolerance."
+  },
+  {
+    "id": "N03",
+    "title": "Repeated grid C-7 requires a level before a clean observation",
+    "turns": [
+      {"user": "C-7 column ke ties 150 mm hain", "barge_in": false, "noise": "none"},
+      {"user": "ICU floor, level 4 wala C-7, drawing STR 202 R0. haan 150 confirm, log kar do", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": false,
+      "must_ask_clarification": true,
+      "final_decision": "log_observation",
+      "no_log": false,
+      "logged": {"drawing_id": "SSB-STR-L4-202@R0", "location_id": "NSK:C-7:L4", "element": "column", "attribute": "rebar_spacing", "value": 150, "unit": "mm", "revision_claimed": "R0"},
+      "forbidden_logged": {"location_id": "NSK:C-7:L3"}
+    },
+    "notes": "C-7 exists on both L3 and L4. The first turn must not be silently assigned to either level."
+  },
+  {
+    "id": "N04",
+    "title": "Lift-core hot work without fire watch blocks work",
+    "turns": [
+      {"user": "Zone C level 4 lift core mein welding chal rahi hai, hot work okay log kar do", "barge_in": false, "noise": "drill"},
+      {"user": "fire watcher nahi hai? theek hai welding band karo, stop work", "barge_in": false, "noise": "drill"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["permit_blocker"],
+      "must_ask_clarification": true,
+      "final_decision": "stop_work",
+      "must_not_log_decision": "log_observation",
+      "no_log": false,
+      "logged": {"location_id": "NSK:ZoneC:L4"}
+    },
+    "notes": "HWP-2031 is active but its mandatory fire-watch checks are unsatisfied."
+  },
+  {
+    "id": "N05",
+    "title": "Suspended sump excavation permit prevents restart",
+    "turns": [
+      {"user": "sump ki excavation restart karo, machine ready hai", "barge_in": false, "noise": "traffic"},
+      {"user": "EXC-2017 suspended hai toh kaam mat chalu karo, stop work", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["permit_blocker"],
+      "must_ask_clarification": true,
+      "final_decision": "stop_work",
+      "must_not_log_decision": "log_observation",
+      "no_log": false,
+      "logged": {"location_id": "NSK:Sump:GF"}
+    },
+    "notes": "EXC-2017 is suspended after groundwater ingress and side slumping; shoring and dewatering are pending."
+  },
+  {
+    "id": "N06",
+    "title": "OT slab built to superseded 150 mm detail instead of latest 200 mm",
+    "turns": [
+      {"user": "level 3 OT slab thickness 150 mm check hui, SSB STR L3 211 rev zero ke according", "barge_in": false, "noise": "none"},
+      {"user": "latest R1 mein 200 hai? NCR raise karo, pour se pehle correct karna hai", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["dimension_mismatch"],
+      "must_ask_clarification": true,
+      "final_decision": "raise_ncr",
+      "no_log": false,
+      "logged": {"drawing_id": "SSB-STR-L3-211@R1", "location_id": "NSK:Slab:L3", "element": "slab", "attribute": "thickness", "value": 150, "unit": "mm", "revision_claimed": "R1"},
+      "forbidden_logged": {"drawing_id": "SSB-STR-L3-211@R0"}
+    },
+    "notes": "RFI-SSB-008 revised the OT slab from 150 mm at R0 to 200 mm at R1."
+  },
+  {
+    "id": "N07",
+    "title": "L3 OT slab pour cannot start while pre-pour hold point is open",
+    "turns": [
+      {"user": "level 3 OT slab ka concrete pour start karte hain, RMC truck aa gaya", "barge_in": false, "noise": "traffic"},
+      {"user": "hold point release nahi hua toh pour hold karo, stop work", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["hold_point_blocker"],
+      "must_ask_clarification": true,
+      "final_decision": "stop_work",
+      "must_not_log_decision": "log_observation",
+      "no_log": false,
+      "logged": {"location_id": "NSK:Slab:L3"}
+    },
+    "notes": "CL-PP-SSB-L3-001 is on HOLD with cover, staging certification, sleeve RFI and PMC release outstanding."
+  },
+  {
+    "id": "N08",
+    "title": "Unknown structural drawing is corrected before logging",
+    "turns": [
+      {"user": "C-9 column level 3 cover 40 mm hai, drawing SSB-STR-L3-209 R0", "barge_in": false, "noise": "none"},
+      {"user": "sorry drawing STR 201 rev 2 hai, cover 40 confirm, log kar do", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["unknown_drawing"],
+      "must_ask_clarification": true,
+      "final_decision": "log_observation",
+      "no_log": false,
+      "logged": {"drawing_id": "SSB-STR-L3-201@R2", "location_id": "NSK:C-9:L3", "element": "column", "attribute": "cover", "value": 40, "unit": "mm", "revision_claimed": "R2"},
+      "forbidden_logged": {"drawing_id": "SSB-STR-L3-209"}
+    },
+    "notes": "SSB-STR-L3-209 does not exist. The corrected latest drawing is SSB-STR-L3-201 R2."
+  }
+]

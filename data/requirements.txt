@@ -1,0 +1,3 @@
+# data layer (python3 >= 3.10; sqlite3 with FTS5 is in the stdlib build on macOS / most Linux)
+firecrawl-py==4.12.0   # scraper only (data/scraper/scrape_infralens.py); build_db.py runs offline from cache
+requests>=2.31         # plain-HTTP fallback in the scraper

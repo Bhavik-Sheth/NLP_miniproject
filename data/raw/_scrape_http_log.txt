@@ -1,0 +1,14 @@
+[qaqc] index: 32 families, 300 templates
+[pmc] index: 11 families, 150 templates
+detail pages: 450 total, 197 cached, 253 to fetch
+  25/253 {'firecrawl': 0, 'http': 25, 'cached': 2, 'failed': 0}
+  50/253 {'firecrawl': 0, 'http': 50, 'cached': 2, 'failed': 0}
+  75/253 {'firecrawl': 0, 'http': 75, 'cached': 2, 'failed': 0}
+  100/253 {'firecrawl': 0, 'http': 100, 'cached': 2, 'failed': 0}
+  125/253 {'firecrawl': 0, 'http': 125, 'cached': 2, 'failed': 0}
+  150/253 {'firecrawl': 0, 'http': 150, 'cached': 2, 'failed': 0}
+  175/253 {'firecrawl': 0, 'http': 175, 'cached': 2, 'failed': 0}
+  200/253 {'firecrawl': 0, 'http': 198, 'cached': 6, 'failed': 0}
+  225/253 {'firecrawl': 0, 'http': 221, 'cached': 6, 'failed': 0}
+  250/253 {'firecrawl': 0, 'http': 246, 'cached': 6, 'failed': 0}
+done: {'firecrawl': 0, 'http': 249, 'cached': 6, 'failed': 0}

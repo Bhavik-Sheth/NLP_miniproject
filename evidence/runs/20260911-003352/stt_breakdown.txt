@@ -1,0 +1,1 @@
+STT final after end-of-speech ms p50 654 range 616 765 n 11

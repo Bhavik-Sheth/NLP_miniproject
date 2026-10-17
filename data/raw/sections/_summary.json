@@ -1,0 +1,89 @@
+{
+ "finished_at": "2026-09-15T08:39:28+00:00",
+ "stats": {
+  "cached": 4882,
+  "fetched": 6684,
+  "sec_code": 4388,
+  "sec_prices": 866,
+  "sec_steel": 220,
+  "sec_sor": 118,
+  "sec_rate-analysis": 118,
+  "sec_thumbrules": 151,
+  "sec_handbook": 98,
+  "sec_knowledge": 120,
+  "sec_term": 394,
+  "sec_dcr": 78,
+  "sec_cpheeo": 48,
+  "sec_irc": 9,
+  "sec_gate": 76,
+  "failed": 762,
+  "http_404": 762
+ },
+ "coverage": {
+  "code": {
+   "inventory": 5144,
+   "html": 4391,
+   "json": 4391
+  },
+  "prices": {
+   "inventory": 869,
+   "html": 869,
+   "json": 869
+  },
+  "steel": {
+   "inventory": 220,
+   "html": 220,
+   "json": 220
+  },
+  "sor": {
+   "inventory": 122,
+   "html": 118,
+   "json": 118
+  },
+  "rate-analysis": {
+   "inventory": 118,
+   "html": 118,
+   "json": 118
+  },
+  "thumbrules": {
+   "inventory": 151,
+   "html": 151,
+   "json": 151
+  },
+  "handbook": {
+   "inventory": 100,
+   "html": 98,
+   "json": 98
+  },
+  "knowledge": {
+   "inventory": 121,
+   "html": 120,
+   "json": 120
+  },
+  "term": {
+   "inventory": 396,
+   "html": 394,
+   "json": 394
+  },
+  "dcr": {
+   "inventory": 78,
+   "html": 78,
+   "json": 78
+  },
+  "cpheeo": {
+   "inventory": 48,
+   "html": 48,
+   "json": 48
+  },
+  "irc": {
+   "inventory": 9,
+   "html": 9,
+   "json": 9
+  },
+  "gate": {
+   "inventory": 76,
+   "html": 76,
+   "json": 76
+  }
+ }
+}

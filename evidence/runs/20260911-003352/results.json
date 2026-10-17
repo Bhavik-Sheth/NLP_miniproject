@@ -1,0 +1,105 @@
+{
+  "stamp": "20260911-003352",
+  "tts": {
+    "provider": "rime",
+    "model": "mistv3",
+    "lang": "eng",
+    "speaker": "cove",
+    "transport": "websocket"
+  },
+  "pass_criteria": {
+    "first_audio_p50_ms": 1500,
+    "first_audio_max_ms": 2500,
+    "barge_stop_ms": 1500
+  },
+  "tests": {
+    "T1_first_audio": {
+      "samples": [
+        {
+          "fixture": "q_cover_e1",
+          "round": 1,
+          "first_audio_ms": 2053,
+          "answer_ok": true,
+          "heard_text": "At E-1, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4). Open RFI-061 (OPD block monsoon con"
+        },
+        {
+          "fixture": "q_rfis",
+          "round": 1,
+          "first_audio_ms": 1922,
+          "answer_ok": true,
+          "heard_text": "Open RFIs: RFI-049, Plumbing sleeve clash with beam at Zone B; RFI-050, Electrical conduit density in L4 slab near core; RFI-055, Staircase "
+        },
+        {
+          "fixture": "q_cover_e2",
+          "round": 1,
+          "first_audio_ms": 2591,
+          "answer_ok": true,
+          "heard_text": "At E-2, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4)."
+        },
+        {
+          "fixture": "q_cover_e1",
+          "round": 2,
+          "first_audio_ms": 1830,
+          "answer_ok": true,
+          "heard_text": "At E-1, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4). Open RFI-061 (OPD block monsoon con"
+        },
+        {
+          "fixture": "q_rfis",
+          "round": 2,
+          "first_audio_ms": 1920,
+          "answer_ok": true,
+          "heard_text": "Open RFIs: RFI-049, Plumbing sleeve clash with beam at Zone B; RFI-050, Electrical conduit density in L4 slab near core; RFI-055, Staircase "
+        },
+        {
+          "fixture": "q_cover_e2",
+          "round": 2,
+          "first_audio_ms": 2569,
+          "answer_ok": true,
+          "heard_text": "At E-2, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4)."
+        }
+      ],
+      "p50_ms": 1987.5,
+      "max_ms": 2591,
+      "pass": false
+    },
+    "T2_noise_5db": {
+      "first_audio_ms": 1949,
+      "heard_text": "At E-1, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4). Open RFI-061 (OPD block monsoon con",
+      "pass": true
+    },
+    "T3_barge_in": {
+      "challenge_heard": true,
+      "challenge_text": "You reported cover at E-1, Level 1 as 30 mm, but A-201 R1 shows 40 mm, with a tolerance of plus or minus 5. Would you like to log the observation, raise an RFI,",
+      "stop_after_barge_onset_ms": 1065,
+      "correction_slots": {
+        "grid": "E-2",
+        "attribute": "cover",
+        "value": 38,
+        "unit": "mm"
+      },
+      "correction_state": "confirming",
+      "correction_contradictions": [],
+      "correction_heard_text": "At E-2, Level 1, column cover is 38 mm, which matches A-201 R1. Log it?",
+      "stale_challenge_spoken_after_barge": false,
+      "pass": true
+    },
+    "T4_intruder_log": {
+      "logged": null,
+      "speaker_locked": "voice not matched to the enrolled manager (score 0.03)",
+      "heard_text": "At E-2, Level 1, column cover is 38 mm, which matches A-201 R1. Log it?",
+      "pass": true
+    },
+    "T5_manager_log": {
+      "logged": {
+        "observation_id": "OBS-000110",
+        "rfi_id": null,
+        "decision": "log_observation"
+      },
+      "drawing": "A-201@R1",
+      "first_audio_ms_incl_voiceprint": 1698,
+      "heard_text": "Observation OBS-000110 has been logged and linked to A-201 R1.",
+      "pass": true
+    }
+  },
+  "all_pass": false
+}

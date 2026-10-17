@@ -1,0 +1,486 @@
+/* Onboarding + ingest UI (W4). Scoped under .vo (always paired with W3's .vs-theme so the page
+   background follows data-theme). Colours read the PLAN §6 tokens from globals.css (W3); the
+   fallbacks only matter if those tokens are missing. Landing and /demo are untouched. */
+
+.vo {
+  --vo-bg: var(--bg, #07080b);
+  --vo-bg-elev: var(--bg-elev, #0c0e12);
+  --vo-surface: var(--surface, #111318);
+  --vo-surface-2: var(--surface-2, #171a20);
+  --vo-glass: var(--glass, rgba(20, 22, 28, 0.58));
+  --vo-glass-border: var(--glass-border, rgba(255, 255, 255, 0.09));
+  --vo-glass-highlight: var(--glass-highlight, rgba(255, 255, 255, 0.14));
+  --vo-text: var(--text, #eceef2);
+  --vo-text-2: var(--text-2, #a2a8b3);
+  --vo-text-3: var(--text-3, #6a707b);
+  --vo-border: var(--border, rgba(255, 255, 255, 0.1));
+  --vo-accent: var(--accent, #8fb3ff);
+  --vo-accent-2: var(--accent-2, #b8a4ff);
+  --vo-accent-ink: var(--accent-ink, #0a1024);
+  --vo-ok: var(--ok, #5ad19a);
+  --vo-warn: var(--warn, #f0b44a);
+  --vo-danger: var(--danger, #ff6b5f);
+  --vo-ring: var(--ring, rgba(143, 179, 255, 0.45));
+  --vo-shadow-lg: var(--shadow-lg, 0 24px 60px -24px rgba(0, 0, 0, 0.8));
+  --vo-radius: var(--radius, 10px);
+  --vo-radius-lg: var(--radius-lg, 16px);
+  --vo-ease: var(--ease, cubic-bezier(0.16, 1, 0.3, 1));
+  --vo-glow: radial-gradient(60% 50% at 12% 0%, var(--aurora-a, rgba(96, 130, 255, 0.14)), transparent 70%),
+    radial-gradient(45% 40% at 100% 8%, var(--aurora-b, rgba(168, 120, 255, 0.08)), transparent 70%),
+    radial-gradient(50% 40% at 60% 100%, var(--aurora-c, rgba(64, 200, 190, 0.06)), transparent 70%);
+  color: var(--vo-text);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* page ground — paints over the legacy black body */
+.vo-page {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  background: var(--vo-glow), var(--vo-bg);
+  isolation: isolate;
+}
+
+.vo-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(var(--dot, rgba(255,255,255,.055)) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+}
+
+/* Liquid glass */
+.vo-glass {
+  position: relative;
+  border-radius: var(--vo-radius-lg);
+  background: linear-gradient(180deg, var(--vo-glass-highlight) -120%, transparent 40%), var(--vo-glass);
+  border: 1px solid var(--vo-glass-border);
+  box-shadow: inset 0 1px 0 0 var(--vo-glass-highlight), var(--vo-shadow-lg);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+}
+
+.vo-card {
+  border-radius: var(--vo-radius);
+  background: var(--vo-surface);
+  border: 1px solid var(--vo-border);
+}
+
+.vo-eyebrow {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vo-text-3);
+}
+
+.vo-serif {
+  font-family: var(--font-instrument-serif), "Instrument Serif", serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.vo-h1 {
+  font-size: clamp(30px, 4.2vw, 44px);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  color: var(--vo-text);
+}
+
+.vo-muted { color: var(--vo-text-2); }
+.vo-faint { color: var(--vo-text-3); }
+
+/* inputs */
+.vo-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vo-text);
+}
+
+.vo-input {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 12px;
+  border-radius: var(--vo-radius);
+  background: var(--vo-surface);
+  border: 1px solid var(--vo-border);
+  color: var(--vo-text);
+  font-size: 14px;
+  line-height: 1.4;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+.vo-input::placeholder { color: var(--vo-text-3); }
+.vo-input:hover { border-color: color-mix(in srgb, var(--vo-text) 20%, transparent); }
+.vo-input:focus-visible,
+.vo-input:focus {
+  border-color: var(--vo-accent-2);
+  box-shadow: 0 0 0 3px var(--vo-ring);
+}
+.vo-input[aria-invalid="true"] {
+  border-color: var(--vo-danger);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--vo-danger) 18%, transparent);
+}
+textarea.vo-input { min-height: 96px; resize: vertical; }
+select.vo-input {
+  appearance: none;
+  padding-right: 34px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.4'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.vo-input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0.6; cursor: pointer; }
+
+.vo-prefix {
+  display: flex;
+  align-items: stretch;
+}
+.vo-prefix > span {
+  display: grid;
+  place-items: center;
+  padding: 0 11px;
+  border: 1px solid var(--vo-border);
+  border-right: 0;
+  border-radius: var(--vo-radius) 0 0 var(--vo-radius);
+  background: var(--vo-surface-2);
+  color: var(--vo-text-2);
+  font-size: 13px;
+}
+.vo-prefix > .vo-input { border-radius: 0 var(--vo-radius) var(--vo-radius) 0; }
+
+/* buttons */
+.vo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s var(--vo-ease), background 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+.vo-btn:focus-visible { box-shadow: 0 0 0 3px var(--vo-ring); }
+.vo-btn:active { transform: scale(0.98); }
+.vo-btn:disabled { opacity: 0.45; pointer-events: none; }
+.vo-btn-primary { background: var(--vo-accent); color: var(--vo-accent-ink); }
+.vo-btn-primary:hover { background: color-mix(in srgb, var(--vo-accent) 88%, #fff); box-shadow: 0 8px 24px -10px color-mix(in srgb, var(--vo-accent) 70%, transparent); }
+.vo-btn-ghost { background: transparent; color: var(--vo-text); border-color: var(--vo-border); }
+.vo-btn-ghost:hover { background: color-mix(in srgb, var(--vo-text) 6%, transparent); }
+.vo-btn-quiet { background: transparent; color: var(--vo-text-2); }
+.vo-btn-quiet:hover { color: var(--vo-text); background: color-mix(in srgb, var(--vo-text) 5%, transparent); }
+.vo-btn-sm { height: 30px; padding: 0 11px; font-size: 12.5px; }
+.vo-btn-icon { width: 32px; height: 32px; padding: 0; }
+
+/* chips / badges */
+.vo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--vo-border);
+  background: var(--vo-surface);
+  color: var(--vo-text-2);
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+.vo-chip:hover { color: var(--vo-text); border-color: color-mix(in srgb, var(--vo-text) 22%, transparent); }
+.vo-chip[aria-pressed="true"] {
+  color: var(--vo-text);
+  border-color: var(--vo-accent-2);
+  background: color-mix(in srgb, var(--vo-accent-2) 14%, var(--vo-surface));
+}
+.vo-chip:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--vo-ring); }
+
+.vo-voice-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 19px;
+  padding: 0 7px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--vo-accent-2);
+  background: color-mix(in srgb, var(--vo-accent-2) 13%, transparent);
+  border: 1px solid color-mix(in srgb, var(--vo-accent-2) 28%, transparent);
+  cursor: help;
+  position: relative;
+}
+.vo-tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translate(-50%, 4px);
+  width: max-content;
+  max-width: 260px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--vo-text);
+  color: var(--vo-bg);
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: normal;
+  text-align: left;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.16s ease, transform 0.16s var(--vo-ease);
+  z-index: 40;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+}
+.vo-voice-badge:hover .vo-tip,
+.vo-voice-badge:focus-visible .vo-tip { opacity: 1; transform: translate(-50%, 0); }
+.vo-voice-badge:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--vo-ring); }
+
+/* stepper */
+.vo-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 13.5px;
+  color: var(--vo-text-2);
+  transition: background 0.16s ease, color 0.16s ease;
+}
+.vo-step:hover { background: color-mix(in srgb, var(--vo-text) 5%, transparent); color: var(--vo-text); }
+.vo-step[aria-current="step"] { color: var(--vo-text); background: color-mix(in srgb, var(--vo-text) 7%, transparent); }
+.vo-step:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--vo-ring); }
+.vo-step-dot {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--vo-border);
+  font-size: 11px;
+  font-family: var(--font-geist-mono), monospace;
+  color: var(--vo-text-3);
+  background: var(--vo-surface);
+  transition: all 0.2s ease;
+}
+.vo-step[aria-current="step"] .vo-step-dot { border-color: var(--vo-accent-2); color: var(--vo-accent-2); box-shadow: 0 0 0 3px var(--vo-ring); }
+.vo-step[data-done="true"] .vo-step-dot { background: var(--vo-accent); border-color: var(--vo-accent); color: var(--vo-accent-ink); }
+.vo-step[data-error="true"] .vo-step-dot { border-color: var(--vo-danger); color: var(--vo-danger); }
+
+.vo-progress {
+  height: 3px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--vo-text) 9%, transparent);
+  overflow: hidden;
+}
+.vo-progress > i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--vo-accent-2), var(--vo-accent));
+  transition: width 0.5s var(--vo-ease);
+}
+.vo-progress.is-active > i {
+  background-image: linear-gradient(90deg, var(--vo-accent-2), var(--vo-accent), var(--vo-accent-2));
+  background-size: 200% 100%;
+  animation: vo-shimmer 1.6s linear infinite;
+}
+@keyframes vo-shimmer { to { background-position: -200% 0; } }
+
+/* callouts */
+.vo-callout {
+  display: flex;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--vo-radius);
+  font-size: 13px;
+  line-height: 1.5;
+  border: 1px solid var(--vo-border);
+  background: var(--vo-surface);
+  color: var(--vo-text-2);
+}
+.vo-callout[data-tone="warn"] { border-color: color-mix(in srgb, var(--vo-warn) 35%, transparent); background: color-mix(in srgb, var(--vo-warn) 8%, var(--vo-surface)); }
+.vo-callout[data-tone="danger"] { border-color: color-mix(in srgb, var(--vo-danger) 38%, transparent); background: color-mix(in srgb, var(--vo-danger) 8%, var(--vo-surface)); }
+.vo-callout[data-tone="ok"] { border-color: color-mix(in srgb, var(--vo-ok) 35%, transparent); background: color-mix(in srgb, var(--vo-ok) 8%, var(--vo-surface)); }
+.vo-callout strong { color: var(--vo-text); font-weight: 600; }
+
+.vo-kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 5px;
+  border: 1px solid var(--vo-border);
+  border-bottom-width: 2px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10.5px;
+  color: var(--vo-text-2);
+  background: var(--vo-surface);
+}
+
+/* dropzone */
+.vo-drop {
+  border: 1.5px dashed color-mix(in srgb, var(--vo-text) 18%, transparent);
+  border-radius: var(--vo-radius-lg);
+  background: color-mix(in srgb, var(--vo-surface) 60%, transparent);
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.25s var(--vo-ease);
+  cursor: pointer;
+}
+.vo-drop:hover { border-color: color-mix(in srgb, var(--vo-text) 32%, transparent); }
+.vo-drop[data-over="true"] {
+  border-color: var(--vo-accent-2);
+  background: color-mix(in srgb, var(--vo-accent-2) 9%, var(--vo-surface));
+  transform: scale(1.005);
+}
+.vo-drop:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--vo-ring); }
+
+/* segmented control */
+.vo-seg {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--vo-text) 6%, transparent);
+  border: 1px solid var(--vo-border);
+}
+.vo-seg button {
+  height: 30px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--vo-text-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s var(--vo-ease);
+}
+.vo-seg button[aria-selected="true"] {
+  color: var(--vo-text);
+  background: var(--vo-surface);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 1px 0 var(--vo-glass-highlight);
+}
+.vo-seg button:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--vo-ring); }
+
+/* toggle */
+.vo-switch {
+  position: relative;
+  width: 38px;
+  height: 22px;
+  flex: none;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--vo-text) 16%, transparent);
+  transition: background 0.2s ease;
+}
+.vo-switch::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s var(--vo-ease);
+}
+.vo-switch[aria-checked="true"] { background: var(--vo-accent-2); }
+.vo-switch[aria-checked="true"]::after { transform: translateX(16px); }
+.vo-switch:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--vo-ring); }
+
+/* mic + level */
+.vo-mic {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--vo-text-2);
+  transition: color 0.16s ease, background 0.16s ease;
+}
+.vo-mic:hover { color: var(--vo-text); background: color-mix(in srgb, var(--vo-text) 7%, transparent); }
+.vo-mic[data-rec="true"] { color: #fff; background: var(--vo-danger); }
+.vo-mic[data-rec="true"]::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid var(--vo-danger);
+  opacity: calc(0.25 + var(--lvl, 0) * 0.75);
+  transform: scale(calc(1 + var(--lvl, 0) * 0.35));
+  transition: transform 0.08s linear, opacity 0.08s linear;
+}
+.vo-mic:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--vo-ring); }
+
+.vo-level {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 36px;
+}
+.vo-level i {
+  width: 3px;
+  border-radius: 3px;
+  background: var(--vo-accent-2);
+  transition: height 0.08s linear;
+}
+
+.vo-orb {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: var(--vo-accent-ink);
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--vo-accent) 70%, #fff), var(--vo-accent-2));
+  box-shadow: 0 18px 50px -12px color-mix(in srgb, var(--vo-accent-2) 60%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s var(--vo-ease);
+}
+.vo-orb:hover { transform: scale(1.03); }
+.vo-orb::before {
+  content: "";
+  position: absolute;
+  inset: calc(-8px - var(--lvl, 0) * 22px);
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--vo-accent-2) 22%, transparent);
+  z-index: -1;
+  transition: inset 0.08s linear;
+}
+.vo-orb[data-rec="true"] { background: radial-gradient(circle at 35% 30%, #ff8f85, var(--vo-danger)); color: #fff; }
+.vo-orb[data-rec="true"]::before { background: color-mix(in srgb, var(--vo-danger) 20%, transparent); }
+.vo-orb:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--vo-ring); }
+
+/* motion */
+.vo-enter { animation: vo-enter 0.5s var(--vo-ease) both; }
+@keyframes vo-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.vo-fade { animation: vo-fade 0.35s ease both; }
+@keyframes vo-fade { from { opacity: 0; } to { opacity: 1; } }
+.vo-spin { animation: vo-spin 0.9s linear infinite; }
+@keyframes vo-spin { to { transform: rotate(360deg); } }
+.vo-check-draw path { stroke-dasharray: 30; stroke-dashoffset: 30; animation: vo-draw 0.6s 0.15s var(--vo-ease) forwards; }
+@keyframes vo-draw { to { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .vo *, .vo *::before, .vo *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+.vo-scroll { scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--vo-text) 18%, transparent) transparent; }
+
+.vo hr { border: 0; border-top: 1px solid var(--vo-border); }

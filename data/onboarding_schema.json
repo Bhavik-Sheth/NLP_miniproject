@@ -1,0 +1,2855 @@
+{
+  "version": "2026-09-15.1",
+  "profileShape": "flat",
+  "notes": "Answers are stored flat: profile[field.key] = value. Keys are unique within org and within project. repeater -> list of objects keyed by sub-field keys; geo -> {lat, lng}; file -> {name, docId?, url?} (upload via /api/ingest/file first); multiselect -> list of option values; toggle -> bool; currency/number -> number; date -> YYYY-MM-DD. usedByVoice=true fields are turned into project prime memory. validation keys: pattern, message, min, max, minLength, maxLength, minItems, maxItems, afterField.",
+  "org": {
+    "steps": [
+      {
+        "id": "company",
+        "title": "Company",
+        "description": "The legal entity that owns this workspace. Shown on emails and exported registers.",
+        "fields": [
+          {
+            "key": "legalName",
+            "label": "Legal name",
+            "type": "text",
+            "required": true,
+            "usedByVoice": false,
+            "placeholder": "Uttarakhand Infra Builders Pvt. Ltd.",
+            "validation": {
+              "minLength": 2,
+              "maxLength": 160
+            }
+          },
+          {
+            "key": "brandName",
+            "label": "Brand / short name",
+            "type": "text",
+            "required": false,
+            "usedByVoice": false,
+            "placeholder": "UIB",
+            "help": "What people on site call the company."
+          },
+          {
+            "key": "companyType",
+            "label": "Company type",
+            "type": "select",
+            "required": true,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "contractor",
+                "label": "Contractor / EPC"
+              },
+              {
+                "value": "pmc",
+                "label": "Project Management Consultant (PMC)"
+              },
+              {
+                "value": "developer",
+                "label": "Developer / Owner"
+              },
+              {
+                "value": "consultant",
+                "label": "Design consultant"
+              },
+              {
+                "value": "government",
+                "label": "Government department / PSU"
+              },
+              {
+                "value": "testing_lab",
+                "label": "Testing lab / TPI"
+              }
+            ],
+            "memoryHint": "Frames whose side the site manager is on (e.g. contractor vs PMC reviewing the contractor)."
+          },
+          {
+            "key": "gstin",
+            "label": "GSTIN",
+            "type": "gstin",
+            "required": false,
+            "usedByVoice": false,
+            "validation": {
+              "pattern": "^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]$",
+              "message": "15-character GSTIN, e.g. 05AABCU9603R1ZM"
+            }
+          },
+          {
+            "key": "pan",
+            "label": "PAN",
+            "type": "pan",
+            "required": false,
+            "usedByVoice": false,
+            "validation": {
+              "pattern": "^[A-Z]{5}[0-9]{4}[A-Z]$",
+              "message": "10-character PAN, e.g. AABCU9603R"
+            }
+          },
+          {
+            "key": "cin",
+            "label": "CIN",
+            "type": "text",
+            "required": false,
+            "usedByVoice": false,
+            "help": "Corporate Identification Number (companies only).",
+            "validation": {
+              "pattern": "^[LU][0-9]{5}[A-Z]{2}[0-9]{4}[A-Z]{3}[0-9]{6}$",
+              "message": "21-character CIN"
+            }
+          },
+          {
+            "key": "companySize",
+            "label": "Company size",
+            "type": "select",
+            "required": false,
+            "usedByVoice": false,
+            "options": [
+              {
+                "value": "1-10",
+                "label": "1-10"
+              },
+              {
+                "value": "11-50",
+                "label": "11-50"
+              },
+              {
+                "value": "51-200",
+                "label": "51-200"
+              },
+              {
+                "value": "201-1000",
+                "label": "201-1000"
+              },
+              {
+                "value": "1000+",
+                "label": "1000+"
+              }
+            ]
+          },
+          {
+            "key": "website",
+            "label": "Website",
+            "type": "text",
+            "required": false,
+            "usedByVoice": false,
+            "placeholder": "https://",
+            "validation": {
+              "pattern": "^https?://\\S+$",
+              "message": "Full URL starting with http(s)://"
+            }
+          }
+        ]
+      },
+      {
+        "id": "address",
+        "title": "Registered address",
+        "description": "As on the GST / MCA registration.",
+        "fields": [
+          {
+            "key": "registeredAddress",
+            "label": "Registered address",
+            "type": "textarea",
+            "required": false,
+            "usedByVoice": false
+          },
+          {
+            "key": "city",
+            "label": "City",
+            "type": "text",
+            "required": true,
+            "usedByVoice": false
+          },
+          {
+            "key": "state",
+            "label": "State / UT",
+            "type": "select",
+            "required": true,
+            "usedByVoice": false,
+            "options": [
+              {
+                "value": "Andaman and Nicobar Islands",
+                "label": "Andaman and Nicobar Islands"
+              },
+              {
+                "value": "Andhra Pradesh",
+                "label": "Andhra Pradesh"
+              },
+              {
+                "value": "Arunachal Pradesh",
+                "label": "Arunachal Pradesh"
+              },
+              {
+                "value": "Assam",
+                "label": "Assam"
+              },
+              {
+                "value": "Bihar",
+                "label": "Bihar"
+              },
+              {
+                "value": "Chandigarh",
+                "label": "Chandigarh"
+              },
+              {
+                "value": "Chhattisgarh",
+                "label": "Chhattisgarh"
+              },
+              {
+                "value": "Dadra and Nagar Haveli and Daman and Diu",
+                "label": "Dadra and Nagar Haveli and Daman and Diu"
+              },
+              {
+                "value": "Delhi",
+                "label": "Delhi"
+              },
+              {
+                "value": "Goa",
+                "label": "Goa"
+              },
+              {
+                "value": "Gujarat",
+                "label": "Gujarat"
+              },
+              {
+                "value": "Haryana",
+                "label": "Haryana"
+              },
+              {
+                "value": "Himachal Pradesh",
+                "label": "Himachal Pradesh"
+              },
+              {
+                "value": "Jammu and Kashmir",
+                "label": "Jammu and Kashmir"
+              },
+              {
+                "value": "Jharkhand",
+                "label": "Jharkhand"
+              },
+              {
+                "value": "Karnataka",
+                "label": "Karnataka"
+              },
+              {
+                "value": "Kerala",
+                "label": "Kerala"
+              },
+              {
+                "value": "Ladakh",
+                "label": "Ladakh"
+              },
+              {
+                "value": "Lakshadweep",
+                "label": "Lakshadweep"
+              },
+              {
+                "value": "Madhya Pradesh",
+                "label": "Madhya Pradesh"
+              },
+              {
+                "value": "Maharashtra",
+                "label": "Maharashtra"
+              },
+              {
+                "value": "Manipur",
+                "label": "Manipur"
+              },
+              {
+                "value": "Meghalaya",
+                "label": "Meghalaya"
+              },
+              {
+                "value": "Mizoram",
+                "label": "Mizoram"
+              },
+              {
+                "value": "Nagaland",
+                "label": "Nagaland"
+              },
+              {
+                "value": "Odisha",
+                "label": "Odisha"
+              },
+              {
+                "value": "Puducherry",
+                "label": "Puducherry"
+              },
+              {
+                "value": "Punjab",
+                "label": "Punjab"
+              },
+              {
+                "value": "Rajasthan",
+                "label": "Rajasthan"
+              },
+              {
+                "value": "Sikkim",
+                "label": "Sikkim"
+              },
+              {
+                "value": "Tamil Nadu",
+                "label": "Tamil Nadu"
+              },
+              {
+                "value": "Telangana",
+                "label": "Telangana"
+              },
+              {
+                "value": "Tripura",
+                "label": "Tripura"
+              },
+              {
+                "value": "Uttar Pradesh",
+                "label": "Uttar Pradesh"
+              },
+              {
+                "value": "Uttarakhand",
+                "label": "Uttarakhand"
+              },
+              {
+                "value": "West Bengal",
+                "label": "West Bengal"
+              }
+            ]
+          },
+          {
+            "key": "pincode",
+            "label": "PIN code",
+            "type": "pincode",
+            "required": false,
+            "usedByVoice": false,
+            "validation": {
+              "pattern": "^[1-9][0-9]{5}$",
+              "message": "6-digit PIN code"
+            }
+          }
+        ]
+      },
+      {
+        "id": "contact",
+        "title": "Primary contact",
+        "description": "Receives workspace emails and invites.",
+        "fields": [
+          {
+            "key": "primaryContactName",
+            "label": "Name",
+            "type": "text",
+            "required": true,
+            "usedByVoice": false
+          },
+          {
+            "key": "primaryContactEmail",
+            "label": "Email",
+            "type": "email",
+            "required": true,
+            "usedByVoice": false
+          },
+          {
+            "key": "primaryContactPhone",
+            "label": "Phone",
+            "type": "phone",
+            "required": false,
+            "usedByVoice": false,
+            "placeholder": "+91 98xxxxxxxx",
+            "validation": {
+              "pattern": "^\\+?[0-9 ()-]{10,16}$",
+              "message": "10-digit Indian mobile, optionally with +91"
+            }
+          },
+          {
+            "key": "workingLanguages",
+            "label": "Working languages",
+            "type": "multiselect",
+            "required": false,
+            "usedByVoice": false,
+            "options": [
+              {
+                "value": "English",
+                "label": "English"
+              },
+              {
+                "value": "Hindi",
+                "label": "Hindi"
+              },
+              {
+                "value": "Hinglish",
+                "label": "Hinglish"
+              },
+              {
+                "value": "Marathi",
+                "label": "Marathi"
+              },
+              {
+                "value": "Gujarati",
+                "label": "Gujarati"
+              },
+              {
+                "value": "Bengali",
+                "label": "Bengali"
+              },
+              {
+                "value": "Tamil",
+                "label": "Tamil"
+              },
+              {
+                "value": "Telugu",
+                "label": "Telugu"
+              },
+              {
+                "value": "Kannada",
+                "label": "Kannada"
+              },
+              {
+                "value": "Malayalam",
+                "label": "Malayalam"
+              },
+              {
+                "value": "Punjabi",
+                "label": "Punjabi"
+              },
+              {
+                "value": "Odia",
+                "label": "Odia"
+              },
+              {
+                "value": "Assamese",
+                "label": "Assamese"
+              },
+              {
+                "value": "Urdu",
+                "label": "Urdu"
+              }
+            ],
+            "help": "Languages your teams speak on site."
+          }
+        ]
+      }
+    ]
+  },
+  "project": {
+    "steps": [
+      {
+        "id": "basics",
+        "title": "Basics",
+        "description": "What the project is. The name and code are how Vesper refers to it out loud.",
+        "fields": [
+          {
+            "key": "name",
+            "label": "Project name",
+            "type": "text",
+            "required": true,
+            "usedByVoice": true,
+            "placeholder": "Pithoragarh District Hospital & Staff Quarters",
+            "validation": {
+              "minLength": 3,
+              "maxLength": 160
+            },
+            "memoryHint": "Project identity; used in every citation and email."
+          },
+          {
+            "key": "code",
+            "label": "Project code",
+            "type": "text",
+            "required": true,
+            "usedByVoice": true,
+            "placeholder": "PDH-01",
+            "help": "Short unique code used as a prefix in registers.",
+            "validation": {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_./-]{1,23}$",
+              "message": "2-24 letters, digits, - _ . /"
+            }
+          },
+          {
+            "key": "projectType",
+            "label": "Project type",
+            "type": "select",
+            "required": true,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "hospital",
+                "label": "Hospital / healthcare"
+              },
+              {
+                "value": "residential",
+                "label": "Residential"
+              },
+              {
+                "value": "commercial",
+                "label": "Commercial / office"
+              },
+              {
+                "value": "institutional",
+                "label": "Institutional / education"
+              },
+              {
+                "value": "hotel",
+                "label": "Hotel / hospitality"
+              },
+              {
+                "value": "industrial",
+                "label": "Industrial / factory"
+              },
+              {
+                "value": "warehouse",
+                "label": "Warehouse / logistics"
+              },
+              {
+                "value": "road",
+                "label": "Road / highway"
+              },
+              {
+                "value": "bridge",
+                "label": "Bridge / flyover"
+              },
+              {
+                "value": "metro",
+                "label": "Metro / rail"
+              },
+              {
+                "value": "water",
+                "label": "Water supply / sewerage / STP"
+              },
+              {
+                "value": "power",
+                "label": "Power / substation"
+              },
+              {
+                "value": "irrigation",
+                "label": "Irrigation / dam"
+              },
+              {
+                "value": "other",
+                "label": "Other"
+              }
+            ],
+            "memoryHint": "Selects which IS codes, checklists and hazards are most relevant."
+          },
+          {
+            "key": "workScope",
+            "label": "Work scope",
+            "type": "select",
+            "required": false,
+            "usedByVoice": false,
+            "options": [
+              {
+                "value": "new",
+                "label": "New construction"
+              },
+              {
+                "value": "extension",
+                "label": "Extension"
+              },
+              {
+                "value": "renovation",
+                "label": "Renovation / retrofit"
+              },
+              {
+                "value": "om",
+                "label": "Operation & maintenance"
+              }
+            ]
+          },
+          {
+            "key": "description",
+            "label": "Short description",
+            "type": "textarea",
+            "required": false,
+            "usedByVoice": true,
+            "placeholder": "G+4 100-bed district hospital with 24 staff quarters, RCC frame, isolated footings.",
+            "memoryHint": "Free-text scope summary; embedded as the project overview chunk."
+          },
+          {
+            "key": "builtUpArea",
+            "label": "Built-up area (sq m)",
+            "type": "number",
+            "required": false,
+            "usedByVoice": false,
+            "validation": {
+              "min": 0
+            }
+          },
+          {
+            "key": "status",
+            "label": "Status",
+            "type": "select",
+            "required": false,
+            "usedByVoice": false,
+            "options": [
+              {
+                "value": "planning",
+                "label": "Planning"
+              },
+              {
+                "value": "mobilisation",
+                "label": "Mobilisation"
+              },
+              {
+                "value": "active",
+                "label": "Under construction"
+              },
+              {
+                "value": "on_hold",
+                "label": "On hold"
+              },
+              {
+                "value": "dlp",
+                "label": "Defect liability period"
+              },
+              {
+                "value": "closed",
+                "label": "Closed"
+              }
+            ],
+            "default": "active"
+          },
+          {
+            "key": "currentPhase",
+            "label": "Current phase",
+            "type": "select",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "site_prep",
+                "label": "Site preparation"
+              },
+              {
+                "value": "excavation",
+                "label": "Excavation"
+              },
+              {
+                "value": "foundation",
+                "label": "Foundation"
+              },
+              {
+                "value": "substructure",
+                "label": "Substructure"
+              },
+              {
+                "value": "superstructure",
+                "label": "Superstructure / RCC frame"
+              },
+              {
+                "value": "masonry",
+                "label": "Masonry"
+              },
+              {
+                "value": "mep",
+                "label": "MEP rough-in"
+              },
+              {
+                "value": "finishing",
+                "label": "Finishing"
+              },
+              {
+                "value": "external",
+                "label": "External development"
+              },
+              {
+                "value": "testing_commissioning",
+                "label": "Testing & commissioning"
+              },
+              {
+                "value": "handover",
+                "label": "Handover"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "location",
+        "title": "Location & site conditions",
+        "description": "Where the site is and the design conditions that drive cover, grade and loading.",
+        "fields": [
+          {
+            "key": "siteAddress",
+            "label": "Site address",
+            "type": "textarea",
+            "required": false,
+            "usedByVoice": false
+          },
+          {
+            "key": "city",
+            "label": "City / town",
+            "type": "text",
+            "required": true,
+            "usedByVoice": true
+          },
+          {
+            "key": "district",
+            "label": "District",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true
+          },
+          {
+            "key": "state",
+            "label": "State / UT",
+            "type": "select",
+            "required": true,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "Andaman and Nicobar Islands",
+                "label": "Andaman and Nicobar Islands"
+              },
+              {
+                "value": "Andhra Pradesh",
+                "label": "Andhra Pradesh"
+              },
+              {
+                "value": "Arunachal Pradesh",
+                "label": "Arunachal Pradesh"
+              },
+              {
+                "value": "Assam",
+                "label": "Assam"
+              },
+              {
+                "value": "Bihar",
+                "label": "Bihar"
+              },
+              {
+                "value": "Chandigarh",
+                "label": "Chandigarh"
+              },
+              {
+                "value": "Chhattisgarh",
+                "label": "Chhattisgarh"
+              },
+              {
+                "value": "Dadra and Nagar Haveli and Daman and Diu",
+                "label": "Dadra and Nagar Haveli and Daman and Diu"
+              },
+              {
+                "value": "Delhi",
+                "label": "Delhi"
+              },
+              {
+                "value": "Goa",
+                "label": "Goa"
+              },
+              {
+                "value": "Gujarat",
+                "label": "Gujarat"
+              },
+              {
+                "value": "Haryana",
+                "label": "Haryana"
+              },
+              {
+                "value": "Himachal Pradesh",
+                "label": "Himachal Pradesh"
+              },
+              {
+                "value": "Jammu and Kashmir",
+                "label": "Jammu and Kashmir"
+              },
+              {
+                "value": "Jharkhand",
+                "label": "Jharkhand"
+              },
+              {
+                "value": "Karnataka",
+                "label": "Karnataka"
+              },
+              {
+                "value": "Kerala",
+                "label": "Kerala"
+              },
+              {
+                "value": "Ladakh",
+                "label": "Ladakh"
+              },
+              {
+                "value": "Lakshadweep",
+                "label": "Lakshadweep"
+              },
+              {
+                "value": "Madhya Pradesh",
+                "label": "Madhya Pradesh"
+              },
+              {
+                "value": "Maharashtra",
+                "label": "Maharashtra"
+              },
+              {
+                "value": "Manipur",
+                "label": "Manipur"
+              },
+              {
+                "value": "Meghalaya",
+                "label": "Meghalaya"
+              },
+              {
+                "value": "Mizoram",
+                "label": "Mizoram"
+              },
+              {
+                "value": "Nagaland",
+                "label": "Nagaland"
+              },
+              {
+                "value": "Odisha",
+                "label": "Odisha"
+              },
+              {
+                "value": "Puducherry",
+                "label": "Puducherry"
+              },
+              {
+                "value": "Punjab",
+                "label": "Punjab"
+              },
+              {
+                "value": "Rajasthan",
+                "label": "Rajasthan"
+              },
+              {
+                "value": "Sikkim",
+                "label": "Sikkim"
+              },
+              {
+                "value": "Tamil Nadu",
+                "label": "Tamil Nadu"
+              },
+              {
+                "value": "Telangana",
+                "label": "Telangana"
+              },
+              {
+                "value": "Tripura",
+                "label": "Tripura"
+              },
+              {
+                "value": "Uttar Pradesh",
+                "label": "Uttar Pradesh"
+              },
+              {
+                "value": "Uttarakhand",
+                "label": "Uttarakhand"
+              },
+              {
+                "value": "West Bengal",
+                "label": "West Bengal"
+              }
+            ]
+          },
+          {
+            "key": "pincode",
+            "label": "PIN code",
+            "type": "pincode",
+            "required": false,
+            "usedByVoice": false,
+            "validation": {
+              "pattern": "^[1-9][0-9]{5}$",
+              "message": "6-digit PIN code"
+            }
+          },
+          {
+            "key": "geo",
+            "label": "Site location (GPS)",
+            "type": "geo",
+            "required": false,
+            "usedByVoice": false,
+            "help": "Drop a pin or use this device's location. Stored as {lat, lng}."
+          },
+          {
+            "key": "seismicZone",
+            "label": "Seismic zone (IS 1893 Part 1)",
+            "type": "select",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "II",
+                "label": "II"
+              },
+              {
+                "value": "III",
+                "label": "III"
+              },
+              {
+                "value": "IV",
+                "label": "IV"
+              },
+              {
+                "value": "V",
+                "label": "V"
+              }
+            ],
+            "help": "IS 1893 (Part 1):2016 zones. The 2025 revision (with Zone VI) was withdrawn, so 2016 applies.",
+            "memoryHint": "Challenges ductile detailing claims (IS 13920) and lap/hook details in zones III-V."
+          },
+          {
+            "key": "basicWindSpeed",
+            "label": "Basic wind speed Vb (m/s, IS 875 Part 3)",
+            "type": "select",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "33",
+                "label": "33"
+              },
+              {
+                "value": "39",
+                "label": "39"
+              },
+              {
+                "value": "44",
+                "label": "44"
+              },
+              {
+                "value": "47",
+                "label": "47"
+              },
+              {
+                "value": "50",
+                "label": "50"
+              },
+              {
+                "value": "55",
+                "label": "55"
+              }
+            ]
+          },
+          {
+            "key": "exposureCondition",
+            "label": "Environmental exposure (IS 456 Table 3)",
+            "type": "select",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "mild",
+                "label": "Mild"
+              },
+              {
+                "value": "moderate",
+                "label": "Moderate"
+              },
+              {
+                "value": "severe",
+                "label": "Severe"
+              },
+              {
+                "value": "very_severe",
+                "label": "Very severe"
+              },
+              {
+                "value": "extreme",
+                "label": "Extreme"
+              }
+            ],
+            "memoryHint": "Sets minimum grade and nominal cover per IS 456 Tables 5 and 16."
+          },
+          {
+            "key": "soilType",
+            "label": "Founding strata / soil type",
+            "type": "select",
+            "required": false,
+            "usedByVoice": false,
+            "options": [
+              {
+                "value": "rock",
+                "label": "Rock / hard soil (Type I)"
+              },
+              {
+                "value": "medium",
+                "label": "Medium soil (Type II)"
+              },
+              {
+                "value": "soft",
+                "label": "Soft soil (Type III)"
+              }
+            ]
+          },
+          {
+            "key": "safeBearingCapacity",
+            "label": "Safe bearing capacity (kN/m2)",
+            "type": "number",
+            "required": false,
+            "usedByVoice": true,
+            "validation": {
+              "min": 0
+            }
+          },
+          {
+            "key": "monsoonMonths",
+            "label": "Monsoon months",
+            "type": "multiselect",
+            "required": false,
+            "usedByVoice": false,
+            "options": [
+              {
+                "value": "Jan",
+                "label": "Jan"
+              },
+              {
+                "value": "Feb",
+                "label": "Feb"
+              },
+              {
+                "value": "Mar",
+                "label": "Mar"
+              },
+              {
+                "value": "Apr",
+                "label": "Apr"
+              },
+              {
+                "value": "May",
+                "label": "May"
+              },
+              {
+                "value": "Jun",
+                "label": "Jun"
+              },
+              {
+                "value": "Jul",
+                "label": "Jul"
+              },
+              {
+                "value": "Aug",
+                "label": "Aug"
+              },
+              {
+                "value": "Sep",
+                "label": "Sep"
+              },
+              {
+                "value": "Oct",
+                "label": "Oct"
+              },
+              {
+                "value": "Nov",
+                "label": "Nov"
+              },
+              {
+                "value": "Dec",
+                "label": "Dec"
+              }
+            ]
+          },
+          {
+            "key": "siteAccessNotes",
+            "label": "Site access notes",
+            "type": "textarea",
+            "required": false,
+            "usedByVoice": true,
+            "placeholder": "Single hill road, no trailers above 12 m after 4 pm; landslide-prone stretch km 8-10."
+          }
+        ]
+      },
+      {
+        "id": "contract",
+        "title": "Contract",
+        "description": "Contract terms from the LOA / agreement. Drives delay, LD and payment questions.",
+        "fields": [
+          {
+            "key": "clientName",
+            "label": "Client / employer",
+            "type": "text",
+            "required": true,
+            "usedByVoice": true,
+            "placeholder": "Uttarakhand Health Infrastructure Development Agency"
+          },
+          {
+            "key": "contractType",
+            "label": "Contract type",
+            "type": "select",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "item_rate",
+                "label": "Item rate (CPWD / PWD)"
+              },
+              {
+                "value": "percentage_rate",
+                "label": "Percentage rate"
+              },
+              {
+                "value": "lump_sum",
+                "label": "Lump sum"
+              },
+              {
+                "value": "epc",
+                "label": "EPC"
+              },
+              {
+                "value": "design_build",
+                "label": "Design-build"
+              },
+              {
+                "value": "ham",
+                "label": "PPP - Hybrid Annuity (HAM)"
+              },
+              {
+                "value": "bot",
+                "label": "PPP - BOT / toll"
+              },
+              {
+                "value": "cost_plus",
+                "label": "Cost plus"
+              },
+              {
+                "value": "labour_rate",
+                "label": "Labour rate"
+              }
+            ]
+          },
+          {
+            "key": "contractConditions",
+            "label": "General conditions",
+            "type": "select",
+            "required": false,
+            "usedByVoice": false,
+            "options": [
+              {
+                "value": "cpwd_gcc",
+                "label": "CPWD GCC"
+              },
+              {
+                "value": "state_pwd",
+                "label": "State PWD"
+              },
+              {
+                "value": "fidic_red",
+                "label": "FIDIC Red Book"
+              },
+              {
+                "value": "fidic_yellow",
+                "label": "FIDIC Yellow Book"
+              },
+              {
+                "value": "morth_epc",
+                "label": "MoRTH / NHAI model EPC"
+              },
+              {
+                "value": "custom",
+                "label": "Client-specific"
+              }
+            ]
+          },
+          {
+            "key": "contractValue",
+            "label": "Contract value (INR)",
+            "type": "currency",
+            "required": false,
+            "usedByVoice": false,
+            "validation": {
+              "min": 0
+            }
+          },
+          {
+            "key": "agreementNumber",
+            "label": "Agreement / work order no.",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true
+          },
+          {
+            "key": "loaDate",
+            "label": "LOA date",
+            "type": "date",
+            "required": false,
+            "usedByVoice": false
+          },
+          {
+            "key": "startDate",
+            "label": "Start date (date of commencement)",
+            "type": "date",
+            "required": true,
+            "usedByVoice": true
+          },
+          {
+            "key": "scheduledCompletion",
+            "label": "Scheduled completion",
+            "type": "date",
+            "required": false,
+            "usedByVoice": true,
+            "validation": {
+              "afterField": "startDate"
+            }
+          },
+          {
+            "key": "dlpMonths",
+            "label": "Defect liability period (months)",
+            "type": "number",
+            "required": false,
+            "usedByVoice": false,
+            "validation": {
+              "min": 0,
+              "max": 120
+            }
+          },
+          {
+            "key": "ldClause",
+            "label": "Liquidated damages clause",
+            "type": "textarea",
+            "required": false,
+            "usedByVoice": true,
+            "placeholder": "0.5% of contract value per week of delay, capped at 10%."
+          },
+          {
+            "key": "mobilisationAdvancePct",
+            "label": "Mobilisation advance (%)",
+            "type": "number",
+            "required": false,
+            "usedByVoice": false,
+            "validation": {
+              "min": 0,
+              "max": 100
+            }
+          },
+          {
+            "key": "retentionPct",
+            "label": "Retention / security deposit (%)",
+            "type": "number",
+            "required": false,
+            "usedByVoice": false,
+            "help": "CPWD: 2.5% security deposit from RA bills + 5% performance guarantee.",
+            "validation": {
+              "min": 0,
+              "max": 100
+            }
+          },
+          {
+            "key": "performanceGuaranteePct",
+            "label": "Performance guarantee (%)",
+            "type": "number",
+            "required": false,
+            "usedByVoice": false,
+            "validation": {
+              "min": 0,
+              "max": 100
+            }
+          },
+          {
+            "key": "priceEscalation",
+            "label": "Price escalation clause applies",
+            "type": "toggle",
+            "required": false,
+            "usedByVoice": false
+          }
+        ]
+      },
+      {
+        "id": "stakeholders",
+        "title": "Stakeholders",
+        "description": "Who else is on the project. Vesper uses these names when it says who must answer an RFI or release a hold point.",
+        "fields": [
+          {
+            "key": "stakeholders",
+            "label": "Stakeholders",
+            "type": "repeater",
+            "required": false,
+            "usedByVoice": true,
+            "validation": {
+              "minItems": 0,
+              "maxItems": 60
+            },
+            "memoryHint": "One chunk per stakeholder: role, company, person. Lets the agent name the approver.",
+            "fields": [
+              {
+                "key": "role",
+                "label": "Role",
+                "type": "select",
+                "required": true,
+                "usedByVoice": false,
+                "options": [
+                  {
+                    "value": "client_rep",
+                    "label": "Client representative"
+                  },
+                  {
+                    "value": "pmc",
+                    "label": "PMC"
+                  },
+                  {
+                    "value": "architect",
+                    "label": "Architect"
+                  },
+                  {
+                    "value": "structural",
+                    "label": "Structural consultant"
+                  },
+                  {
+                    "value": "mep",
+                    "label": "MEP consultant"
+                  },
+                  {
+                    "value": "geotech",
+                    "label": "Geotechnical consultant"
+                  },
+                  {
+                    "value": "main_contractor",
+                    "label": "Main contractor"
+                  },
+                  {
+                    "value": "subcontractor",
+                    "label": "Sub-contractor"
+                  },
+                  {
+                    "value": "testing_lab",
+                    "label": "Testing lab"
+                  },
+                  {
+                    "value": "tpi",
+                    "label": "Third-party inspector"
+                  },
+                  {
+                    "value": "supplier",
+                    "label": "Supplier"
+                  },
+                  {
+                    "value": "authority",
+                    "label": "Authority / local body"
+                  }
+                ]
+              },
+              {
+                "key": "company",
+                "label": "Company",
+                "type": "text",
+                "required": true,
+                "usedByVoice": false
+              },
+              {
+                "key": "person",
+                "label": "Contact person",
+                "type": "text",
+                "required": false,
+                "usedByVoice": false
+              },
+              {
+                "key": "scope",
+                "label": "Scope / trade",
+                "type": "text",
+                "required": false,
+                "usedByVoice": false,
+                "placeholder": "RMC supply, waterproofing ..."
+              },
+              {
+                "key": "phone",
+                "label": "Phone",
+                "type": "phone",
+                "required": false,
+                "usedByVoice": false,
+                "validation": {
+                  "pattern": "^\\+?[0-9 ()-]{10,16}$",
+                  "message": "10-digit Indian mobile, optionally with +91"
+                }
+              },
+              {
+                "key": "email",
+                "label": "Email",
+                "type": "email",
+                "required": false,
+                "usedByVoice": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "team",
+        "title": "Site team",
+        "description": "Your people on site and who may log observations by voice.",
+        "fields": [
+          {
+            "key": "siteLeadName",
+            "label": "Project manager / site in-charge",
+            "type": "text",
+            "required": true,
+            "usedByVoice": true
+          },
+          {
+            "key": "siteLeadPhone",
+            "label": "Site in-charge phone",
+            "type": "phone",
+            "required": false,
+            "usedByVoice": false,
+            "validation": {
+              "pattern": "^\\+?[0-9 ()-]{10,16}$",
+              "message": "10-digit Indian mobile, optionally with +91"
+            }
+          },
+          {
+            "key": "siteLeadEmail",
+            "label": "Site in-charge email",
+            "type": "email",
+            "required": false,
+            "usedByVoice": false
+          },
+          {
+            "key": "team",
+            "label": "Team members",
+            "type": "repeater",
+            "required": false,
+            "usedByVoice": true,
+            "validation": {
+              "maxItems": 100
+            },
+            "fields": [
+              {
+                "key": "name",
+                "label": "Name",
+                "type": "text",
+                "required": true,
+                "usedByVoice": false
+              },
+              {
+                "key": "role",
+                "label": "Role",
+                "type": "select",
+                "required": true,
+                "usedByVoice": false,
+                "options": [
+                  {
+                    "value": "project_manager",
+                    "label": "Project manager"
+                  },
+                  {
+                    "value": "site_engineer",
+                    "label": "Site engineer"
+                  },
+                  {
+                    "value": "qaqc",
+                    "label": "QA/QC engineer"
+                  },
+                  {
+                    "value": "hse",
+                    "label": "HSE / safety officer"
+                  },
+                  {
+                    "value": "planning",
+                    "label": "Planning engineer"
+                  },
+                  {
+                    "value": "billing",
+                    "label": "Billing / QS engineer"
+                  },
+                  {
+                    "value": "surveyor",
+                    "label": "Surveyor"
+                  },
+                  {
+                    "value": "store",
+                    "label": "Store keeper"
+                  },
+                  {
+                    "value": "foreman",
+                    "label": "Foreman / supervisor"
+                  }
+                ]
+              },
+              {
+                "key": "phone",
+                "label": "Phone",
+                "type": "phone",
+                "required": false,
+                "usedByVoice": false,
+                "validation": {
+                  "pattern": "^\\+?[0-9 ()-]{10,16}$",
+                  "message": "10-digit Indian mobile, optionally with +91"
+                }
+              },
+              {
+                "key": "email",
+                "label": "Email",
+                "type": "email",
+                "required": false,
+                "usedByVoice": false,
+                "help": "Used for invites."
+              },
+              {
+                "key": "canLogObservations",
+                "label": "May log observations by voice",
+                "type": "toggle",
+                "required": false,
+                "usedByVoice": false,
+                "default": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "structure",
+        "title": "Structure & referencing",
+        "description": "How people name places on site. Vesper resolves 'C-5 at level 3, block B' with this.",
+        "fields": [
+          {
+            "key": "blocks",
+            "label": "Blocks / buildings",
+            "type": "repeater",
+            "required": false,
+            "usedByVoice": true,
+            "memoryHint": "Each block with its levels becomes a location alias list for the resolver.",
+            "fields": [
+              {
+                "key": "name",
+                "label": "Block name",
+                "type": "text",
+                "required": true,
+                "usedByVoice": false,
+                "placeholder": "Main Hospital Block"
+              },
+              {
+                "key": "code",
+                "label": "Short code",
+                "type": "text",
+                "required": false,
+                "usedByVoice": false,
+                "placeholder": "MHB"
+              },
+              {
+                "key": "levels",
+                "label": "Levels (comma-separated)",
+                "type": "text",
+                "required": false,
+                "usedByVoice": false,
+                "placeholder": "B1, GF, L1, L2, L3, L4, Terrace"
+              },
+              {
+                "key": "structuralSystem",
+                "label": "Structural system",
+                "type": "select",
+                "required": false,
+                "usedByVoice": false,
+                "options": [
+                  {
+                    "value": "rcc_frame",
+                    "label": "RCC frame"
+                  },
+                  {
+                    "value": "flat_slab",
+                    "label": "Flat slab"
+                  },
+                  {
+                    "value": "load_bearing",
+                    "label": "Load bearing"
+                  },
+                  {
+                    "value": "steel",
+                    "label": "Structural steel"
+                  },
+                  {
+                    "value": "pt",
+                    "label": "Post-tensioned"
+                  },
+                  {
+                    "value": "precast",
+                    "label": "Precast"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "key": "levelNaming",
+            "label": "Level naming convention",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true,
+            "placeholder": "B1, GF, L1, L2 ... Terrace",
+            "default": "GF, L1, L2, L3 ..."
+          },
+          {
+            "key": "gridScheme",
+            "label": "Grid naming scheme",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true,
+            "placeholder": "Letters A-H one way, numbers 1-9 the other; column = C-5"
+          },
+          {
+            "key": "zones",
+            "label": "Zones / pour sections",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true,
+            "placeholder": "Zone A, Zone B, Zone C"
+          },
+          {
+            "key": "chainageFormat",
+            "label": "Chainage format (linear works)",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true,
+            "placeholder": "km 12+450",
+            "help": "Roads, pipelines, metro."
+          },
+          {
+            "key": "keyElements",
+            "label": "Key elements",
+            "type": "multiselect",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "footing",
+                "label": "Footings"
+              },
+              {
+                "value": "raft",
+                "label": "Raft"
+              },
+              {
+                "value": "pile",
+                "label": "Piles"
+              },
+              {
+                "value": "pile_cap",
+                "label": "Pile caps"
+              },
+              {
+                "value": "column",
+                "label": "Columns"
+              },
+              {
+                "value": "beam",
+                "label": "Beams"
+              },
+              {
+                "value": "slab",
+                "label": "Slabs"
+              },
+              {
+                "value": "shear_wall",
+                "label": "Shear walls"
+              },
+              {
+                "value": "retaining_wall",
+                "label": "Retaining walls"
+              },
+              {
+                "value": "staircase",
+                "label": "Staircases"
+              },
+              {
+                "value": "lift_core",
+                "label": "Lift core"
+              },
+              {
+                "value": "water_tank",
+                "label": "Water tanks"
+              },
+              {
+                "value": "pier",
+                "label": "Piers"
+              },
+              {
+                "value": "girder",
+                "label": "Girders"
+              },
+              {
+                "value": "deck",
+                "label": "Deck slab"
+              },
+              {
+                "value": "pavement",
+                "label": "Pavement layers"
+              },
+              {
+                "value": "culvert",
+                "label": "Culverts"
+              },
+              {
+                "value": "masonry",
+                "label": "Masonry walls"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "specs",
+        "title": "Technical specifications",
+        "description": "Design values the agent checks spoken measurements against when a drawing fact is missing.",
+        "fields": [
+          {
+            "key": "governingCodes",
+            "label": "Governing codes & specifications",
+            "type": "multiselect",
+            "required": true,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "IS 456",
+                "label": "IS 456:2000 Plain & reinforced concrete"
+              },
+              {
+                "value": "IS 800",
+                "label": "IS 800:2007 Steel"
+              },
+              {
+                "value": "IS 1893",
+                "label": "IS 1893 (Part 1):2016 Earthquake"
+              },
+              {
+                "value": "IS 13920",
+                "label": "IS 13920:2016 Ductile detailing"
+              },
+              {
+                "value": "IS 875",
+                "label": "IS 875 Loads (Parts 1-5)"
+              },
+              {
+                "value": "IS 1786",
+                "label": "IS 1786 Rebar"
+              },
+              {
+                "value": "IS 383",
+                "label": "IS 383 Aggregates"
+              },
+              {
+                "value": "IS 10262",
+                "label": "IS 10262 Mix design"
+              },
+              {
+                "value": "IS 2502",
+                "label": "IS 2502 Bar bending"
+              },
+              {
+                "value": "IS 1200",
+                "label": "IS 1200 Measurement"
+              },
+              {
+                "value": "SP 34",
+                "label": "SP 34 Detailing handbook"
+              },
+              {
+                "value": "NBC 2016",
+                "label": "National Building Code 2016"
+              },
+              {
+                "value": "CPWD Specs",
+                "label": "CPWD Specifications 2019"
+              },
+              {
+                "value": "MoRTH",
+                "label": "MoRTH Specifications (5th rev.)"
+              },
+              {
+                "value": "IRC 112",
+                "label": "IRC 112 Concrete bridges"
+              },
+              {
+                "value": "IRC 37",
+                "label": "IRC 37 Flexible pavements"
+              },
+              {
+                "value": "IRC 58",
+                "label": "IRC 58 Rigid pavements"
+              },
+              {
+                "value": "NFPA",
+                "label": "NFPA / fire"
+              },
+              {
+                "value": "IS 3370",
+                "label": "IS 3370 Water-retaining structures"
+              },
+              {
+                "value": "IS 2911",
+                "label": "IS 2911 Piles"
+              }
+            ],
+            "memoryHint": "Scopes which kb_is_codes documents rank first for this project."
+          },
+          {
+            "key": "concreteGrades",
+            "label": "Concrete grade by element",
+            "type": "repeater",
+            "required": false,
+            "usedByVoice": true,
+            "memoryHint": "Element -> grade facts; challenge 'M20 in columns' if the project says M30.",
+            "fields": [
+              {
+                "key": "element",
+                "label": "Element",
+                "type": "text",
+                "required": true,
+                "usedByVoice": false,
+                "placeholder": "Columns"
+              },
+              {
+                "key": "grade",
+                "label": "Grade",
+                "type": "select",
+                "required": true,
+                "usedByVoice": false,
+                "options": [
+                  {
+                    "value": "M10",
+                    "label": "M10"
+                  },
+                  {
+                    "value": "M15",
+                    "label": "M15"
+                  },
+                  {
+                    "value": "M20",
+                    "label": "M20"
+                  },
+                  {
+                    "value": "M25",
+                    "label": "M25"
+                  },
+                  {
+                    "value": "M30",
+                    "label": "M30"
+                  },
+                  {
+                    "value": "M35",
+                    "label": "M35"
+                  },
+                  {
+                    "value": "M40",
+                    "label": "M40"
+                  },
+                  {
+                    "value": "M45",
+                    "label": "M45"
+                  },
+                  {
+                    "value": "M50",
+                    "label": "M50"
+                  },
+                  {
+                    "value": "M60",
+                    "label": "M60"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "key": "steelGrade",
+            "label": "Reinforcement steel grade",
+            "type": "select",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "Fe415",
+                "label": "Fe415"
+              },
+              {
+                "value": "Fe415D",
+                "label": "Fe415D"
+              },
+              {
+                "value": "Fe500",
+                "label": "Fe500"
+              },
+              {
+                "value": "Fe500D",
+                "label": "Fe500D"
+              },
+              {
+                "value": "Fe550",
+                "label": "Fe550"
+              },
+              {
+                "value": "Fe550D",
+                "label": "Fe550D"
+              },
+              {
+                "value": "Fe600",
+                "label": "Fe600"
+              },
+              {
+                "value": "CRS",
+                "label": "CRS"
+              }
+            ],
+            "default": "Fe500D"
+          },
+          {
+            "key": "nominalCover",
+            "label": "Nominal cover by element (mm)",
+            "type": "repeater",
+            "required": false,
+            "usedByVoice": true,
+            "memoryHint": "Element -> cover in mm; the most common spoken check on site.",
+            "fields": [
+              {
+                "key": "element",
+                "label": "Element",
+                "type": "text",
+                "required": true,
+                "usedByVoice": false,
+                "placeholder": "Footing"
+              },
+              {
+                "key": "coverMm",
+                "label": "Cover (mm)",
+                "type": "number",
+                "required": true,
+                "usedByVoice": false,
+                "validation": {
+                  "min": 10,
+                  "max": 100
+                }
+              }
+            ]
+          },
+          {
+            "key": "tolerances",
+            "label": "Tolerances",
+            "type": "textarea",
+            "required": false,
+            "usedByVoice": true,
+            "placeholder": "Cover -0/+10 mm; column verticality 1:1000; slab thickness +/-5 mm"
+          },
+          {
+            "key": "cementType",
+            "label": "Cement type",
+            "type": "multiselect",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "OPC 43",
+                "label": "OPC 43"
+              },
+              {
+                "value": "OPC 53",
+                "label": "OPC 53"
+              },
+              {
+                "value": "PPC",
+                "label": "PPC"
+              },
+              {
+                "value": "PSC",
+                "label": "PSC"
+              },
+              {
+                "value": "SRC",
+                "label": "SRC"
+              },
+              {
+                "value": "White cement",
+                "label": "White cement"
+              }
+            ]
+          },
+          {
+            "key": "concreteSource",
+            "label": "Concrete source",
+            "type": "select",
+            "required": false,
+            "usedByVoice": false,
+            "options": [
+              {
+                "value": "rmc",
+                "label": "Ready-mix (RMC)"
+              },
+              {
+                "value": "batching_plant",
+                "label": "Site batching plant"
+              },
+              {
+                "value": "site_mix",
+                "label": "Site mixed"
+              }
+            ]
+          },
+          {
+            "key": "admixtures",
+            "label": "Admixtures",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true,
+            "placeholder": "PCE superplasticiser, retarder for summer pours"
+          },
+          {
+            "key": "curingDays",
+            "label": "Minimum curing (days)",
+            "type": "number",
+            "required": false,
+            "usedByVoice": true,
+            "default": 7,
+            "help": "IS 456 Cl. 13.5.1: 7 days OPC, 10 days with mineral admixtures / hot weather.",
+            "validation": {
+              "min": 0,
+              "max": 60
+            }
+          },
+          {
+            "key": "strippingTimes",
+            "label": "Formwork stripping times",
+            "type": "textarea",
+            "required": false,
+            "usedByVoice": true,
+            "placeholder": "Vertical faces 16-24 h; slab soffit props 7 days; beam soffit props 14 days (IS 456 Cl. 11.3)"
+          }
+        ]
+      },
+      {
+        "id": "documents",
+        "title": "Document control",
+        "description": "Numbering and revision rules so Vesper can tell a current drawing from a superseded one.",
+        "fields": [
+          {
+            "key": "drawingConvention",
+            "label": "Drawing numbering convention",
+            "type": "text",
+            "required": true,
+            "usedByVoice": true,
+            "placeholder": "<Discipline>-<Series><Seq>, e.g. A-102, S-301, M-401",
+            "memoryHint": "Parser pattern for drawing numbers heard in speech."
+          },
+          {
+            "key": "disciplineCodes",
+            "label": "Discipline codes",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true,
+            "default": "A Architectural, S Structural, M Mechanical, E Electrical, P Plumbing, C Civil"
+          },
+          {
+            "key": "revisionScheme",
+            "label": "Revision scheme",
+            "type": "select",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "R0",
+                "label": "R0, R1, R2 ..."
+              },
+              {
+                "value": "A",
+                "label": "A, B, C ..."
+              },
+              {
+                "value": "P_C",
+                "label": "P01 preliminary, C01 construction"
+              },
+              {
+                "value": "numeric",
+                "label": "0, 1, 2 ..."
+              }
+            ]
+          },
+          {
+            "key": "drawingStatuses",
+            "label": "Drawing statuses in use",
+            "type": "multiselect",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "For Approval",
+                "label": "For Approval"
+              },
+              {
+                "value": "For Information",
+                "label": "For Information"
+              },
+              {
+                "value": "For Tender",
+                "label": "For Tender"
+              },
+              {
+                "value": "Good For Construction",
+                "label": "Good For Construction"
+              },
+              {
+                "value": "For Construction",
+                "label": "For Construction"
+              },
+              {
+                "value": "As Built",
+                "label": "As Built"
+              },
+              {
+                "value": "Superseded",
+                "label": "Superseded"
+              }
+            ],
+            "default": [
+              "For Approval",
+              "For Construction",
+              "Superseded"
+            ]
+          },
+          {
+            "key": "rfiNumbering",
+            "label": "RFI numbering",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true,
+            "placeholder": "RFI-001",
+            "default": "RFI-###"
+          },
+          {
+            "key": "ncrNumbering",
+            "label": "NCR numbering",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true,
+            "placeholder": "NCR-001",
+            "default": "NCR-###"
+          },
+          {
+            "key": "siteInstructionNumbering",
+            "label": "Site instruction numbering",
+            "type": "text",
+            "required": false,
+            "usedByVoice": false,
+            "placeholder": "SI-001"
+          },
+          {
+            "key": "cdeTool",
+            "label": "Document system (CDE)",
+            "type": "select",
+            "required": false,
+            "usedByVoice": false,
+            "options": [
+              {
+                "value": "none",
+                "label": "Email / shared drive"
+              },
+              {
+                "value": "aconex",
+                "label": "Oracle Aconex"
+              },
+              {
+                "value": "acc",
+                "label": "Autodesk Construction Cloud"
+              },
+              {
+                "value": "procore",
+                "label": "Procore"
+              },
+              {
+                "value": "bim360",
+                "label": "BIM 360"
+              },
+              {
+                "value": "other",
+                "label": "Other"
+              }
+            ]
+          },
+          {
+            "key": "drawingRegister",
+            "label": "Current drawing register",
+            "type": "file",
+            "required": false,
+            "usedByVoice": true,
+            "accept": ".xlsx,.xls,.csv,.pdf",
+            "help": "Excel/CSV with drawing no., title, revision, status, issue date. Ingested as project memory.",
+            "memoryHint": "Ingested via /api/ingest/file with category drawing_register."
+          },
+          {
+            "key": "submittalRegister",
+            "label": "Submittal register",
+            "type": "file",
+            "required": false,
+            "usedByVoice": false,
+            "accept": ".xlsx,.xls,.csv,.pdf"
+          }
+        ]
+      },
+      {
+        "id": "approvals",
+        "title": "Approvals & permits",
+        "description": "Statutory approvals and their validity. Vesper warns before work runs past an expiry.",
+        "fields": [
+          {
+            "key": "reraNumber",
+            "label": "RERA registration no.",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true,
+            "help": "Mandatory for residential/commercial real estate over 500 sq m or 8 units."
+          },
+          {
+            "key": "approvals",
+            "label": "Statutory approvals",
+            "type": "repeater",
+            "required": false,
+            "usedByVoice": true,
+            "memoryHint": "One chunk per approval with number, authority and validity; expiry drives warnings.",
+            "fields": [
+              {
+                "key": "type",
+                "label": "Approval",
+                "type": "select",
+                "required": true,
+                "usedByVoice": false,
+                "options": [
+                  {
+                    "value": "building_permit",
+                    "label": "Building plan approval / permit"
+                  },
+                  {
+                    "value": "commencement",
+                    "label": "Commencement certificate"
+                  },
+                  {
+                    "value": "environmental_clearance",
+                    "label": "Environmental clearance (SEIAA / MoEFCC)"
+                  },
+                  {
+                    "value": "fire_noc",
+                    "label": "Fire NOC (provisional)"
+                  },
+                  {
+                    "value": "cte",
+                    "label": "Consent to Establish (SPCB)"
+                  },
+                  {
+                    "value": "cto",
+                    "label": "Consent to Operate (SPCB)"
+                  },
+                  {
+                    "value": "labour_licence",
+                    "label": "Contract labour licence (CLRA)"
+                  },
+                  {
+                    "value": "bocw",
+                    "label": "BOCW establishment registration"
+                  },
+                  {
+                    "value": "tree_cutting",
+                    "label": "Tree cutting / transplant permission"
+                  },
+                  {
+                    "value": "road_cutting",
+                    "label": "Excavation / road cutting permission"
+                  },
+                  {
+                    "value": "airport_noc",
+                    "label": "AAI height NOC"
+                  },
+                  {
+                    "value": "forest",
+                    "label": "Forest clearance"
+                  },
+                  {
+                    "value": "groundwater",
+                    "label": "CGWA groundwater NOC"
+                  },
+                  {
+                    "value": "electricity",
+                    "label": "Temporary electricity connection"
+                  },
+                  {
+                    "value": "water",
+                    "label": "Construction water connection"
+                  },
+                  {
+                    "value": "other",
+                    "label": "Other"
+                  }
+                ]
+              },
+              {
+                "key": "number",
+                "label": "Number",
+                "type": "text",
+                "required": false,
+                "usedByVoice": false
+              },
+              {
+                "key": "authority",
+                "label": "Issuing authority",
+                "type": "text",
+                "required": false,
+                "usedByVoice": false
+              },
+              {
+                "key": "validFrom",
+                "label": "Valid from",
+                "type": "date",
+                "required": false,
+                "usedByVoice": false
+              },
+              {
+                "key": "validTo",
+                "label": "Valid to",
+                "type": "date",
+                "required": false,
+                "usedByVoice": false
+              },
+              {
+                "key": "document",
+                "label": "Copy",
+                "type": "file",
+                "required": false,
+                "usedByVoice": false,
+                "accept": ".pdf,.jpg,.png"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "qaqc_hse",
+        "title": "QA/QC & safety",
+        "description": "Hold points, checklists and permit-to-work rules the agent enforces before a log.",
+        "fields": [
+          {
+            "key": "itpDocument",
+            "label": "Inspection & test plan (ITP)",
+            "type": "file",
+            "required": false,
+            "usedByVoice": true,
+            "accept": ".pdf,.xlsx,.docx",
+            "memoryHint": "Ingested; hold/witness points extracted by W1."
+          },
+          {
+            "key": "qapDocument",
+            "label": "Quality assurance plan (QAP)",
+            "type": "file",
+            "required": false,
+            "usedByVoice": false,
+            "accept": ".pdf,.docx"
+          },
+          {
+            "key": "holdPoints",
+            "label": "Hold points",
+            "type": "repeater",
+            "required": false,
+            "usedByVoice": true,
+            "memoryHint": "Activity -> who releases; agent blocks 'pour done' claims without release.",
+            "fields": [
+              {
+                "key": "activity",
+                "label": "Activity",
+                "type": "text",
+                "required": true,
+                "usedByVoice": false,
+                "placeholder": "Slab pre-pour"
+              },
+              {
+                "key": "releasedBy",
+                "label": "Released by",
+                "type": "text",
+                "required": false,
+                "usedByVoice": false,
+                "placeholder": "PMC QA/QC engineer"
+              },
+              {
+                "key": "type",
+                "label": "Type",
+                "type": "select",
+                "required": false,
+                "usedByVoice": false,
+                "options": [
+                  {
+                    "value": "hold",
+                    "label": "Hold point"
+                  },
+                  {
+                    "value": "witness",
+                    "label": "Witness point"
+                  },
+                  {
+                    "value": "review",
+                    "label": "Document review"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "key": "testingLab",
+            "label": "Testing lab (NABL)",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true
+          },
+          {
+            "key": "checklistTemplates",
+            "label": "Checklist templates (InfraLens library)",
+            "type": "multiselect",
+            "required": false,
+            "usedByVoice": true,
+            "optionsSource": "templates?type=Checklist",
+            "help": "Choose the checklists this site uses. Full list comes from the template library.",
+            "options": [
+              {
+                "value": "QC-CON-CHK-001",
+                "label": "Pre-pour inspection"
+              },
+              {
+                "value": "QC-CON-CHK-002",
+                "label": "During-pour inspection"
+              },
+              {
+                "value": "QC-CON-CHK-003",
+                "label": "Post-pour / curing"
+              },
+              {
+                "value": "QC-CON-CHK-004",
+                "label": "Formwork inspection"
+              },
+              {
+                "value": "QC-CON-CHK-005",
+                "label": "Reinforcement inspection"
+              },
+              {
+                "value": "QC-CEM-CHK-001",
+                "label": "Cement receiving"
+              },
+              {
+                "value": "QC-AGG-CHK-001",
+                "label": "Aggregate receiving"
+              },
+              {
+                "value": "QC-MAS-CHK-002",
+                "label": "Masonry construction"
+              },
+              {
+                "value": "QC-MAS-CHK-004",
+                "label": "Plastering inspection"
+              },
+              {
+                "value": "QC-ELC-CHK-003",
+                "label": "Earthing system"
+              },
+              {
+                "value": "QC-FIR-CHK-001",
+                "label": "Fire hydrant system"
+              },
+              {
+                "value": "QC-PLB-CHK-001",
+                "label": "Pipe laying"
+              },
+              {
+                "value": "QC-DRN-CHK-001",
+                "label": "Trench excavation"
+              },
+              {
+                "value": "QC-BRG-CHK-001",
+                "label": "Bridge foundation"
+              },
+              {
+                "value": "QC-BRG-CHK-003",
+                "label": "Bridge superstructure"
+              },
+              {
+                "value": "QC-HSE-CHK-001",
+                "label": "Daily site safety walk"
+              },
+              {
+                "value": "PMC-EQP-CHK-001",
+                "label": "Crane inspection (daily)"
+              },
+              {
+                "value": "PMC-EQP-CHK-002",
+                "label": "Scaffold inspection"
+              },
+              {
+                "value": "PMC-SAF-CHK-001",
+                "label": "Safety induction"
+              },
+              {
+                "value": "PMC-MOB-CHK-001",
+                "label": "Site mobilisation"
+              }
+            ]
+          },
+          {
+            "key": "permitTypes",
+            "label": "Permit-to-work types enabled",
+            "type": "multiselect",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "hot_work",
+                "label": "Hot work"
+              },
+              {
+                "value": "height",
+                "label": "Work at height"
+              },
+              {
+                "value": "excavation",
+                "label": "Excavation & trenching"
+              },
+              {
+                "value": "lifting",
+                "label": "Lifting / crane"
+              },
+              {
+                "value": "confined_space",
+                "label": "Confined space"
+              },
+              {
+                "value": "electrical",
+                "label": "Electrical isolation / LOTO"
+              },
+              {
+                "value": "radiography",
+                "label": "Radiography"
+              },
+              {
+                "value": "hazmat",
+                "label": "Hazardous material"
+              }
+            ],
+            "default": [
+              "hot_work",
+              "height",
+              "excavation",
+              "lifting"
+            ],
+            "memoryHint": "The deterministic engine only blocks on permits of enabled types."
+          },
+          {
+            "key": "hseOfficerName",
+            "label": "Safety officer",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true
+          },
+          {
+            "key": "hseOfficerPhone",
+            "label": "Safety officer phone",
+            "type": "phone",
+            "required": false,
+            "usedByVoice": false,
+            "validation": {
+              "pattern": "^\\+?[0-9 ()-]{10,16}$",
+              "message": "10-digit Indian mobile, optionally with +91"
+            }
+          },
+          {
+            "key": "nearestHospital",
+            "label": "Nearest hospital",
+            "type": "text",
+            "required": false,
+            "usedByVoice": true,
+            "placeholder": "District Hospital Pithoragarh, 4 km"
+          },
+          {
+            "key": "emergencyContacts",
+            "label": "Emergency contacts",
+            "type": "repeater",
+            "required": false,
+            "usedByVoice": true,
+            "fields": [
+              {
+                "key": "label",
+                "label": "Label",
+                "type": "text",
+                "required": true,
+                "usedByVoice": false,
+                "placeholder": "Ambulance / fire / police / site doctor"
+              },
+              {
+                "key": "phone",
+                "label": "Phone",
+                "type": "phone",
+                "required": true,
+                "usedByVoice": false,
+                "validation": {
+                  "pattern": "^\\+?[0-9 ()-]{3,16}$",
+                  "message": "Phone number"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "schedule",
+        "title": "Schedule & BOQ",
+        "description": "Milestones, quantities and working calendar.",
+        "fields": [
+          {
+            "key": "milestones",
+            "label": "Milestones",
+            "type": "repeater",
+            "required": false,
+            "usedByVoice": true,
+            "fields": [
+              {
+                "key": "name",
+                "label": "Milestone",
+                "type": "text",
+                "required": true,
+                "usedByVoice": false,
+                "placeholder": "L4 roof slab cast"
+              },
+              {
+                "key": "plannedDate",
+                "label": "Planned date",
+                "type": "date",
+                "required": true,
+                "usedByVoice": false
+              },
+              {
+                "key": "paymentLinkedPct",
+                "label": "Payment linked (%)",
+                "type": "number",
+                "required": false,
+                "usedByVoice": false,
+                "validation": {
+                  "min": 0,
+                  "max": 100
+                }
+              }
+            ]
+          },
+          {
+            "key": "programmeFile",
+            "label": "Baseline programme",
+            "type": "file",
+            "required": false,
+            "usedByVoice": false,
+            "accept": ".pdf,.xml,.mpp,.xer,.xlsx",
+            "help": "Primavera / MS Project export."
+          },
+          {
+            "key": "boqFile",
+            "label": "Bill of quantities (BOQ)",
+            "type": "file",
+            "required": false,
+            "usedByVoice": true,
+            "accept": ".xlsx,.xls,.csv,.pdf",
+            "memoryHint": "Ingested as tabular memory (BM25 + vector)."
+          },
+          {
+            "key": "workingHours",
+            "label": "Working hours",
+            "type": "text",
+            "required": false,
+            "usedByVoice": false,
+            "placeholder": "08:00-18:00",
+            "default": "08:00-18:00"
+          },
+          {
+            "key": "shifts",
+            "label": "Shifts",
+            "type": "select",
+            "required": false,
+            "usedByVoice": false,
+            "options": [
+              {
+                "value": "single",
+                "label": "Single shift"
+              },
+              {
+                "value": "double",
+                "label": "Two shifts"
+              },
+              {
+                "value": "round_the_clock",
+                "label": "24 x 7"
+              }
+            ]
+          },
+          {
+            "key": "weeklyOff",
+            "label": "Weekly off",
+            "type": "select",
+            "required": false,
+            "usedByVoice": false,
+            "options": [
+              {
+                "value": "Sunday",
+                "label": "Sunday"
+              },
+              {
+                "value": "Friday",
+                "label": "Friday"
+              },
+              {
+                "value": "None",
+                "label": "None"
+              }
+            ]
+          },
+          {
+            "key": "holidays",
+            "label": "Site holidays",
+            "type": "textarea",
+            "required": false,
+            "usedByVoice": false,
+            "placeholder": "26 Jan, 15 Aug, 2 Oct, Diwali (3 days), Holi"
+          }
+        ]
+      },
+      {
+        "id": "voice",
+        "title": "Voice preferences",
+        "description": "How Vesper talks and how hard it pushes back.",
+        "fields": [
+          {
+            "key": "siteLanguages",
+            "label": "Languages spoken on site",
+            "type": "multiselect",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "English",
+                "label": "English"
+              },
+              {
+                "value": "Hindi",
+                "label": "Hindi"
+              },
+              {
+                "value": "Hinglish",
+                "label": "Hinglish"
+              },
+              {
+                "value": "Marathi",
+                "label": "Marathi"
+              },
+              {
+                "value": "Gujarati",
+                "label": "Gujarati"
+              },
+              {
+                "value": "Bengali",
+                "label": "Bengali"
+              },
+              {
+                "value": "Tamil",
+                "label": "Tamil"
+              },
+              {
+                "value": "Telugu",
+                "label": "Telugu"
+              },
+              {
+                "value": "Kannada",
+                "label": "Kannada"
+              },
+              {
+                "value": "Malayalam",
+                "label": "Malayalam"
+              },
+              {
+                "value": "Punjabi",
+                "label": "Punjabi"
+              },
+              {
+                "value": "Odia",
+                "label": "Odia"
+              },
+              {
+                "value": "Assamese",
+                "label": "Assamese"
+              },
+              {
+                "value": "Urdu",
+                "label": "Urdu"
+              }
+            ],
+            "default": [
+              "English",
+              "Hinglish"
+            ]
+          },
+          {
+            "key": "replyLanguage",
+            "label": "Vesper replies in",
+            "type": "select",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "en-IN",
+                "label": "English"
+              },
+              {
+                "value": "hi-IN",
+                "label": "Hinglish"
+              }
+            ],
+            "default": "en-IN"
+          },
+          {
+            "key": "units",
+            "label": "Units",
+            "type": "select",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "metric",
+                "label": "Metric (mm, m, kN)"
+              },
+              {
+                "value": "mixed",
+                "label": "Metric with feet-inches accepted"
+              }
+            ],
+            "default": "metric"
+          },
+          {
+            "key": "strictness",
+            "label": "Challenge strictness",
+            "type": "select",
+            "required": false,
+            "usedByVoice": true,
+            "options": [
+              {
+                "value": "strict",
+                "label": "Strict: challenge any deviation from drawing or code"
+              },
+              {
+                "value": "balanced",
+                "label": "Balanced: challenge outside tolerance"
+              },
+              {
+                "value": "lenient",
+                "label": "Lenient: note, only block safety"
+              }
+            ],
+            "default": "balanced",
+            "memoryHint": "Engine threshold: strict=0 tolerance, balanced=drawing tolerance, lenient=safety-critical only."
+          },
+          {
+            "key": "dimensionTolerancePct",
+            "label": "Default tolerance when drawing gives none (%)",
+            "type": "number",
+            "required": false,
+            "usedByVoice": true,
+            "default": 5,
+            "validation": {
+              "min": 0,
+              "max": 50
+            }
+          },
+          {
+            "key": "requireConfirmBeforeLog",
+            "label": "Always read back before logging",
+            "type": "toggle",
+            "required": false,
+            "usedByVoice": true,
+            "default": true
+          },
+          {
+            "key": "dailySummaryEmail",
+            "label": "Email a daily summary",
+            "type": "toggle",
+            "required": false,
+            "usedByVoice": false,
+            "default": false
+          }
+        ]
+      }
+    ]
+  }
+}

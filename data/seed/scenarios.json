@@ -1,0 +1,189 @@
+[
+  {
+    "id": "S01",
+    "title": "README example — claimed superseded revision, value matches latest; user declines RFI",
+    "turns": [
+      {"user": "haan toh column line C-5 pe rebar spacing 180 mm hai, drawing A 102 rev teen mein 200 mm dikh raha hai", "barge_in": false, "noise": "drill"},
+      {"user": "achha R4 aa gaya tha... ok. bas observation log kar do, RFI nahi chahiye", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["revision_mismatch"],
+      "must_ask_clarification": true,
+      "challenge_mentions": ["R4", "180", "RFI-047"],
+      "final_decision": "log_observation",
+      "no_log": false,
+      "logged": {"drawing_id": "A-102@R4", "location_id": "P1:C-5:L3", "element": "column", "attribute": "rebar_spacing", "value": 180, "unit": "mm", "revision_claimed": "R3"}
+    },
+    "notes": "Latest For Construction is A-102@R4 (12-Aug-2026, via RFI-047) = 180 mm ±10. 180 matches latest, so no dimension_mismatch; only the revision claim is stale. Logged drawing must be R4, never R3."
+  },
+  {
+    "id": "S02",
+    "title": "Dimension mismatch beyond tolerance at C-6 (220 vs 180)",
+    "turns": [
+      {"user": "umm C-6 column pe stirrup ka spacing do sau bees... 220 mm aa raha hai, A-102 ke hisaab se", "barge_in": false, "noise": "traffic"},
+      {"user": "haan pakka 220 hai, teen jagah naapa. RFI raise karo, consultant ko bhejo", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["dimension_mismatch"],
+      "must_ask_clarification": true,
+      "challenge_mentions": ["180", "R4"],
+      "final_decision": "raise_rfi",
+      "accept_final_decisions": ["raise_rfi", "raise_ncr"],
+      "no_log": false,
+      "logged": {"drawing_id": "A-102@R4", "location_id": "P1:C-6:L3", "element": "column", "attribute": "rebar_spacing", "value": 220, "unit": "mm"}
+    },
+    "notes": "|220-180| = 40 > tolerance 10. Observation logged with the measured 220 (what was seen), linked to verified A-102@R4, contradiction_flag=1."
+  },
+  {
+    "id": "S03",
+    "title": "Barge-in self-correction of location (C-5 -> C-6)",
+    "turns": [
+      {"user": "column C-5 pe tie spacing ek sau assi mm, drawing A-102 rev", "barge_in": false, "noise": "drill"},
+      {"user": "wait wait, C-5 nahi, C-6. C-6 pe ek sau assi hai, R4 drawing", "barge_in": true, "noise": "drill"},
+      {"user": "haan C-6, log kar do", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": false,
+      "kinds": [],
+      "must_ask_clarification": false,
+      "must_confirm_readback": true,
+      "final_decision": "log_observation",
+      "no_log": false,
+      "logged": {"drawing_id": "A-102@R4", "location_id": "P1:C-6:L3", "element": "column", "attribute": "rebar_spacing", "value": 180, "unit": "mm", "revision_claimed": "R4"},
+      "forbidden_logged": {"location_id": "P1:C-5:L3"}
+    },
+    "notes": "Agent must drop the interrupted C-5 capture on barge-in; nothing may be logged against C-5."
+  },
+  {
+    "id": "S04",
+    "title": "Critical field garbled (drawing number / element unclear) — refuse to log",
+    "turns": [
+      {"user": "haan wo... beam ke paas wale column pe spacing 180 hai, drawing number A... [inaudible] ... rev char", "barge_in": false, "noise": "traffic"},
+      {"user": "pata nahi yaar, drawing number yaad nahi aur column bhi confirm nahi hai, baad mein dekhta hoon", "barge_in": false, "noise": "traffic"}
+    ],
+    "expect": {
+      "contradiction": false,
+      "kinds": [],
+      "must_ask_clarification": true,
+      "clarify_fields": ["location_id", "drawing_number"],
+      "final_decision": "none",
+      "no_log": true,
+      "logged": null
+    },
+    "notes": "Location and drawing are critical fields. Agent asks once for both; user cannot supply -> no field_observations row."
+  },
+  {
+    "id": "S05",
+    "title": "Hot work in Zone B L3 without fire watch — permit blocker, stop work",
+    "turns": [
+      {"user": "Zone B level 3 mein welding chal rahi hai lift machine room brackets ki, sab theek hai, work ok log kar do", "barge_in": false, "noise": "drill"},
+      {"user": "achha fire watcher abhi nahi hai wahan... theek hai, kaam rukwa deta hoon, stop work", "barge_in": false, "noise": "drill"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["permit_blocker"],
+      "must_ask_clarification": true,
+      "challenge_mentions": ["HWP-0112", "fire watch"],
+      "final_decision": "stop_work",
+      "no_log": false,
+      "logged": {"location_id": "P1:ZoneB:L3", "permit_id": "HWP-0112", "final_decision": "stop_work"},
+      "must_not_log_decision": "log_observation",
+      "forbidden_summary_contains": ["work ok"]
+    },
+    "notes": "HWP-0112 is Active but mandatory fire-watch checks are unsatisfied (v_permit_blockers). A 'work ok' observation must never be logged."
+  },
+  {
+    "id": "S06",
+    "title": "L4 slab thickness 125 vs 150 (crew following superseded S-301 R1)",
+    "turns": [
+      {"user": "L4 slab ki thickness humne check ki, ek sau pachees... 125 mm hai, S-301 ke according", "barge_in": false, "noise": "none"},
+      {"user": "arre matlab shuttering R1 ke hisaab se lag gayi? NCR raise karo, pour se pehle theek karna padega", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["dimension_mismatch"],
+      "must_ask_clarification": true,
+      "challenge_mentions": ["150", "R2", "RFI-052"],
+      "final_decision": "raise_ncr",
+      "no_log": false,
+      "logged": {"drawing_id": "S-301@R2", "location_id": "P1:Slab:L4", "element": "slab", "attribute": "thickness", "value": 125, "unit": "mm"}
+    },
+    "notes": "S-301@R2 (For Construction, via RFI-052) = 150 ±5. 125 equals the superseded R1 value — agent may mention it."
+  },
+  {
+    "id": "S07",
+    "title": "Column cover 25 vs 40 at B-4 (IS 456 Cl. 26.4)",
+    "turns": [
+      {"user": "B-4 column mein cover pachees mm mil raha hai, cover blocks chhote lage hain lagta hai", "barge_in": false, "noise": "drill"},
+      {"user": "haan NCR daal do, aur bar bender ko bolo 40 wale blocks lagaye", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["dimension_mismatch"],
+      "must_ask_clarification": true,
+      "challenge_mentions": ["40", "IS 456"],
+      "final_decision": "raise_ncr",
+      "no_log": false,
+      "logged": {"drawing_id": "A-102@R4", "location_id": "P1:B-4:L3", "element": "column", "attribute": "cover", "value": 25, "unit": "mm"}
+    },
+    "notes": "A-102@R4 cover 40 ±5 (IS 456 Cl. 26.4). No drawing named by user — agent resolves the latest drawing for the fact."
+  },
+  {
+    "id": "S08",
+    "title": "Start L4 slab pour while pre-pour hold point not released",
+    "turns": [
+      {"user": "chalo L4 slab ka pour shuru karte hain, pump aa gaya hai, RMC truck bhi gate pe khada hai", "barge_in": false, "noise": "traffic"},
+      {"user": "consultant ne abhi release nahi diya? theek hai, pour hold karo, truck ko wait karao", "barge_in": false, "noise": "traffic"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["hold_point_blocker"],
+      "must_ask_clarification": true,
+      "challenge_mentions": ["hold", "QC-CON-CHK-001"],
+      "final_decision": "stop_work",
+      "no_log": false,
+      "logged": {"location_id": "P1:Slab:L4", "checklist_instance_id": "CL-PP-L4-001", "final_decision": "stop_work"},
+      "must_not_log_decision": "log_observation"
+    },
+    "notes": "checklist_instances CL-PP-L4-001 (QC-CON-CHK-001) status Hold, hold_point_released=0 (v_open_hold_points): cover shortfall, RFI-050 open."
+  },
+  {
+    "id": "S09",
+    "title": "Clean observation — no contradiction, logged against verified latest drawing",
+    "turns": [
+      {"user": "haan so, D-3 column ka cover chaalees mm check kiya, drawing A-102 rev chaar, sab theek hai", "barge_in": false, "noise": "none"},
+      {"user": "haan confirm, log karo", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": false,
+      "kinds": [],
+      "must_ask_clarification": false,
+      "must_confirm_readback": true,
+      "final_decision": "log_observation",
+      "no_log": false,
+      "logged": {"drawing_id": "A-102@R4", "location_id": "P1:D-3:L3", "element": "column", "attribute": "cover", "value": 40, "unit": "mm", "revision_claimed": "R4"}
+    },
+    "notes": "Value and revision both match the latest fact."
+  },
+  {
+    "id": "S10",
+    "title": "Unknown drawing A-109 — clarify, then log against corrected A-102",
+    "turns": [
+      {"user": "C-4 column pe tie spacing 200 hai, drawing A-109 mein bhi 200 hi hai", "barge_in": false, "noise": "none"},
+      {"user": "oh sorry, A-102 bola tha, rev 4. log kar do", "barge_in": false, "noise": "none"}
+    ],
+    "expect": {
+      "contradiction": true,
+      "kinds": ["unknown_drawing"],
+      "must_ask_clarification": true,
+      "challenge_mentions": ["A-109", "A-102"],
+      "final_decision": "log_observation",
+      "no_log": false,
+      "logged": {"drawing_id": "A-102@R4", "location_id": "P1:C-4:L3", "element": "column", "attribute": "rebar_spacing", "value": 200, "unit": "mm", "revision_claimed": "R4"},
+      "forbidden_logged": {"drawing_id": "A-109"}
+    },
+    "notes": "A-109 does not exist in the drawing register. Agent must not log until the drawing is resolved; A-102@R4 C-4 spacing = 200 ±10."
+  }
+]

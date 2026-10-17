@@ -1,0 +1,2938 @@
+{
+ "flows": {
+  "pre_pour": [
+   {
+    "text": "What should I check before the L4 slab pour?",
+    "response": {
+     "sessionId": "VS-1a08cbbb973-069ff5",
+     "state": "capturing",
+     "kind": "answer",
+     "unresolved": false,
+     "reply": {
+      "text": "Hold point CL-PP-L4-001 is not released: Embedment items (conduits, sleeves, etc.) securely fixed in position; Concrete cover — measured at 5 locations and within specified limits. Open RFI-050 (Electrical conduit density in L4 slab near core). At Slab, Level 4: slab cover is 20 mm plus or minus 5, per S-301 R2 issued 20 August after RFI-052 (IS 456 Cl. 26.4.2.2); slab grade is 25 MPa, per S-301 R2 issued 20 August after RFI-052 (IS 456 Table 5). 4 more checks are on record here.",
+      "speech": "Hold point level 4-001 is not released: Embedment items (conduits, sleeves, etc.) securely fixed in position; Concrete cover , measured at 5 locations and within specified limits. Open R F I 50 (Electrical conduit density in level 4 slab near core). At Slab, Level 4: slab cover is 20 millimeter plus or minus 5, per S 301 revision 2 issued 20 August after R F I 52 (IS 456 Cl. 26.4.2.2); slab grade is 25 MPa, per S 301 revision 2 issued 20 August after R F I 52 (IS 456 Table 5). 4 more checks are on record here."
+     },
+     "entities": [
+      {
+       "kind": "level",
+       "label": "L4",
+       "confidence": 0.95
+      },
+      {
+       "kind": "element",
+       "label": "slab",
+       "confidence": 0.9
+      },
+      {
+       "kind": "activity",
+       "label": "pour",
+       "confidence": 0.9
+      }
+     ],
+     "contradictions": [],
+     "blockers": [],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [],
+     "slots": {},
+     "clarifiedKinds": [],
+     "events": [
+      "answered_question"
+     ],
+     "resolved": {
+      "location_id": "P1:Slab:L4",
+      "drawing_id": null,
+      "location_inferred": false,
+      "drawing_label": null,
+      "fact": null
+     },
+     "logged": null
+    }
+   }
+  ],
+  "cover_q": [
+   {
+    "text": "What is the cover at E-1?",
+    "response": {
+     "sessionId": "VS-1a08cbbb978-6b51e3",
+     "state": "capturing",
+     "kind": "answer",
+     "unresolved": false,
+     "reply": {
+      "text": "At E-1, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4). Open RFI-061 (OPD block monsoon concrete-pour access).",
+      "speech": "At E 1, Level 1: column cover is 40 millimeter plus or minus 5, per A 201 revision 1 issued 26 August (IS 456 Cl. 26.4). Open R F I 61 (OPD block monsoon concrete-pour access)."
+     },
+     "entities": [
+      {
+       "kind": "grid",
+       "label": "E-1",
+       "confidence": 0.95
+      },
+      {
+       "kind": "attribute",
+       "label": "cover",
+       "confidence": 0.9
+      }
+     ],
+     "contradictions": [],
+     "blockers": [],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [],
+     "slots": {},
+     "clarifiedKinds": [],
+     "events": [
+      "answered_question"
+     ],
+     "resolved": {
+      "location_id": "P1:E-1:L1",
+      "drawing_id": null,
+      "location_inferred": false,
+      "drawing_label": null,
+      "fact": null
+     },
+     "logged": null
+    }
+   },
+   {
+    "text": "and at E-2?",
+    "response": {
+     "sessionId": "VS-1a08cbbb978-6b51e3",
+     "state": "capturing",
+     "kind": "answer",
+     "unresolved": false,
+     "reply": {
+      "text": "At E-2, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4).",
+      "speech": "At E 2, Level 1: column cover is 40 millimeter plus or minus 5, per A 201 revision 1 issued 26 August (IS 456 Cl. 26.4)."
+     },
+     "entities": [
+      {
+       "kind": "grid",
+       "label": "E-2",
+       "confidence": 0.95
+      }
+     ],
+     "contradictions": [],
+     "blockers": [],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [],
+     "slots": {},
+     "clarifiedKinds": [],
+     "events": [
+      "answered_question"
+     ],
+     "resolved": {
+      "location_id": "P1:E-2:L1",
+      "drawing_id": null,
+      "location_inferred": false,
+      "drawing_label": null,
+      "fact": null
+     },
+     "logged": null
+    }
+   }
+  ],
+  "rfis": [
+   {
+    "text": "Any open RFIs?",
+    "response": {
+     "sessionId": "VS-1a08cbbb97b-ab3582",
+     "state": "capturing",
+     "kind": "answer",
+     "unresolved": false,
+     "reply": {
+      "text": "Open RFIs: RFI-049, Plumbing sleeve clash with beam at Zone B; RFI-050, Electrical conduit density in L4 slab near core; RFI-055, Staircase waist slab thickness at mid-landing L3–L4; RFI-061, OPD block monsoon concrete-pour access.",
+      "speech": "Open RFIs: R F I 49, Plumbing sleeve clash with beam at Zone B; R F I 50, Electrical conduit density in level 4 slab near core; R F I 55, Staircase waist slab thickness at mid-landing level 3–level 4; R F I 61, OPD block monsoon concrete-pour access."
+     },
+     "entities": [],
+     "contradictions": [],
+     "blockers": [],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [],
+     "slots": {},
+     "clarifiedKinds": [],
+     "events": [
+      "answered_question"
+     ],
+     "resolved": {
+      "location_id": null,
+      "drawing_id": null,
+      "location_inferred": false,
+      "drawing_label": null,
+      "fact": null
+     },
+     "logged": null
+    }
+   }
+  ],
+  "cover_ncr": [
+   {
+    "text": "E-1 column cover measured 30 mm",
+    "response": {
+     "sessionId": "VS-1a08cbbb97d-e55fc6",
+     "state": "challenging",
+     "reply": {
+      "text": "You reported cover at E-1, Level 1 as 30 mm, but A-201 R1 shows 40 mm, with a tolerance of plus or minus 5. Would you like to log the observation, raise an RFI, or raise an NCR?",
+      "speech": "You reported cover at E 1, Level 1 as 30 millimeter, but A 201 revision 1 shows 40 millimeter, with a tolerance of plus or minus 5. Would you like to log the observation, raise an RFI, or raise an N C R?"
+     },
+     "entities": [
+      {
+       "kind": "grid",
+       "label": "E-1",
+       "confidence": 0.95
+      },
+      {
+       "kind": "element",
+       "label": "column",
+       "confidence": 0.9
+      },
+      {
+       "kind": "attribute",
+       "label": "cover",
+       "confidence": 0.9
+      },
+      {
+       "kind": "value",
+       "label": "30 mm",
+       "confidence": 0.95
+      }
+     ],
+     "contradictions": [
+      {
+       "kind": "dimension_mismatch",
+       "severity": "flag",
+       "detail": "Observed 30 mm vs 40 ±5",
+       "evidence": {
+        "drawing_id": "A-201@R1",
+        "drawing_number": "A-201",
+        "revision": "R1",
+        "issued_on": "2026-08-26",
+        "via_rfi": null,
+        "code_ref": "IS 456 Cl. 26.4",
+        "expected": 40,
+        "claimed": 30,
+        "tolerance": 5,
+        "unit": "mm"
+       }
+      }
+     ],
+     "blockers": [],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [
+      "log_observation",
+      "raise_rfi",
+      "raise_ncr",
+      "cancel"
+     ],
+     "slots": {
+      "grid": {
+       "value": "E-1",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "element": {
+       "value": "column",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "attribute": {
+       "value": "cover",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "value": {
+       "value": 30,
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "unit": {
+       "value": "mm",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      }
+     },
+     "clarifiedKinds": [
+      "dimension_mismatch"
+     ],
+     "events": [],
+     "resolved": {
+      "location_id": "P1:E-1:L1",
+      "drawing_id": "A-201@R1",
+      "location_inferred": true,
+      "drawing_label": "A-201 R1",
+      "fact": {
+       "value": 40,
+       "unit": "mm",
+       "tolerance": 5,
+       "revision": "R1",
+       "issued_on": "2026-08-26",
+       "via_rfi": null,
+       "code_ref": "IS 456 Cl. 26.4"
+      }
+     },
+     "logged": null
+    }
+   },
+   {
+    "text": "what is the tolerance there?",
+    "response": {
+     "sessionId": "VS-1a08cbbb97d-e55fc6",
+     "state": "challenging",
+     "kind": "answer",
+     "unresolved": false,
+     "reply": {
+      "text": "At E-1, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4). Open RFI-061 (OPD block monsoon concrete-pour access).",
+      "speech": "At E 1, Level 1: column cover is 40 millimeter plus or minus 5, per A 201 revision 1 issued 26 August (IS 456 Cl. 26.4). Open R F I 61 (OPD block monsoon concrete-pour access)."
+     },
+     "entities": [],
+     "contradictions": [],
+     "blockers": [],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [
+      "log_observation",
+      "raise_rfi",
+      "raise_ncr",
+      "cancel"
+     ],
+     "slots": {
+      "grid": {
+       "value": "E-1",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "element": {
+       "value": "column",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "attribute": {
+       "value": "cover",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "value": {
+       "value": 30,
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "unit": {
+       "value": "mm",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      }
+     },
+     "clarifiedKinds": [],
+     "events": [
+      "answered_question"
+     ],
+     "resolved": {
+      "location_id": "P1:E-1:L1",
+      "drawing_id": null,
+      "location_inferred": false,
+      "drawing_label": null,
+      "fact": null
+     },
+     "logged": null
+    }
+   },
+   {
+    "decision": "raise_ncr",
+    "response": {
+     "sessionId": "VS-1a08cbbb97d-e55fc6",
+     "state": "logged",
+     "reply": {
+      "text": "The observation OBS-000110 has been logged for an NCR. Please notify the QA team.",
+      "speech": "The observation observation number 110 has been logged for an N C R. Please notify the QA team."
+     },
+     "entities": [],
+     "contradictions": [
+      {
+       "kind": "dimension_mismatch",
+       "severity": "flag",
+       "detail": "Observed 30 mm vs 40 ±5",
+       "evidence": {
+        "drawing_id": "A-201@R1",
+        "drawing_number": "A-201",
+        "revision": "R1",
+        "issued_on": "2026-08-26",
+        "via_rfi": null,
+        "code_ref": "IS 456 Cl. 26.4",
+        "expected": 40,
+        "claimed": 30,
+        "tolerance": 5,
+        "unit": "mm"
+       }
+      }
+     ],
+     "blockers": [],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [],
+     "slots": {
+      "grid": {
+       "value": "E-1",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "element": {
+       "value": "column",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "attribute": {
+       "value": "cover",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "value": {
+       "value": 30,
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "unit": {
+       "value": "mm",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      }
+     },
+     "clarifiedKinds": [],
+     "events": [
+      "decision:raise_ncr",
+      "observation_logged:OBS-000110"
+     ],
+     "resolved": {
+      "location_id": "P1:E-1:L1",
+      "drawing_id": "A-201@R1",
+      "location_inferred": true,
+      "drawing_label": "A-201 R1",
+      "fact": {
+       "value": 40,
+       "unit": "mm",
+       "tolerance": 5,
+       "revision": "R1",
+       "issued_on": "2026-08-26",
+       "via_rfi": null,
+       "code_ref": "IS 456 Cl. 26.4"
+      }
+     },
+     "logged": {
+      "observation_id": "OBS-000110",
+      "rfi_id": null,
+      "decision": "raise_ncr"
+     }
+    }
+   }
+  ],
+  "revision": [
+   {
+    "text": "RW-1 wall thickness 350 mm as per C-401 revision R1",
+    "response": {
+     "sessionId": "VS-1a08cbbb981-7af823",
+     "state": "challenging",
+     "reply": {
+      "text": "The latest revision of drawing C-401 is R2, issued 4 September. It shows thickness at RW-1, GL as 350 mm. This is confirmed by RFI-060. Would you like to log the observation, raise an RFI, or raise an NCR?",
+      "speech": "The latest revision of drawing C 401 is revision 2, issued 4 September. It shows thickness at RW-1, GL as 350 millimeter. This is confirmed by R F I 60. Would you like to log the observation, raise an RFI, or raise an N C R?"
+     },
+     "entities": [
+      {
+       "kind": "grid",
+       "label": "RW-1",
+       "confidence": 0.95
+      },
+      {
+       "kind": "element",
+       "label": "wall",
+       "confidence": 0.9
+      },
+      {
+       "kind": "attribute",
+       "label": "thickness",
+       "confidence": 0.9
+      },
+      {
+       "kind": "value",
+       "label": "350 mm",
+       "confidence": 0.95
+      },
+      {
+       "kind": "drawing",
+       "label": "C-401",
+       "confidence": 0.95
+      },
+      {
+       "kind": "revision",
+       "label": "R1",
+       "confidence": 0.95
+      }
+     ],
+     "contradictions": [
+      {
+       "kind": "revision_mismatch",
+       "severity": "flag",
+       "detail": "Claimed C-401 R1; latest For Construction is R2",
+       "evidence": {
+        "drawing_id": "C-401@R2",
+        "drawing_number": "C-401",
+        "revision": "R2",
+        "issued_on": "2026-09-04",
+        "via_rfi": "RFI-060",
+        "code_ref": "IS 456 Cl. 11",
+        "expected": 350,
+        "unit": "mm",
+        "claimed_revision": "R1",
+        "claimed_revision_value": 300
+       }
+      }
+     ],
+     "blockers": [],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [
+      "log_observation",
+      "raise_rfi",
+      "raise_ncr",
+      "cancel"
+     ],
+     "slots": {
+      "grid": {
+       "value": "RW-1",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "element": {
+       "value": "wall",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "attribute": {
+       "value": "thickness",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "value": {
+       "value": 350,
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "unit": {
+       "value": "mm",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "drawingNumber": {
+       "value": "C-401",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "revisionClaimed": {
+       "value": "R1",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      }
+     },
+     "clarifiedKinds": [
+      "revision_mismatch"
+     ],
+     "events": [],
+     "resolved": {
+      "location_id": "P1:RW-1:GL",
+      "drawing_id": "C-401@R2",
+      "location_inferred": true,
+      "drawing_label": "C-401 R2",
+      "fact": {
+       "value": 350,
+       "unit": "mm",
+       "tolerance": 10,
+       "revision": "R2",
+       "issued_on": "2026-09-04",
+       "via_rfi": "RFI-060",
+       "code_ref": "IS 456 Cl. 11"
+      }
+     },
+     "logged": null
+    }
+   },
+   {
+    "decision": "log_observation",
+    "response": {
+     "sessionId": "VS-1a08cbbb981-7af823",
+     "state": "logged",
+     "reply": {
+      "text": "Observation OBS-000111 has been logged and linked to C-401 R2.",
+      "speech": "Observation observation number 111 has been logged and linked to C 401 revision 2."
+     },
+     "entities": [],
+     "contradictions": [
+      {
+       "kind": "revision_mismatch",
+       "severity": "flag",
+       "detail": "Claimed C-401 R1; latest For Construction is R2",
+       "evidence": {
+        "drawing_id": "C-401@R2",
+        "drawing_number": "C-401",
+        "revision": "R2",
+        "issued_on": "2026-09-04",
+        "via_rfi": "RFI-060",
+        "code_ref": "IS 456 Cl. 11",
+        "expected": 350,
+        "unit": "mm",
+        "claimed_revision": "R1",
+        "claimed_revision_value": 300
+       }
+      }
+     ],
+     "blockers": [],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [],
+     "slots": {
+      "grid": {
+       "value": "RW-1",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "element": {
+       "value": "wall",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "attribute": {
+       "value": "thickness",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "value": {
+       "value": 350,
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "unit": {
+       "value": "mm",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "drawingNumber": {
+       "value": "C-401",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "revisionClaimed": {
+       "value": "R1",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      }
+     },
+     "clarifiedKinds": [],
+     "events": [
+      "decision:log_observation",
+      "observation_logged:OBS-000111"
+     ],
+     "resolved": {
+      "location_id": "P1:RW-1:GL",
+      "drawing_id": "C-401@R2",
+      "location_inferred": true,
+      "drawing_label": "C-401 R2",
+      "fact": {
+       "value": 350,
+       "unit": "mm",
+       "tolerance": 10,
+       "revision": "R2",
+       "issued_on": "2026-09-04",
+       "via_rfi": "RFI-060",
+       "code_ref": "IS 456 Cl. 11"
+      }
+     },
+     "logged": {
+      "observation_id": "OBS-000111",
+      "rfi_id": null,
+      "decision": "log_observation"
+     }
+    }
+   }
+  ],
+  "pour_block": [
+   {
+    "text": "Start the L4 slab pour now",
+    "response": {
+     "sessionId": "VS-1a08cbbb985-8326bd",
+     "state": "blocked",
+     "reply": {
+      "text": "Stop work for now. The pre-pour hold point at Level 4 slab is not released: Embedment items; Concrete cover, plus 6 more. Concrete pouring cannot begin. Would you like to stop work, raise an NCR, or cancel?",
+      "speech": "Stop work for now. The pre-pour hold point at Level 4 slab is not released: Embedment items; Concrete cover, plus 6 more. Concrete pouring cannot begin. Would you like to stop work, raise an N C R, or cancel?"
+     },
+     "entities": [
+      {
+       "kind": "level",
+       "label": "L4",
+       "confidence": 0.95
+      },
+      {
+       "kind": "element",
+       "label": "slab",
+       "confidence": 0.9
+      },
+      {
+       "kind": "activity",
+       "label": "pour",
+       "confidence": 0.9
+      }
+     ],
+     "contradictions": [],
+     "blockers": [
+      {
+       "kind": "hold_point_blocker",
+       "severity": "blocker",
+       "detail": "Hold point not released on CL-PP-L4-001",
+       "evidence": {
+        "checklist": "CL-PP-L4-001",
+        "template_id": "QC-CON-CHK-001",
+        "items": [
+         "Embedment items (conduits, sleeves, etc.) securely fixed in position",
+         "Concrete cover — measured at 5 locations and within specified limits",
+         "Cover blocks installed and secured — spacing 1m maximum",
+         "Electrical conduits positioned and secured — diameter and location per drawing",
+         "Plumbing sleeves / ducts positioned — not crossing main reinforcement if avoidable",
+         "ITP (Inspection & Test Plan) — hold point identified before pour",
+         "Overall Verdict",
+         "Design Consultant Approval (if Hold)"
+        ],
+        "code_ref": null
+       }
+      }
+     ],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [
+      "stop_work",
+      "raise_ncr",
+      "cancel"
+     ],
+     "slots": {
+      "level": {
+       "value": "L4",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "element": {
+       "value": "slab",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "activity": {
+       "value": "pour",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      }
+     },
+     "clarifiedKinds": [
+      "hold_point_blocker"
+     ],
+     "events": [],
+     "resolved": {
+      "location_id": "P1:Slab:L4",
+      "drawing_id": "S-302@R1",
+      "location_inferred": false,
+      "drawing_label": "S-302 R1",
+      "fact": null
+     },
+     "logged": null
+    }
+   },
+   {
+    "decision": "stop_work",
+    "response": {
+     "sessionId": "VS-1a08cbbb985-8326bd",
+     "state": "logged",
+     "reply": {
+      "text": "A stop-work instruction has been logged as OBS-000112. Please inform the safety officer now.",
+      "speech": "A stop-work instruction has been logged as observation number 112. Please inform the safety officer now."
+     },
+     "entities": [],
+     "contradictions": [],
+     "blockers": [
+      {
+       "kind": "hold_point_blocker",
+       "severity": "blocker",
+       "detail": "Hold point not released on CL-PP-L4-001",
+       "evidence": {
+        "checklist": "CL-PP-L4-001",
+        "template_id": "QC-CON-CHK-001",
+        "items": [
+         "Embedment items (conduits, sleeves, etc.) securely fixed in position",
+         "Concrete cover — measured at 5 locations and within specified limits",
+         "Cover blocks installed and secured — spacing 1m maximum",
+         "Electrical conduits positioned and secured — diameter and location per drawing",
+         "Plumbing sleeves / ducts positioned — not crossing main reinforcement if avoidable",
+         "ITP (Inspection & Test Plan) — hold point identified before pour",
+         "Overall Verdict",
+         "Design Consultant Approval (if Hold)"
+        ],
+        "code_ref": null
+       }
+      }
+     ],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [],
+     "slots": {
+      "level": {
+       "value": "L4",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "element": {
+       "value": "slab",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "activity": {
+       "value": "pour",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      }
+     },
+     "clarifiedKinds": [],
+     "events": [
+      "decision:stop_work",
+      "observation_logged:OBS-000112"
+     ],
+     "resolved": {
+      "location_id": "P1:Slab:L4",
+      "drawing_id": "S-302@R1",
+      "location_inferred": false,
+      "drawing_label": "S-302 R1",
+      "fact": null
+     },
+     "logged": {
+      "observation_id": "OBS-000112",
+      "rfi_id": null,
+      "decision": "stop_work"
+     }
+    }
+   }
+  ],
+  "hot_work": [
+   {
+    "text": "Welding at Zone B level 3, everything looks fine, log it",
+    "response": {
+     "sessionId": "VS-1a08cbbb988-5b5bce",
+     "state": "blocked",
+     "reply": {
+      "text": "Logging the observation is not allowed yet. At Zone B, Level 3, the hot work permit HWP-0112 has mandatory checks still pending: Fire watcher assigned; Fire watch continues for minimum 60 minutes after hot work stops. Work cannot start until they are confirmed. Would you like to stop work, raise an NCR, or cancel?",
+      "speech": "Logging the observation is not allowed yet. At Zone B, Level 3, the hot work permit H W P 112 has mandatory checks still pending: Fire watcher assigned; Fire watch continues for minimum 60 minutes after hot work stops. Work cannot start until they are confirmed. Would you like to stop work, raise an N C R, or cancel?"
+     },
+     "entities": [
+      {
+       "kind": "level",
+       "label": "L3",
+       "confidence": 0.95
+      },
+      {
+       "kind": "zone",
+       "label": "Zone B",
+       "confidence": 0.95
+      },
+      {
+       "kind": "activity",
+       "label": "hot_work",
+       "confidence": 0.9
+      },
+      {
+       "kind": "decision",
+       "label": "log_observation",
+       "confidence": 1
+      }
+     ],
+     "contradictions": [],
+     "blockers": [
+      {
+       "kind": "permit_blocker",
+       "severity": "blocker",
+       "detail": "Permit HWP-0112 has unsatisfied mandatory checks",
+       "evidence": {
+        "permit_id": "HWP-0112",
+        "checks": [
+         "Fire watcher assigned, distinct from welder, trained in extinguisher use",
+         "Fire watch continues for minimum 60 minutes after hot work stops (extend to 4 h in high-risk)"
+        ]
+       }
+      }
+     ],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [
+      "stop_work",
+      "raise_ncr",
+      "cancel"
+     ],
+     "slots": {
+      "level": {
+       "value": "L3",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "zone": {
+       "value": "Zone B",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "activity": {
+       "value": "hot_work",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      }
+     },
+     "clarifiedKinds": [
+      "permit_blocker"
+     ],
+     "events": [
+      "decision:log_observation"
+     ],
+     "resolved": {
+      "location_id": "P1:ZoneB:L3",
+      "drawing_id": "M-401@R1",
+      "location_inferred": false,
+      "drawing_label": "M-401 R1",
+      "fact": null
+     },
+     "logged": null
+    }
+   },
+   {
+    "decision": "stop_work",
+    "response": {
+     "sessionId": "VS-1a08cbbb988-5b5bce",
+     "state": "logged",
+     "reply": {
+      "text": "A stop-work instruction has been logged as OBS-000113. Please inform the safety officer now.",
+      "speech": "A stop-work instruction has been logged as observation number 113. Please inform the safety officer now."
+     },
+     "entities": [],
+     "contradictions": [],
+     "blockers": [
+      {
+       "kind": "permit_blocker",
+       "severity": "blocker",
+       "detail": "Permit HWP-0112 has unsatisfied mandatory checks",
+       "evidence": {
+        "permit_id": "HWP-0112",
+        "checks": [
+         "Fire watcher assigned, distinct from welder, trained in extinguisher use",
+         "Fire watch continues for minimum 60 minutes after hot work stops (extend to 4 h in high-risk)"
+        ]
+       }
+      }
+     ],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [],
+     "slots": {
+      "level": {
+       "value": "L3",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "zone": {
+       "value": "Zone B",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "activity": {
+       "value": "hot_work",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      }
+     },
+     "clarifiedKinds": [],
+     "events": [
+      "decision:stop_work",
+      "observation_logged:OBS-000113"
+     ],
+     "resolved": {
+      "location_id": "P1:ZoneB:L3",
+      "drawing_id": "M-401@R1",
+      "location_inferred": false,
+      "drawing_label": "M-401 R1",
+      "fact": null
+     },
+     "logged": {
+      "observation_id": "OBS-000113",
+      "rfi_id": null,
+      "decision": "stop_work"
+     }
+    }
+   }
+  ],
+  "level_pick": [
+   {
+    "text": "C-5 column rebar spacing 180 mm",
+    "response": {
+     "sessionId": "VS-1a08cbbb98b-4d2df8",
+     "state": "confirming",
+     "reply": {
+      "text": "At C-5, Level 3, column rebar spacing is 180 mm, which matches A-102 R4. Log it?",
+      "speech": "At C 5, Level 3, column rebar spacing is 180 millimeter, which matches A 102 revision 4. Log it?"
+     },
+     "entities": [
+      {
+       "kind": "grid",
+       "label": "C-5",
+       "confidence": 0.95
+      },
+      {
+       "kind": "element",
+       "label": "column",
+       "confidence": 0.9
+      },
+      {
+       "kind": "attribute",
+       "label": "rebar_spacing",
+       "confidence": 0.9
+      },
+      {
+       "kind": "value",
+       "label": "180 mm",
+       "confidence": 0.95
+      }
+     ],
+     "contradictions": [],
+     "blockers": [],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [
+      "log_observation",
+      "raise_rfi",
+      "raise_ncr",
+      "cancel"
+     ],
+     "slots": {
+      "grid": {
+       "value": "C-5",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "element": {
+       "value": "column",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "attribute": {
+       "value": "rebar_spacing",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "value": {
+       "value": 180,
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "unit": {
+       "value": "mm",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      }
+     },
+     "clarifiedKinds": [],
+     "events": [],
+     "resolved": {
+      "location_id": "P1:C-5:L3",
+      "drawing_id": "A-102@R4",
+      "location_inferred": true,
+      "drawing_label": "A-102 R4",
+      "fact": {
+       "value": 180,
+       "unit": "mm",
+       "tolerance": 10,
+       "revision": "R4",
+       "issued_on": "2026-08-12",
+       "via_rfi": "RFI-047",
+       "code_ref": "IS 456 Cl. 26.5.3.2(c)"
+      }
+     },
+     "logged": null
+    }
+   },
+   {
+    "text": "yes",
+    "response": {
+     "sessionId": "VS-1a08cbbb98b-4d2df8",
+     "state": "logged",
+     "reply": {
+      "text": "Observation OBS-000114 has been logged and linked to A-102 R4.",
+      "speech": "Observation observation number 114 has been logged and linked to A 102 revision 4."
+     },
+     "entities": [],
+     "contradictions": [],
+     "blockers": [],
+     "missing": [],
+     "lowConfidence": [],
+     "allowedDecisions": [],
+     "slots": {
+      "grid": {
+       "value": "C-5",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "element": {
+       "value": "column",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "attribute": {
+       "value": "rebar_spacing",
+       "confidence": 0.9,
+       "source": "parser",
+       "confirmed": false
+      },
+      "value": {
+       "value": 180,
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      },
+      "unit": {
+       "value": "mm",
+       "confidence": 0.95,
+       "source": "parser",
+       "confirmed": false
+      }
+     },
+     "clarifiedKinds": [],
+     "events": [
+      "decision:log_observation",
+      "observation_logged:OBS-000114"
+     ],
+     "resolved": {
+      "location_id": "P1:C-5:L3",
+      "drawing_id": "A-102@R4",
+      "location_inferred": true,
+      "drawing_label": "A-102 R4",
+      "fact": {
+       "value": 180,
+       "unit": "mm",
+       "tolerance": 10,
+       "revision": "R4",
+       "issued_on": "2026-08-12",
+       "via_rfi": "RFI-047",
+       "code_ref": "IS 456 Cl. 26.5.3.2(c)"
+      }
+     },
+     "logged": {
+      "observation_id": "OBS-000114",
+      "rfi_id": null,
+      "decision": "log_observation"
+     }
+    }
+   }
+  ]
+ },
+ "live": {
+  "script": [
+   {
+    "who": "Vesper",
+    "text": "Vesper here. Last site day, C-401 R2 retaining-wall revision issued to the crew. Hold point CL-PP-L4-001 at Slab L4 is still not released. What are you looking at?"
+   },
+   {
+    "who": "You",
+    "text": "What is the cover at E-1?"
+   },
+   {
+    "who": "Vesper",
+    "text": "At E-1, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4). Open RFI-061 (OPD block monsoon concrete-pour access)."
+   },
+   {
+    "who": "You",
+    "text": "E-1 column cover measured 30 mm"
+   },
+   {
+    "who": "Vesper",
+    "text": "You reported cover at E-1, Level 1 as 30 mm, but A-201 R1 shows 40 mm, with a tolerance of plus or minus 5. Would you like to log the observation, raise an RFI, or raise an NCR?"
+   },
+   {
+    "who": "You",
+    "text": "what is the tolerance there?"
+   },
+   {
+    "who": "Vesper",
+    "text": "At E-1, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4). Open RFI-061 (OPD block monsoon concrete-pour access)."
+   }
+  ],
+  "engine": {
+   "sessionId": "VS-1a08cbbb98e-8d9327",
+   "state": "challenging",
+   "reply": {
+    "text": "You reported cover at E-1, Level 1 as 30 mm, but A-201 R1 shows 40 mm, with a tolerance of plus or minus 5. Would you like to log the observation, raise an RFI, or raise an NCR?",
+    "speech": "You reported cover at E 1, Level 1 as 30 millimeter, but A 201 revision 1 shows 40 millimeter, with a tolerance of plus or minus 5. Would you like to log the observation, raise an RFI, or raise an N C R?"
+   },
+   "entities": [
+    {
+     "kind": "grid",
+     "label": "E-1",
+     "confidence": 0.95
+    },
+    {
+     "kind": "element",
+     "label": "column",
+     "confidence": 0.9
+    },
+    {
+     "kind": "attribute",
+     "label": "cover",
+     "confidence": 0.9
+    },
+    {
+     "kind": "value",
+     "label": "30 mm",
+     "confidence": 0.95
+    }
+   ],
+   "contradictions": [
+    {
+     "kind": "dimension_mismatch",
+     "severity": "flag",
+     "detail": "Observed 30 mm vs 40 ±5",
+     "evidence": {
+      "drawing_id": "A-201@R1",
+      "drawing_number": "A-201",
+      "revision": "R1",
+      "issued_on": "2026-08-26",
+      "via_rfi": null,
+      "code_ref": "IS 456 Cl. 26.4",
+      "expected": 40,
+      "claimed": 30,
+      "tolerance": 5,
+      "unit": "mm"
+     }
+    }
+   ],
+   "blockers": [],
+   "missing": [],
+   "lowConfidence": [],
+   "allowedDecisions": [
+    "log_observation",
+    "raise_rfi",
+    "raise_ncr",
+    "cancel"
+   ],
+   "slots": {
+    "grid": {
+     "value": "E-1",
+     "confidence": 0.95,
+     "source": "parser",
+     "confirmed": false
+    },
+    "element": {
+     "value": "column",
+     "confidence": 0.9,
+     "source": "parser",
+     "confirmed": false
+    },
+    "attribute": {
+     "value": "cover",
+     "confidence": 0.9,
+     "source": "parser",
+     "confirmed": false
+    },
+    "value": {
+     "value": 30,
+     "confidence": 0.95,
+     "source": "parser",
+     "confirmed": false
+    },
+    "unit": {
+     "value": "mm",
+     "confidence": 0.95,
+     "source": "parser",
+     "confirmed": false
+    }
+   },
+   "clarifiedKinds": [
+    "dimension_mismatch"
+   ],
+   "events": [],
+   "resolved": {
+    "location_id": "P1:E-1:L1",
+    "drawing_id": "A-201@R1",
+    "location_inferred": true,
+    "drawing_label": "A-201 R1",
+    "fact": {
+     "value": 40,
+     "unit": "mm",
+     "tolerance": 5,
+     "revision": "R1",
+     "issued_on": "2026-08-26",
+     "via_rfi": null,
+     "code_ref": "IS 456 Cl. 26.4"
+    }
+   },
+   "logged": null
+  },
+  "brief": {
+   "project": {
+    "name": "Pithoragarh District Hospital & Staff Quarters",
+    "client": "Uttarakhand Health Infrastructure Development Agency",
+    "location": "Pithoragarh, Uttarakhand",
+    "contract_type": "Item Rate (CPWD)",
+    "start_date": "2026-03-02"
+   },
+   "today_is": "2026-09-11",
+   "recent_daily_logs": [
+    {
+     "log_date": "2026-09-11",
+     "weather": "Overcast, rain after 15:00, 15–20 °C",
+     "work_done": "C-401 R2 retaining-wall revision issued to the crew. OPD column E-1 ties measured at 150 c/c; pre-pour materials staged under cover.",
+     "safety": "Morning toolbox talk: rain, slope stability and ambulance access segregation."
+    },
+    {
+     "log_date": "2026-09-10",
+     "weather": "Intermittent hill rain, low cloud, 16–21 °C",
+     "work_done": "OPD columns E-1/E-2 reinforcement checked to A-201 R1. Ambulance-road retaining wall excavation stopped after loose strata was seen; RFI-060 revision briefed.",
+     "safety": "Hillside exclusion zone maintained; no work below unsupported cut face."
+    },
+    {
+     "log_date": "2026-09-09",
+     "weather": "Partly cloudy, 23–30 °C",
+     "work_done": "L4 slab reinforcement Zone B top bars; cover blocks being replaced (PVC removed per SI-019). Pre-pour inspection L4 slab started — HOLD raised (cover shortfall at 3 locations, RFI-050 open). L4 pour planned 11-Sep subjec",
+     "safety": "Housekeeping observation at Zone B: welding cables across walkway."
+    }
+   ],
+   "recent_observations": [
+    {
+     "observation_id": "OBS-000104",
+     "on_date": "2026-09-11",
+     "location_id": "P1:RW-1:GL",
+     "element": "wall",
+     "attribute": "thickness",
+     "value_claimed": 350.0,
+     "unit": "mm",
+     "drawing_id": "C-401@R2",
+     "final_decision": "stop_work"
+    },
+    {
+     "observation_id": "OBS-000103",
+     "on_date": "2026-09-11",
+     "location_id": "P1:E-1:L1",
+     "element": "column",
+     "attribute": "rebar_spacing",
+     "value_claimed": 150.0,
+     "unit": "mm",
+     "drawing_id": "A-201@R1",
+     "final_decision": "log_observation"
+    },
+    {
+     "observation_id": "OBS-000114",
+     "on_date": "2026-09-10",
+     "location_id": "P1:C-5:L3",
+     "element": "column",
+     "attribute": "rebar_spacing",
+     "value_claimed": 180.0,
+     "unit": "mm",
+     "drawing_id": "A-102@R4",
+     "final_decision": "log_observation"
+    },
+    {
+     "observation_id": "OBS-000113",
+     "on_date": "2026-09-10",
+     "location_id": "P1:ZoneB:L3",
+     "element": null,
+     "attribute": "activity:hot_work",
+     "value_claimed": null,
+     "unit": null,
+     "drawing_id": "M-401@R1",
+     "final_decision": "stop_work"
+    },
+    {
+     "observation_id": "OBS-000112",
+     "on_date": "2026-09-10",
+     "location_id": "P1:Slab:L4",
+     "element": "slab",
+     "attribute": "activity:pour",
+     "value_claimed": null,
+     "unit": null,
+     "drawing_id": "S-302@R1",
+     "final_decision": "stop_work"
+    }
+   ],
+   "open_rfis": [
+    {
+     "rfi_id": "RFI-049",
+     "subject": "Plumbing sleeve clash with beam at Zone B",
+     "location_id": "P1:ZoneB:L3",
+     "drawing_ref": "M-401",
+     "status": "Open",
+     "impact": "Pending — may affect M-401"
+    },
+    {
+     "rfi_id": "RFI-050",
+     "subject": "Electrical conduit density in L4 slab near core",
+     "location_id": "P1:Slab:L4",
+     "drawing_ref": "E-501",
+     "status": "Open",
+     "impact": "Pending — L4 pour dependency"
+    },
+    {
+     "rfi_id": "RFI-055",
+     "subject": "Staircase waist slab thickness at mid-landing L3–L4",
+     "location_id": "P1:D-6:L3",
+     "drawing_ref": "S-201",
+     "status": "Open",
+     "impact": "Pending"
+    },
+    {
+     "rfi_id": "RFI-061",
+     "subject": "OPD block monsoon concrete-pour access",
+     "location_id": "P1:E-1:L1",
+     "drawing_ref": "A-201",
+     "status": "Open",
+     "impact": "Awaiting site-engineer route approval"
+    },
+    {
+     "rfi_id": "RFI-062",
+     "subject": "C-5, Level 3 rebar spacing clarification",
+     "location_id": "P1:C-5:L3",
+     "drawing_ref": "A-102",
+     "status": "Open",
+     "impact": null
+    },
+    {
+     "rfi_id": "RFI-047",
+     "subject": "Column C-5 stirrup spacing clarification",
+     "location_id": "P1:C-5:L3",
+     "drawing_ref": "A-102",
+     "status": "Answered",
+     "impact": "Revision issued: A-102 R4"
+    },
+    {
+     "rfi_id": "RFI-052",
+     "subject": "L4 slab thickness — 125 vs 150 over services corridor",
+     "location_id": "P1:Slab:L4",
+     "drawing_ref": "S-301",
+     "status": "Answered",
+     "impact": "Revision issued: S-301 R2"
+    },
+    {
+     "rfi_id": "RFI-053",
+     "subject": "Cover block type for columns",
+     "location_id": "P1:C-4:L3",
+     "drawing_ref": "A-102",
+     "status": "Answered",
+     "impact": "No revision; site instruction SI-019"
+    },
+    {
+     "rfi_id": "RFI-060",
+     "subject": "Ambulance road retaining wall base width and drainage",
+     "location_id": "P1:RW-1:GL",
+     "drawing_ref": "C-401",
+     "status": "Answered",
+     "impact": "Revision issued: C-401 R2"
+    }
+   ],
+   "active_permits": [
+    {
+     "permit_id": "HWP-0112",
+     "permit_type": "hot_work",
+     "location_id": "P1:ZoneB:L3",
+     "status": "Active",
+     "unsatisfied_mandatory_checks": [
+      "Fire watcher assigned, distinct from welder, trained in extinguisher use",
+      "Fire watch continues for minimum 60 minutes after hot work stops (extend to 4 h in high-risk)"
+     ]
+    },
+    {
+     "permit_id": "WAH-0087",
+     "permit_type": "height",
+     "location_id": "P1:D-6:L3",
+     "status": "Active",
+     "unsatisfied_mandatory_checks": []
+    },
+    {
+     "permit_id": "EXC-0034",
+     "permit_type": "excavation",
+     "location_id": "P1:STP:GL",
+     "status": "Suspended",
+     "unsatisfied_mandatory_checks": [
+      "Excavation >1.5 m: side-sloping, benching, or shoring designed and installed",
+      "Shoring / trench box installed per design; struts tight; no deflection; inspected daily"
+     ]
+    },
+    {
+     "permit_id": "EXC-0041",
+     "permit_type": "excavation",
+     "location_id": "P1:RW-1:GL",
+     "status": "Suspended",
+     "unsatisfied_mandatory_checks": [
+      "Excavation >1.5 m: side-sloping, benching, or shoring designed and installed",
+      "Shoring / trench box installed per design; struts tight; no deflection; inspected daily"
+     ]
+    }
+   ],
+   "open_hold_points": [
+    {
+     "instance_id": "CL-PP-L4-001",
+     "template_id": "QC-CON-CHK-001",
+     "location_id": "P1:Slab:L4",
+     "element": "slab",
+     "planned_activity": "concrete_pour",
+     "planned_for": "2026-09-11",
+     "status": "Hold",
+     "notes": "HOLD — cover shortfall (15 mm) at 3 locations in Zone B; RFI-050 conduit reroute open; design consultant release pending."
+    }
+   ],
+   "pending_submittals": [
+    {
+     "submittal_id": "SUB-004",
+     "material": "Method statement — L4 slab pour (pump, sequence, construction joints)",
+     "status": "Under Review",
+     "comments": "Pending: construction joint location over Zone B corridor and curing plan."
+    },
+    {
+     "submittal_id": "SUB-006",
+     "material": "PVC cover blocks 40 mm for columns",
+     "status": "Rejected",
+     "comments": "Rejected — use concrete cover blocks (see RFI-053 / SI-019)."
+    },
+    {
+     "submittal_id": "SUB-008",
+     "material": "Crystalline waterproofing admixture for lift pit & sunk slabs",
+     "status": "Under Review",
+     "comments": "Awaiting third-party permeability test (DIN 1048)."
+    }
+   ],
+   "current_drawings": [
+    {
+     "drawing_number": "A-101",
+     "revision": "R2",
+     "issued_on": "2026-06-10",
+     "title": "Level 3 Floor Plan (Architectural)"
+    },
+    {
+     "drawing_number": "A-102",
+     "revision": "R4",
+     "issued_on": "2026-08-12",
+     "title": "Column Reinforcement Details — Level 3"
+    },
+    {
+     "drawing_number": "A-103",
+     "revision": "R1",
+     "issued_on": "2026-05-28",
+     "title": "Column Schedule — Level 3 & Level 4"
+    },
+    {
+     "drawing_number": "A-201",
+     "revision": "R1",
+     "issued_on": "2026-08-26",
+     "title": "OPD & Maternity Block — Structural GA"
+    },
+    {
+     "drawing_number": "C-401",
+     "revision": "R2",
+     "issued_on": "2026-09-04",
+     "title": "Ambulance Road Retaining Wall & Drain"
+    },
+    {
+     "drawing_number": "M-401",
+     "revision": "R1",
+     "issued_on": "2026-07-05",
+     "title": "Level 3 Plumbing & Sleeve Layout"
+    },
+    {
+     "drawing_number": "P-601",
+     "revision": "R1",
+     "issued_on": "2026-09-01",
+     "title": "Hospital Water Supply & Fire Tank Layout"
+    },
+    {
+     "drawing_number": "S-201",
+     "revision": "R2",
+     "issued_on": "2026-07-28",
+     "title": "Level 3 Beam Layout & Reinforcement"
+    },
+    {
+     "drawing_number": "S-301",
+     "revision": "R2",
+     "issued_on": "2026-08-20",
+     "title": "Level 4 Slab GA"
+    },
+    {
+     "drawing_number": "S-302",
+     "revision": "R1",
+     "issued_on": "2026-08-22",
+     "title": "Level 4 Slab Reinforcement Layout"
+    }
+   ]
+  }
+ },
+ "observations": [
+  {
+   "observation_id": "OBS-000104",
+   "created_at": "2026-09-11T16:05:00+05:30",
+   "location_id": "P1:RW-1:GL",
+   "element": "wall",
+   "attribute": "thickness",
+   "value_claimed": 350.0,
+   "unit": "mm",
+   "drawing_id": "C-401@R2",
+   "revision_claimed": "R2",
+   "contradiction_flag": 0,
+   "contradiction_kinds": [],
+   "final_decision": "stop_work",
+   "linked_rfi_id": "RFI-060",
+   "spoken_text": "Ambulance road retaining wall work stopped pending the revised geotechnical detail.",
+   "structured_summary": "RW-1 retaining wall: excavation remains suspended; C-401 R2 and RFI-060 require drainage detail before restart.",
+   "clarification_asked": null,
+   "evidence": {
+    "drawing": {
+     "drawing_id": "C-401@R2",
+     "project_id": "P1",
+     "drawing_number": "C-401",
+     "revision": "R2",
+     "rev_ordinal": 2,
+     "title": "Ambulance Road Retaining Wall & Drain",
+     "discipline": "Civil",
+     "status": "For Construction",
+     "issued_on": "2026-09-04",
+     "zone": "Hillside",
+     "level": "GL",
+     "is_latest": 1,
+     "superseded_by": null,
+     "change_note": "Wall base widened after geotechnical review; weep holes and filter media mandatory (RFI-060)."
+    },
+    "rfi": {
+     "rfi_id": "RFI-060",
+     "project_id": "P1",
+     "subject": "Ambulance road retaining wall base width and drainage",
+     "location_id": "P1:RW-1:GL",
+     "drawing_ref": "C-401",
+     "spec_ref": "IS 14458; IS 456",
+     "question": "The hillside cut exposed loose strata at RW-1. Confirm whether the 300 mm wall detail can proceed.",
+     "response": "No. Use C-401 R2: 350 mm stem, revised base detail, filter media and weep holes before backfill.",
+     "status": "Answered",
+     "raised_on": "2026-08-29",
+     "answered_on": "2026-09-03",
+     "impact": "Revision issued: C-401 R2",
+     "resulting_drawing_id": "C-401@R2",
+     "template_id": "PMC-DSN-LOG-003"
+    }
+   }
+  },
+  {
+   "observation_id": "OBS-000103",
+   "created_at": "2026-09-11T11:20:00+05:30",
+   "location_id": "P1:E-1:L1",
+   "element": "column",
+   "attribute": "rebar_spacing",
+   "value_claimed": 150.0,
+   "unit": "mm",
+   "drawing_id": "A-201@R1",
+   "revision_claimed": "R1",
+   "contradiction_flag": 0,
+   "contradiction_kinds": [],
+   "final_decision": "log_observation",
+   "linked_rfi_id": null,
+   "spoken_text": "OPD E-1 column ties measured 150 mm centre to centre before the rain.",
+   "structured_summary": "Pithoragarh OPD Block, Column E-1 L1: tie spacing 150 mm verified against A-201 R1.",
+   "clarification_asked": null,
+   "evidence": {
+    "drawing": {
+     "drawing_id": "A-201@R1",
+     "project_id": "P1",
+     "drawing_number": "A-201",
+     "revision": "R1",
+     "rev_ordinal": 1,
+     "title": "OPD & Maternity Block — Structural GA",
+     "discipline": "Structural",
+     "status": "For Construction",
+     "issued_on": "2026-08-26",
+     "zone": "OPD",
+     "level": "L1",
+     "is_latest": 1,
+     "superseded_by": null,
+     "change_note": "Pithoragarh hospital OPD and maternity block: M30 columns, 40 mm cover, Fe500D reinforcement."
+    },
+    "rfi": null
+   }
+  },
+  {
+   "observation_id": "OBS-000114",
+   "created_at": "2026-09-10T19:11:48.110119+00:00",
+   "location_id": "P1:C-5:L3",
+   "element": "column",
+   "attribute": "rebar_spacing",
+   "value_claimed": 180.0,
+   "unit": "mm",
+   "drawing_id": "A-102@R4",
+   "revision_claimed": null,
+   "contradiction_flag": 0,
+   "contradiction_kinds": [],
+   "final_decision": "log_observation",
+   "linked_rfi_id": null,
+   "spoken_text": "C-5 column rebar spacing 180 mm | yes",
+   "structured_summary": "P1:C-5:L3 · column rebar_spacing = 180 mm · linked A-102@R4 (latest 180mm ±10) · no contradictions",
+   "clarification_asked": null,
+   "evidence": {
+    "drawing": {
+     "drawing_id": "A-102@R4",
+     "project_id": "P1",
+     "drawing_number": "A-102",
+     "revision": "R4",
+     "rev_ordinal": 4,
+     "title": "Column Reinforcement Details — Level 3",
+     "discipline": "Structural",
+     "status": "For Construction",
+     "issued_on": "2026-08-12",
+     "zone": null,
+     "level": "L3",
+     "is_latest": 1,
+     "superseded_by": null,
+     "change_note": "Tie/stirrup spacing at C-5 and C-6 reduced from 200 to 180 c/c per RFI-047 (ductile detailing, IS 13920). All other details as R3."
+    },
+    "rfi": null
+   }
+  },
+  {
+   "observation_id": "OBS-000113",
+   "created_at": "2026-09-10T19:11:48.106790+00:00",
+   "location_id": "P1:ZoneB:L3",
+   "element": null,
+   "attribute": "activity:hot_work",
+   "value_claimed": null,
+   "unit": null,
+   "drawing_id": "M-401@R1",
+   "revision_claimed": null,
+   "contradiction_flag": 1,
+   "contradiction_kinds": [
+    "permit_blocker"
+   ],
+   "final_decision": "stop_work",
+   "linked_rfi_id": null,
+   "spoken_text": "Welding at Zone B level 3, everything looks fine, log it",
+   "structured_summary": "P1:ZoneB:L3 · activity hot_work · linked M-401@R1 · flags: permit_blocker",
+   "clarification_asked": "Logging the observation is not allowed yet. At Zone B, Level 3, the hot work permit HWP-0112 has mandatory checks still pending: Fire watcher assigned; Fire watch continues for minimum 60 minutes after hot work stops. Work cannot start until they are confirmed. Would you like to stop work, raise an NCR, or cancel?",
+   "evidence": {
+    "drawing": {
+     "drawing_id": "M-401@R1",
+     "project_id": "P1",
+     "drawing_number": "M-401",
+     "revision": "R1",
+     "rev_ordinal": 1,
+     "title": "Level 3 Plumbing & Sleeve Layout",
+     "discipline": "MEP",
+     "status": "For Construction",
+     "issued_on": "2026-07-05",
+     "zone": "ZoneB",
+     "level": "L3",
+     "is_latest": 1,
+     "superseded_by": null,
+     "change_note": "Sleeve positions for soil/waste stacks in Zone B."
+    },
+    "rfi": null
+   }
+  },
+  {
+   "observation_id": "OBS-000112",
+   "created_at": "2026-09-10T19:11:48.103574+00:00",
+   "location_id": "P1:Slab:L4",
+   "element": "slab",
+   "attribute": "activity:pour",
+   "value_claimed": null,
+   "unit": null,
+   "drawing_id": "S-302@R1",
+   "revision_claimed": null,
+   "contradiction_flag": 1,
+   "contradiction_kinds": [
+    "hold_point_blocker"
+   ],
+   "final_decision": "stop_work",
+   "linked_rfi_id": null,
+   "spoken_text": "Start the L4 slab pour now",
+   "structured_summary": "P1:Slab:L4 · activity pour · linked S-302@R1 · flags: hold_point_blocker",
+   "clarification_asked": "Stop work for now. The pre-pour hold point at Level 4 slab is not released: Embedment items; Concrete cover, plus 6 more. Concrete pouring cannot begin. Would you like to stop work, raise an NCR, or cancel?",
+   "evidence": {
+    "drawing": {
+     "drawing_id": "S-302@R1",
+     "project_id": "P1",
+     "drawing_number": "S-302",
+     "revision": "R1",
+     "rev_ordinal": 1,
+     "title": "Level 4 Slab Reinforcement Layout",
+     "discipline": "Structural",
+     "status": "For Construction",
+     "issued_on": "2026-08-22",
+     "zone": null,
+     "level": "L4",
+     "is_latest": 1,
+     "superseded_by": null,
+     "change_note": "Bottom mesh 10 dia @ 150 c/c both ways; top extra bars 10 dia @ 150 over supports."
+    },
+    "rfi": null
+   }
+  },
+  {
+   "observation_id": "OBS-000111",
+   "created_at": "2026-09-10T19:11:48.101016+00:00",
+   "location_id": "P1:RW-1:GL",
+   "element": "wall",
+   "attribute": "thickness",
+   "value_claimed": 350.0,
+   "unit": "mm",
+   "drawing_id": "C-401@R2",
+   "revision_claimed": "R1",
+   "contradiction_flag": 1,
+   "contradiction_kinds": [
+    "revision_mismatch"
+   ],
+   "final_decision": "log_observation",
+   "linked_rfi_id": null,
+   "spoken_text": "RW-1 wall thickness 350 mm as per C-401 revision R1",
+   "structured_summary": "P1:RW-1:GL · wall thickness = 350 mm · linked C-401@R2 (latest 350mm ±10) · flags: revision_mismatch",
+   "clarification_asked": "The latest revision of drawing C-401 is R2, issued 4 September. It shows thickness at RW-1, GL as 350 mm. This is confirmed by RFI-060. Would you like to log the observation, raise an RFI, or raise an NCR?",
+   "evidence": {
+    "drawing": {
+     "drawing_id": "C-401@R2",
+     "project_id": "P1",
+     "drawing_number": "C-401",
+     "revision": "R2",
+     "rev_ordinal": 2,
+     "title": "Ambulance Road Retaining Wall & Drain",
+     "discipline": "Civil",
+     "status": "For Construction",
+     "issued_on": "2026-09-04",
+     "zone": "Hillside",
+     "level": "GL",
+     "is_latest": 1,
+     "superseded_by": null,
+     "change_note": "Wall base widened after geotechnical review; weep holes and filter media mandatory (RFI-060)."
+    },
+    "rfi": null
+   }
+  },
+  {
+   "observation_id": "OBS-000110",
+   "created_at": "2026-09-10T19:11:48.097291+00:00",
+   "location_id": "P1:E-1:L1",
+   "element": "column",
+   "attribute": "cover",
+   "value_claimed": 30.0,
+   "unit": "mm",
+   "drawing_id": "A-201@R1",
+   "revision_claimed": null,
+   "contradiction_flag": 1,
+   "contradiction_kinds": [
+    "dimension_mismatch"
+   ],
+   "final_decision": "raise_ncr",
+   "linked_rfi_id": null,
+   "spoken_text": "E-1 column cover measured 30 mm",
+   "structured_summary": "P1:E-1:L1 · column cover = 30 mm · linked A-201@R1 (latest 40mm ±5) · flags: dimension_mismatch",
+   "clarification_asked": "You reported cover at E-1, Level 1 as 30 mm, but A-201 R1 shows 40 mm, with a tolerance of plus or minus 5. Would you like to log the observation, raise an RFI, or raise an NCR?",
+   "evidence": {
+    "drawing": {
+     "drawing_id": "A-201@R1",
+     "project_id": "P1",
+     "drawing_number": "A-201",
+     "revision": "R1",
+     "rev_ordinal": 1,
+     "title": "OPD & Maternity Block — Structural GA",
+     "discipline": "Structural",
+     "status": "For Construction",
+     "issued_on": "2026-08-26",
+     "zone": "OPD",
+     "level": "L1",
+     "is_latest": 1,
+     "superseded_by": null,
+     "change_note": "Pithoragarh hospital OPD and maternity block: M30 columns, 40 mm cover, Fe500D reinforcement."
+    },
+    "rfi": null
+   }
+  },
+  {
+   "observation_id": "OBS-000109",
+   "created_at": "2026-09-10T15:14:26.531490+00:00",
+   "location_id": "P1:RW-1:GL",
+   "element": "wall",
+   "attribute": "thickness",
+   "value_claimed": 500.0,
+   "unit": "mm",
+   "drawing_id": "C-401@R2",
+   "revision_claimed": null,
+   "contradiction_flag": 1,
+   "contradiction_kinds": [
+    "dimension_mismatch"
+   ],
+   "final_decision": "raise_ncr",
+   "linked_rfi_id": null,
+   "spoken_text": "At RW-1 beside the ambulance road, the retaining-wall stem thickness is 500 millimetres. Check the latest revision. | Raise an NCR.",
+   "structured_summary": "P1:RW-1:GL · wall thickness = 500 mm · linked C-401@R2 (latest 350mm ±10) · flags: dimension_mismatch",
+   "clarification_asked": "You reported thickness at RW-1, GL as 500 mm, but C-401 R2 shows 350 mm, with a tolerance of plus or minus 10. Would you like to log the observation, raise an RFI, or raise an NCR?",
+   "evidence": {
+    "drawing": {
+     "drawing_id": "C-401@R2",
+     "project_id": "P1",
+     "drawing_number": "C-401",
+     "revision": "R2",
+     "rev_ordinal": 2,
+     "title": "Ambulance Road Retaining Wall & Drain",
+     "discipline": "Civil",
+     "status": "For Construction",
+     "issued_on": "2026-09-04",
+     "zone": "Hillside",
+     "level": "GL",
+     "is_latest": 1,
+     "superseded_by": null,
+     "change_note": "Wall base widened after geotechnical review; weep holes and filter media mandatory (RFI-060)."
+    },
+    "rfi": null
+   }
+  },
+  {
+   "observation_id": "OBS-000108",
+   "created_at": "2026-09-10T15:14:26.527645+00:00",
+   "location_id": "P1:E-1:L1",
+   "element": "column",
+   "attribute": "rebar_spacing",
+   "value_claimed": 150.0,
+   "unit": "mm",
+   "drawing_id": "A-201@R1",
+   "revision_claimed": null,
+   "contradiction_flag": 0,
+   "contradiction_kinds": [],
+   "final_decision": "log_observation",
+   "linked_rfi_id": null,
+   "spoken_text": "At the Pithoragarh OPD block, Column E-1 ties are 150 millimetres. Does that match the latest approved drawing? | Log it.",
+   "structured_summary": "P1:E-1:L1 · column rebar_spacing = 150 mm · linked A-201@R1 (latest 150mm ±10) · no contradictions",
+   "clarification_asked": null,
+   "evidence": {
+    "drawing": {
+     "drawing_id": "A-201@R1",
+     "project_id": "P1",
+     "drawing_number": "A-201",
+     "revision": "R1",
+     "rev_ordinal": 1,
+     "title": "OPD & Maternity Block — Structural GA",
+     "discipline": "Structural",
+     "status": "For Construction",
+     "issued_on": "2026-08-26",
+     "zone": "OPD",
+     "level": "L1",
+     "is_latest": 1,
+     "superseded_by": null,
+     "change_note": "Pithoragarh hospital OPD and maternity block: M30 columns, 40 mm cover, Fe500D reinforcement."
+    },
+    "rfi": null
+   }
+  },
+  {
+   "observation_id": "OBS-000107",
+   "created_at": "2026-09-10T15:11:27.535898+00:00",
+   "location_id": "P1:E-1:L1",
+   "element": "column",
+   "attribute": "rebar_spacing",
+   "value_claimed": 150.0,
+   "unit": "mm",
+   "drawing_id": "A-201@R1",
+   "revision_claimed": null,
+   "contradiction_flag": 0,
+   "contradiction_kinds": [],
+   "final_decision": "log_observation",
+   "linked_rfi_id": null,
+   "spoken_text": "",
+   "structured_summary": "P1:E-1:L1 · column rebar_spacing = 150 mm · linked A-201@R1 (latest 150mm ±10) · no contradictions",
+   "clarification_asked": null,
+   "evidence": {
+    "drawing": {
+     "drawing_id": "A-201@R1",
+     "project_id": "P1",
+     "drawing_number": "A-201",
+     "revision": "R1",
+     "rev_ordinal": 1,
+     "title": "OPD & Maternity Block — Structural GA",
+     "discipline": "Structural",
+     "status": "For Construction",
+     "issued_on": "2026-08-26",
+     "zone": "OPD",
+     "level": "L1",
+     "is_latest": 1,
+     "superseded_by": null,
+     "change_note": "Pithoragarh hospital OPD and maternity block: M30 columns, 40 mm cover, Fe500D reinforcement."
+    },
+    "rfi": null
+   }
+  },
+  {
+   "observation_id": "OBS-000106",
+   "created_at": "2026-09-10T14:56:29.354377+00:00",
+   "location_id": "P1:C-5:L3",
+   "element": "column",
+   "attribute": "rebar_spacing",
+   "value_claimed": 180.0,
+   "unit": "mm",
+   "drawing_id": "A-102@R4",
+   "revision_claimed": "R4",
+   "contradiction_flag": 0,
+   "contradiction_kinds": [],
+   "final_decision": "raise_rfi",
+   "linked_rfi_id": "RFI-062",
+   "spoken_text": "Log rebar spacing 180 mm at C-5 on A-102 R4.",
+   "structured_summary": "P1:C-5:L3 · column rebar_spacing = 180 mm · linked A-102@R4 (latest 180mm ±10) · no contradictions",
+   "clarification_asked": null,
+   "evidence": {
+    "drawing": {
+     "drawing_id": "A-102@R4",
+     "project_id": "P1",
+     "drawing_number": "A-102",
+     "revision": "R4",
+     "rev_ordinal": 4,
+     "title": "Column Reinforcement Details — Level 3",
+     "discipline": "Structural",
+     "status": "For Construction",
+     "issued_on": "2026-08-12",
+     "zone": null,
+     "level": "L3",
+     "is_latest": 1,
+     "superseded_by": null,
+     "change_note": "Tie/stirrup spacing at C-5 and C-6 reduced from 200 to 180 c/c per RFI-047 (ductile detailing, IS 13920). All other details as R3."
+    },
+    "rfi": {
+     "rfi_id": "RFI-062",
+     "project_id": "P1",
+     "subject": "C-5, Level 3 rebar spacing clarification",
+     "location_id": "P1:C-5:L3",
+     "drawing_ref": "A-102",
+     "spec_ref": null,
+     "question": "Site observed rebar spacing 180 mm at C-5, Level 3. Latest A-102 R4 shows 180 mm. Please confirm.",
+     "response": null,
+     "status": "Open",
+     "raised_on": "2026-09-10",
+     "answered_on": null,
+     "impact": null,
+     "resulting_drawing_id": null,
+     "template_id": "PMC-DSN-LOG-003"
+    }
+   }
+  },
+  {
+   "observation_id": "OBS-000105",
+   "created_at": "2026-09-10T14:37:40.859936+00:00",
+   "location_id": "P1:RW-1:GL",
+   "element": null,
+   "attribute": "activity:excavation",
+   "value_claimed": null,
+   "unit": null,
+   "drawing_id": "C-401@R2",
+   "revision_claimed": null,
+   "contradiction_flag": 1,
+   "contradiction_kinds": [
+    "permit_blocker"
+   ],
+   "final_decision": "raise_ncr",
+   "linked_rfi_id": null,
+   "spoken_text": "We are at RW1 beside the ambulance road. The foreman wants to restart excavation after the rain. Can the work begin today?",
+   "structured_summary": "P1:RW-1:GL · activity excavation · linked C-401@R2 · flags: permit_blocker",
+   "clarification_asked": "Ruko. RW-1, GL pe khudai permit EXC-0041 active hai, lekin mandatory check pending hai: Permit suspended. Jab tak yeh confirm na ho, khudai shuru nahi ho sakta. Kaam rokna hai, NCR raise karna hai, ya cancel?",
+   "evidence": {
+    "drawing": {
+     "drawing_id": "C-401@R2",
+     "project_id": "P1",
+     "drawing_number": "C-401",
+     "revision": "R2",
+     "rev_ordinal": 2,
+     "title": "Ambulance Road Retaining Wall & Drain",
+     "discipline": "Civil",
+     "status": "For Construction",
+     "issued_on": "2026-09-04",
+     "zone": "Hillside",
+     "level": "GL",
+     "is_latest": 1,
+     "superseded_by": null,
+     "change_note": "Wall base widened after geotechnical review; weep holes and filter media mandatory (RFI-060)."
+    },
+    "rfi": null
+   }
+  }
+ ],
+ "conversations": [
+  {
+   "session_id": "VS-1a08cbbb98e-8d9327",
+   "started_at": "2026-09-10T19:11:48.110667+00:00",
+   "ended_at": null,
+   "lang": "en-IN",
+   "turns": [
+    {
+     "role": "user",
+     "text": "What is the cover at E-1?",
+     "state": "capturing",
+     "created_at": "2026-09-10T19:11:48.111844+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "At E-1, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4). Open RFI-061 (OPD block monsoon concrete-pour access).",
+     "state": "capturing",
+     "created_at": "2026-09-10T19:11:48.112107+00:00"
+    },
+    {
+     "role": "user",
+     "text": "E-1 column cover measured 30 mm",
+     "state": "capturing",
+     "created_at": "2026-09-10T19:11:48.112445+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "You reported cover at E-1, Level 1 as 30 mm, but A-201 R1 shows 40 mm, with a tolerance of plus or minus 5. Would you like to log the observation, raise an RFI, or raise an NCR?",
+     "state": "challenging",
+     "created_at": "2026-09-10T19:11:48.113300+00:00"
+    },
+    {
+     "role": "user",
+     "text": "what is the tolerance there?",
+     "state": "challenging",
+     "created_at": "2026-09-10T19:11:48.114866+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "At E-1, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4). Open RFI-061 (OPD block monsoon concrete-pour access).",
+     "state": "challenging",
+     "created_at": "2026-09-10T19:11:48.115260+00:00"
+    }
+   ]
+  },
+  {
+   "session_id": "VS-1a08cbbb98b-4d2df8",
+   "started_at": "2026-09-10T19:11:48.107603+00:00",
+   "ended_at": null,
+   "lang": "en-IN",
+   "turns": [
+    {
+     "role": "user",
+     "text": "C-5 column rebar spacing 180 mm",
+     "state": "capturing",
+     "created_at": "2026-09-10T19:11:48.107978+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "At C-5, Level 3, column rebar spacing is 180 mm, which matches A-102 R4. Log it?",
+     "state": "confirming",
+     "created_at": "2026-09-10T19:11:48.108882+00:00"
+    },
+    {
+     "role": "user",
+     "text": "yes",
+     "state": "confirming",
+     "created_at": "2026-09-10T19:11:48.109224+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "Observation OBS-000114 has been logged and linked to A-102 R4.",
+     "state": "logged",
+     "created_at": "2026-09-10T19:11:48.110399+00:00"
+    }
+   ]
+  },
+  {
+   "session_id": "VS-1a08cbbb988-5b5bce",
+   "started_at": "2026-09-10T19:11:48.104156+00:00",
+   "ended_at": null,
+   "lang": "en-IN",
+   "turns": [
+    {
+     "role": "user",
+     "text": "Welding at Zone B level 3, everything looks fine, log it",
+     "state": "capturing",
+     "created_at": "2026-09-10T19:11:48.104900+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "Logging the observation is not allowed yet. At Zone B, Level 3, the hot work permit HWP-0112 has mandatory checks still pending: Fire watcher assigned; Fire watch continues for minimum 60 minutes after hot work stops. Work cannot start until they are confirmed. Would you like to stop work, raise an NCR, or cancel?",
+     "state": "blocked",
+     "created_at": "2026-09-10T19:11:48.105644+00:00"
+    },
+    {
+     "role": "user",
+     "text": "[button] stop_work",
+     "state": "blocked",
+     "created_at": "2026-09-10T19:11:48.105936+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "A stop-work instruction has been logged as OBS-000113. Please inform the safety officer now.",
+     "state": "logged",
+     "created_at": "2026-09-10T19:11:48.107303+00:00"
+    }
+   ]
+  },
+  {
+   "session_id": "VS-1a08cbbb985-8326bd",
+   "started_at": "2026-09-10T19:11:48.101615+00:00",
+   "ended_at": null,
+   "lang": "en-IN",
+   "turns": [
+    {
+     "role": "user",
+     "text": "Start the L4 slab pour now",
+     "state": "capturing",
+     "created_at": "2026-09-10T19:11:48.102289+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "Stop work for now. The pre-pour hold point at Level 4 slab is not released: Embedment items; Concrete cover, plus 6 more. Concrete pouring cannot begin. Would you like to stop work, raise an NCR, or cancel?",
+     "state": "blocked",
+     "created_at": "2026-09-10T19:11:48.102852+00:00"
+    },
+    {
+     "role": "user",
+     "text": "[button] stop_work",
+     "state": "blocked",
+     "created_at": "2026-09-10T19:11:48.103147+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "A stop-work instruction has been logged as OBS-000112. Please inform the safety officer now.",
+     "state": "logged",
+     "created_at": "2026-09-10T19:11:48.103853+00:00"
+    }
+   ]
+  },
+  {
+   "session_id": "VS-1a08cbbb981-7af823",
+   "started_at": "2026-09-10T19:11:48.097868+00:00",
+   "ended_at": null,
+   "lang": "en-IN",
+   "turns": [
+    {
+     "role": "user",
+     "text": "RW-1 wall thickness 350 mm as per C-401 revision R1",
+     "state": "capturing",
+     "created_at": "2026-09-10T19:11:48.098625+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "The latest revision of drawing C-401 is R2, issued 4 September. It shows thickness at RW-1, GL as 350 mm. This is confirmed by RFI-060. Would you like to log the observation, raise an RFI, or raise an NCR?",
+     "state": "challenging",
+     "created_at": "2026-09-10T19:11:48.099739+00:00"
+    },
+    {
+     "role": "user",
+     "text": "[button] log_observation",
+     "state": "challenging",
+     "created_at": "2026-09-10T19:11:48.100087+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "Observation OBS-000111 has been logged and linked to C-401 R2.",
+     "state": "logged",
+     "created_at": "2026-09-10T19:11:48.101360+00:00"
+    }
+   ]
+  },
+  {
+   "session_id": "VS-1a08cbbb97d-e55fc6",
+   "started_at": "2026-09-10T19:11:48.093169+00:00",
+   "ended_at": null,
+   "lang": "en-IN",
+   "turns": [
+    {
+     "role": "user",
+     "text": "E-1 column cover measured 30 mm",
+     "state": "capturing",
+     "created_at": "2026-09-10T19:11:48.093751+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "You reported cover at E-1, Level 1 as 30 mm, but A-201 R1 shows 40 mm, with a tolerance of plus or minus 5. Would you like to log the observation, raise an RFI, or raise an NCR?",
+     "state": "challenging",
+     "created_at": "2026-09-10T19:11:48.094758+00:00"
+    },
+    {
+     "role": "user",
+     "text": "what is the tolerance there?",
+     "state": "challenging",
+     "created_at": "2026-09-10T19:11:48.095796+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "At E-1, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4). Open RFI-061 (OPD block monsoon concrete-pour access).",
+     "state": "challenging",
+     "created_at": "2026-09-10T19:11:48.096071+00:00"
+    },
+    {
+     "role": "user",
+     "text": "[button] raise_ncr",
+     "state": "challenging",
+     "created_at": "2026-09-10T19:11:48.096360+00:00"
+    },
+    {
+     "role": "agent",
+     "text": "The observation OBS-000110 has been logged for an NCR. Please notify the QA team.",
+     "state": "logged",
+     "created_at": "2026-09-10T19:11:48.097605+00:00"
+    }
+   ]
+  }
+ ],
+ "scenarios": {
+  "passed": 10,
+  "total": 10,
+  "wrongLogs": 0,
+  "results": [
+   {
+    "id": "S01",
+    "title": "README example — claimed superseded revision, value matches latest; user declines RFI",
+    "pass": true,
+    "failures": [],
+    "kindsSeen": [
+     "revision_mismatch"
+    ],
+    "clarified": true,
+    "finalDecision": "log_observation",
+    "logged": [
+     {
+      "observation_id": "OBS-000115",
+      "project_id": "P1",
+      "session_id": "VS-1a08cbbb9a3-491b7e",
+      "spoken_text": "haan toh column line C-5 pe rebar spacing 180 mm hai, drawing A 102 rev teen mein 200 mm dikh raha hai | achha R4 aa gaya tha... ok. bas observation log kar do, RFI nahi chahiye",
+      "structured_summary": "P1:C-5:L3 · column rebar_spacing = 180 mm · linked A-102@R4 (latest 180mm ±10) · flags: revision_mismatch",
+      "location_id": "P1:C-5:L3",
+      "element": "column",
+      "attribute": "rebar_spacing",
+      "value_claimed": 180.0,
+      "unit": "mm",
+      "drawing_id": "A-102@R4",
+      "revision_claimed": "R3",
+      "contradiction_flag": 1,
+      "contradiction_kinds": "[\"revision_mismatch\"]",
+      "clarification_asked": "Drawing A-102 ki latest revision R4 hai, jo 12 August ko issue hui thi. Usme C-5, Level 3 ki rebar spacing 180 mm hai. RFI-047 ne yeh confirm kiya tha. R3 superseded hai, usme 200 tha. Aapka 180 mm latest drawing se match karta hai. Kya aap observation log karna chahte hain, ya RFI raise karna chahte hain?",
+      "final_decision": "log_observation",
+      "linked_rfi_id": null,
+      "linked_template_id": "QC-SPW-REG-004",
+      "audio_url": null,
+      "photo_url": null,
+      "gps_lat": null,
+      "gps_lng": null,
+      "created_at": "2026-09-10T19:11:48.134674+00:00"
+     }
+    ],
+    "transcript": [
+     {
+      "role": "user",
+      "text": "haan toh column line C-5 pe rebar spacing 180 mm hai, drawing A 102 rev teen mein 200 mm dikh raha hai",
+      "bargeIn": false,
+      "noise": "drill"
+     },
+     {
+      "role": "agent",
+      "text": "Drawing A-102 ki latest revision R4 hai, jo 12 August ko issue hui thi. Usme C-5, Level 3 ki rebar spacing 180 mm hai. RFI-047 ne yeh confirm kiya tha. R3 superseded hai, usme 200 tha. Aapka 180 mm latest drawing se match karta hai. Kya aap observation log karna chahte hain, ya RFI raise karna chahte hain?",
+      "state": "challenging"
+     },
+     {
+      "role": "user",
+      "text": "achha R4 aa gaya tha... ok. bas observation log kar do, RFI nahi chahiye",
+      "bargeIn": false,
+      "noise": "none"
+     },
+     {
+      "role": "agent",
+      "text": "Observation OBS-000115 log ho gaya, drawing A-102 R4 ke saath link kiya.",
+      "state": "logged"
+     }
+    ]
+   },
+   {
+    "id": "S02",
+    "title": "Dimension mismatch beyond tolerance at C-6 (220 vs 180)",
+    "pass": true,
+    "failures": [],
+    "kindsSeen": [
+     "dimension_mismatch"
+    ],
+    "clarified": true,
+    "finalDecision": "raise_rfi",
+    "logged": [
+     {
+      "observation_id": "OBS-000116",
+      "project_id": "P1",
+      "session_id": "VS-1a08cbbb9a7-ad4406",
+      "spoken_text": "umm C-6 column pe stirrup ka spacing do sau bees... 220 mm aa raha hai, A-102 ke hisaab se | haan pakka 220 hai, teen jagah naapa. RFI raise karo, consultant ko bhejo",
+      "structured_summary": "P1:C-6:L3 · column rebar_spacing = 220 mm · linked A-102@R4 (latest 180mm ±10) · flags: dimension_mismatch",
+      "location_id": "P1:C-6:L3",
+      "element": "column",
+      "attribute": "rebar_spacing",
+      "value_claimed": 220.0,
+      "unit": "mm",
+      "drawing_id": "A-102@R4",
+      "revision_claimed": null,
+      "contradiction_flag": 1,
+      "contradiction_kinds": "[\"dimension_mismatch\"]",
+      "clarification_asked": "Dhyan dijiye: C-6, Level 3 pe aapne rebar spacing 220 mm bola, lekin A-102 R4 mein 180 mm hai, tolerance ±10. Yeh 40 mm ka farak hai. Reference IS 456 Cl. 26.5.3.2(c). Kya aap observation log karna chahte hain, RFI raise karna chahte hain, ya NCR?",
+      "final_decision": "raise_rfi",
+      "linked_rfi_id": "RFI-063",
+      "linked_template_id": "QC-SPW-REG-004",
+      "audio_url": null,
+      "photo_url": null,
+      "gps_lat": null,
+      "gps_lng": null,
+      "created_at": "2026-09-10T19:11:48.138295+00:00"
+     }
+    ],
+    "transcript": [
+     {
+      "role": "user",
+      "text": "umm C-6 column pe stirrup ka spacing do sau bees... 220 mm aa raha hai, A-102 ke hisaab se",
+      "bargeIn": false,
+      "noise": "traffic"
+     },
+     {
+      "role": "agent",
+      "text": "Dhyan dijiye: C-6, Level 3 pe aapne rebar spacing 220 mm bola, lekin A-102 R4 mein 180 mm hai, tolerance ±10. Yeh 40 mm ka farak hai. Reference IS 456 Cl. 26.5.3.2(c). Kya aap observation log karna chahte hain, RFI raise karna chahte hain, ya NCR?",
+      "state": "challenging"
+     },
+     {
+      "role": "user",
+      "text": "haan pakka 220 hai, teen jagah naapa. RFI raise karo, consultant ko bhejo",
+      "bargeIn": false,
+      "noise": "none"
+     },
+     {
+      "role": "agent",
+      "text": "RFI-063 raise ho gaya, status Open. Observation OBS-000116 usse link kar diya.",
+      "state": "logged"
+     }
+    ]
+   },
+   {
+    "id": "S03",
+    "title": "Barge-in self-correction of location (C-5 -> C-6)",
+    "pass": true,
+    "failures": [],
+    "kindsSeen": [],
+    "clarified": false,
+    "finalDecision": "log_observation",
+    "logged": [
+     {
+      "observation_id": "OBS-000117",
+      "project_id": "P1",
+      "session_id": "VS-1a08cbbb9aa-7b173e",
+      "spoken_text": "column C-5 pe tie spacing ek sau assi mm, drawing A-102 rev | wait wait, C-5 nahi, C-6. C-6 pe ek sau assi hai, R4 drawing | haan C-6, log kar do",
+      "structured_summary": "P1:C-6:L3 · column rebar_spacing = 180 mm · linked A-102@R4 (latest 180mm ±10) · no contradictions",
+      "location_id": "P1:C-6:L3",
+      "element": "column",
+      "attribute": "rebar_spacing",
+      "value_claimed": 180.0,
+      "unit": "mm",
+      "drawing_id": "A-102@R4",
+      "revision_claimed": "R4",
+      "contradiction_flag": 0,
+      "contradiction_kinds": null,
+      "clarification_asked": null,
+      "final_decision": "log_observation",
+      "linked_rfi_id": null,
+      "linked_template_id": "QC-SPW-REG-004",
+      "audio_url": null,
+      "photo_url": null,
+      "gps_lat": null,
+      "gps_lng": null,
+      "created_at": "2026-09-10T19:11:48.143342+00:00"
+     }
+    ],
+    "transcript": [
+     {
+      "role": "user",
+      "text": "column C-5 pe tie spacing ek sau assi mm, drawing A-102 rev",
+      "bargeIn": false,
+      "noise": "drill"
+     },
+     {
+      "role": "agent",
+      "text": "C-5, Level 3, column rebar spacing 180 mm — A-102 R4 ke hisaab se sahi hai. Log kar doon?",
+      "state": "confirming"
+     },
+     {
+      "role": "user",
+      "text": "wait wait, C-5 nahi, C-6. C-6 pe ek sau assi hai, R4 drawing",
+      "bargeIn": true,
+      "noise": "drill"
+     },
+     {
+      "role": "agent",
+      "text": "C-6, Level 3, column rebar spacing 180 mm — A-102 R4 ke hisaab se sahi hai. Log kar doon?",
+      "state": "confirming"
+     },
+     {
+      "role": "user",
+      "text": "haan C-6, log kar do",
+      "bargeIn": false,
+      "noise": "none"
+     },
+     {
+      "role": "agent",
+      "text": "Observation OBS-000117 log ho gaya, drawing A-102 R4 ke saath link kiya.",
+      "state": "logged"
+     }
+    ]
+   },
+   {
+    "id": "S04",
+    "title": "Critical field garbled (drawing number / element unclear) — refuse to log",
+    "pass": true,
+    "failures": [],
+    "kindsSeen": [
+     "missing_critical_field"
+    ],
+    "clarified": true,
+    "finalDecision": "none",
+    "logged": [],
+    "transcript": [
+     {
+      "role": "user",
+      "text": "haan wo... beam ke paas wale column pe spacing 180 hai, drawing number A... [inaudible] ... rev char",
+      "bargeIn": false,
+      "noise": "traffic"
+     },
+     {
+      "role": "agent",
+      "text": "Location bataiye — kaunsi grid line aur level? Jaise C-5, Level 3.",
+      "state": "capturing"
+     },
+     {
+      "role": "user",
+      "text": "pata nahi yaar, drawing number yaad nahi aur column bhi confirm nahi hai, baad mein dekhta hoon",
+      "bargeIn": false,
+      "noise": "traffic"
+     },
+     {
+      "role": "agent",
+      "text": "Location bataiye — kaunsi grid line aur level? Jaise C-5, Level 3.",
+      "state": "capturing"
+     }
+    ]
+   },
+   {
+    "id": "S05",
+    "title": "Hot work in Zone B L3 without fire watch — permit blocker, stop work",
+    "pass": true,
+    "failures": [],
+    "kindsSeen": [
+     "permit_blocker"
+    ],
+    "clarified": true,
+    "finalDecision": "stop_work",
+    "logged": [
+     {
+      "observation_id": "OBS-000118",
+      "project_id": "P1",
+      "session_id": "VS-1a08cbbb9b1-571e9e",
+      "spoken_text": "Zone B level 3 mein welding chal rahi hai lift machine room brackets ki, sab theek hai, work ok log kar do | achha fire watcher abhi nahi hai wahan... theek hai, kaam rukwa deta hoon, stop work",
+      "structured_summary": "P1:ZoneB:L3 · activity hot_work · linked M-401@R1 · flags: permit_blocker",
+      "location_id": "P1:ZoneB:L3",
+      "element": null,
+      "attribute": "activity:hot_work",
+      "value_claimed": null,
+      "unit": null,
+      "drawing_id": "M-401@R1",
+      "revision_claimed": null,
+      "contradiction_flag": 1,
+      "contradiction_kinds": "[\"permit_blocker\"]",
+      "clarification_asked": "Observation log karna abhi allowed nahi hai. Ruko. Zone B, Level 3 pe hot work permit HWP-0112 active hai, lekin mandatory check pending hai: Fire watcher assigned; Fire watch continues for minimum 60 minutes after hot work stops. Jab tak yeh confirm na ho, hot work shuru nahi ho sakta. Kaam rokna hai, NCR raise karna hai, ya cancel?",
+      "final_decision": "stop_work",
+      "linked_rfi_id": null,
+      "linked_template_id": "QC-SPW-REG-004",
+      "audio_url": null,
+      "photo_url": null,
+      "gps_lat": null,
+      "gps_lng": null,
+      "created_at": "2026-09-10T19:11:48.148222+00:00"
+     }
+    ],
+    "transcript": [
+     {
+      "role": "user",
+      "text": "Zone B level 3 mein welding chal rahi hai lift machine room brackets ki, sab theek hai, work ok log kar do",
+      "bargeIn": false,
+      "noise": "drill"
+     },
+     {
+      "role": "agent",
+      "text": "Observation log karna abhi allowed nahi hai. Ruko. Zone B, Level 3 pe hot work permit HWP-0112 active hai, lekin mandatory check pending hai: Fire watcher assigned; Fire watch continues for minimum 60 minutes after hot work stops. Jab tak yeh confirm na ho, hot work shuru nahi ho sakta. Kaam rokna hai, NCR raise karna hai, ya cancel?",
+      "state": "blocked"
+     },
+     {
+      "role": "user",
+      "text": "achha fire watcher abhi nahi hai wahan... theek hai, kaam rukwa deta hoon, stop work",
+      "bargeIn": false,
+      "noise": "drill"
+     },
+     {
+      "role": "agent",
+      "text": "Kaam rokne ka order OBS-000118 log ho gaya. Safety officer ko turant inform kijiye.",
+      "state": "logged"
+     }
+    ]
+   },
+   {
+    "id": "S06",
+    "title": "L4 slab thickness 125 vs 150 (crew following superseded S-301 R1)",
+    "pass": true,
+    "failures": [],
+    "kindsSeen": [
+     "dimension_mismatch"
+    ],
+    "clarified": true,
+    "finalDecision": "raise_ncr",
+    "logged": [
+     {
+      "observation_id": "OBS-000119",
+      "project_id": "P1",
+      "session_id": "VS-1a08cbbb9b4-d2c3a2",
+      "spoken_text": "L4 slab ki thickness humne check ki, ek sau pachees... 125 mm hai, S-301 ke according | arre matlab shuttering R1 ke hisaab se lag gayi? NCR raise karo, pour se pehle theek karna padega",
+      "structured_summary": "P1:Slab:L4 · slab thickness = 125 mm · linked S-301@R2 (latest 150mm ±5) · flags: dimension_mismatch",
+      "location_id": "P1:Slab:L4",
+      "element": "slab",
+      "attribute": "thickness",
+      "value_claimed": 125.0,
+      "unit": "mm",
+      "drawing_id": "S-301@R2",
+      "revision_claimed": "R1",
+      "contradiction_flag": 1,
+      "contradiction_kinds": "[\"dimension_mismatch\"]",
+      "clarification_asked": "Dhyan dijiye: Level 4 slab pe aapne thickness 125 mm bola, lekin S-301 R2 mein 150 mm hai, tolerance ±5. Yeh 25 mm ka farak hai. Reference IS 456 Cl. 24.1. Kya aap observation log karna chahte hain, RFI raise karna chahte hain, ya NCR?",
+      "final_decision": "raise_ncr",
+      "linked_rfi_id": null,
+      "linked_template_id": "QC-SPW-REG-004",
+      "audio_url": null,
+      "photo_url": null,
+      "gps_lat": null,
+      "gps_lng": null,
+      "created_at": "2026-09-10T19:11:48.150596+00:00"
+     }
+    ],
+    "transcript": [
+     {
+      "role": "user",
+      "text": "L4 slab ki thickness humne check ki, ek sau pachees... 125 mm hai, S-301 ke according",
+      "bargeIn": false,
+      "noise": "none"
+     },
+     {
+      "role": "agent",
+      "text": "Dhyan dijiye: Level 4 slab pe aapne thickness 125 mm bola, lekin S-301 R2 mein 150 mm hai, tolerance ±5. Yeh 25 mm ka farak hai. Reference IS 456 Cl. 24.1. Kya aap observation log karna chahte hain, RFI raise karna chahte hain, ya NCR?",
+      "state": "challenging"
+     },
+     {
+      "role": "user",
+      "text": "arre matlab shuttering R1 ke hisaab se lag gayi? NCR raise karo, pour se pehle theek karna padega",
+      "bargeIn": false,
+      "noise": "none"
+     },
+     {
+      "role": "agent",
+      "text": "NCR ke liye observation OBS-000119 log ho gaya. QA team ko notify kijiye.",
+      "state": "logged"
+     }
+    ]
+   },
+   {
+    "id": "S07",
+    "title": "Column cover 25 vs 40 at B-4 (IS 456 Cl. 26.4)",
+    "pass": true,
+    "failures": [],
+    "kindsSeen": [
+     "dimension_mismatch"
+    ],
+    "clarified": true,
+    "finalDecision": "raise_ncr",
+    "logged": [
+     {
+      "observation_id": "OBS-000120",
+      "project_id": "P1",
+      "session_id": "VS-1a08cbbb9b7-065437",
+      "spoken_text": "B-4 column mein cover pachees mm mil raha hai, cover blocks chhote lage hain lagta hai | haan NCR daal do, aur bar bender ko bolo 40 wale blocks lagaye",
+      "structured_summary": "P1:B-4:L3 · column cover = 25 mm · linked A-102@R4 (latest 40mm ±5) · flags: dimension_mismatch",
+      "location_id": "P1:B-4:L3",
+      "element": "column",
+      "attribute": "cover",
+      "value_claimed": 25.0,
+      "unit": "mm",
+      "drawing_id": "A-102@R4",
+      "revision_claimed": null,
+      "contradiction_flag": 1,
+      "contradiction_kinds": "[\"dimension_mismatch\"]",
+      "clarification_asked": "Dhyan dijiye: B-4, Level 3 pe aapne cover 25 mm bola, lekin A-102 R4 mein 40 mm hai, tolerance ±5. Yeh 15 mm ka farak hai. Reference IS 456 Cl. 26.4. Kya aap observation log karna chahte hain, RFI raise karna chahte hain, ya NCR?",
+      "final_decision": "raise_ncr",
+      "linked_rfi_id": null,
+      "linked_template_id": "QC-SPW-REG-004",
+      "audio_url": null,
+      "photo_url": null,
+      "gps_lat": null,
+      "gps_lng": null,
+      "created_at": "2026-09-10T19:11:48.153833+00:00"
+     }
+    ],
+    "transcript": [
+     {
+      "role": "user",
+      "text": "B-4 column mein cover pachees mm mil raha hai, cover blocks chhote lage hain lagta hai",
+      "bargeIn": false,
+      "noise": "drill"
+     },
+     {
+      "role": "agent",
+      "text": "Dhyan dijiye: B-4, Level 3 pe aapne cover 25 mm bola, lekin A-102 R4 mein 40 mm hai, tolerance ±5. Yeh 15 mm ka farak hai. Reference IS 456 Cl. 26.4. Kya aap observation log karna chahte hain, RFI raise karna chahte hain, ya NCR?",
+      "state": "challenging"
+     },
+     {
+      "role": "user",
+      "text": "haan NCR daal do, aur bar bender ko bolo 40 wale blocks lagaye",
+      "bargeIn": false,
+      "noise": "none"
+     },
+     {
+      "role": "agent",
+      "text": "NCR ke liye observation OBS-000120 log ho gaya. QA team ko notify kijiye.",
+      "state": "logged"
+     }
+    ]
+   },
+   {
+    "id": "S08",
+    "title": "Start L4 slab pour while pre-pour hold point not released",
+    "pass": true,
+    "failures": [],
+    "kindsSeen": [
+     "hold_point_blocker"
+    ],
+    "clarified": true,
+    "finalDecision": "stop_work",
+    "logged": [
+     {
+      "observation_id": "OBS-000121",
+      "project_id": "P1",
+      "session_id": "VS-1a08cbbb9ba-2fb5d2",
+      "spoken_text": "chalo L4 slab ka pour shuru karte hain, pump aa gaya hai, RMC truck bhi gate pe khada hai | consultant ne abhi release nahi diya? theek hai, pour hold karo, truck ko wait karao",
+      "structured_summary": "P1:Slab:L4 · activity pour · linked S-302@R1 · flags: hold_point_blocker",
+      "location_id": "P1:Slab:L4",
+      "element": "slab",
+      "attribute": "activity:pour",
+      "value_claimed": null,
+      "unit": null,
+      "drawing_id": "S-302@R1",
+      "revision_claimed": null,
+      "contradiction_flag": 1,
+      "contradiction_kinds": "[\"hold_point_blocker\"]",
+      "clarification_asked": "Ruko. Level 4 slab ka pre-pour checklist CL-PP-L4-001 ka hold point release nahi hua: Embedment items; Concrete cover, aur 6 aur items. Dhalai shuru nahi ho sakti. Kaam rokna hai, NCR raise karna hai, ya cancel?",
+      "final_decision": "stop_work",
+      "linked_rfi_id": null,
+      "linked_template_id": "QC-SPW-REG-004",
+      "audio_url": null,
+      "photo_url": null,
+      "gps_lat": null,
+      "gps_lng": null,
+      "created_at": "2026-09-10T19:11:48.156205+00:00"
+     }
+    ],
+    "transcript": [
+     {
+      "role": "user",
+      "text": "chalo L4 slab ka pour shuru karte hain, pump aa gaya hai, RMC truck bhi gate pe khada hai",
+      "bargeIn": false,
+      "noise": "traffic"
+     },
+     {
+      "role": "agent",
+      "text": "Ruko. Level 4 slab ka pre-pour checklist CL-PP-L4-001 ka hold point release nahi hua: Embedment items; Concrete cover, aur 6 aur items. Dhalai shuru nahi ho sakti. Kaam rokna hai, NCR raise karna hai, ya cancel?",
+      "state": "blocked"
+     },
+     {
+      "role": "user",
+      "text": "consultant ne abhi release nahi diya? theek hai, pour hold karo, truck ko wait karao",
+      "bargeIn": false,
+      "noise": "traffic"
+     },
+     {
+      "role": "agent",
+      "text": "Kaam rokne ka order OBS-000121 log ho gaya. Safety officer ko turant inform kijiye.",
+      "state": "logged"
+     }
+    ]
+   },
+   {
+    "id": "S09",
+    "title": "Clean observation — no contradiction, logged against verified latest drawing",
+    "pass": true,
+    "failures": [],
+    "kindsSeen": [],
+    "clarified": false,
+    "finalDecision": "log_observation",
+    "logged": [
+     {
+      "observation_id": "OBS-000122",
+      "project_id": "P1",
+      "session_id": "VS-1a08cbbb9bc-c77714",
+      "spoken_text": "haan so, D-3 column ka cover chaalees mm check kiya, drawing A-102 rev chaar, sab theek hai | haan confirm, log karo",
+      "structured_summary": "P1:D-3:L3 · column cover = 40 mm · linked A-102@R4 (latest 40mm ±5) · no contradictions",
+      "location_id": "P1:D-3:L3",
+      "element": "column",
+      "attribute": "cover",
+      "value_claimed": 40.0,
+      "unit": "mm",
+      "drawing_id": "A-102@R4",
+      "revision_claimed": "R4",
+      "contradiction_flag": 0,
+      "contradiction_kinds": null,
+      "clarification_asked": null,
+      "final_decision": "log_observation",
+      "linked_rfi_id": null,
+      "linked_template_id": "QC-SPW-REG-004",
+      "audio_url": null,
+      "photo_url": null,
+      "gps_lat": null,
+      "gps_lng": null,
+      "created_at": "2026-09-10T19:11:48.159715+00:00"
+     }
+    ],
+    "transcript": [
+     {
+      "role": "user",
+      "text": "haan so, D-3 column ka cover chaalees mm check kiya, drawing A-102 rev chaar, sab theek hai",
+      "bargeIn": false,
+      "noise": "none"
+     },
+     {
+      "role": "agent",
+      "text": "D-3, Level 3, column cover 40 mm — A-102 R4 ke hisaab se sahi hai. Log kar doon?",
+      "state": "confirming"
+     },
+     {
+      "role": "user",
+      "text": "haan confirm, log karo",
+      "bargeIn": false,
+      "noise": "none"
+     },
+     {
+      "role": "agent",
+      "text": "Observation OBS-000122 log ho gaya, drawing A-102 R4 ke saath link kiya.",
+      "state": "logged"
+     }
+    ]
+   },
+   {
+    "id": "S10",
+    "title": "Unknown drawing A-109 — clarify, then log against corrected A-102",
+    "pass": true,
+    "failures": [],
+    "kindsSeen": [
+     "unknown_drawing"
+    ],
+    "clarified": true,
+    "finalDecision": "log_observation",
+    "logged": [
+     {
+      "observation_id": "OBS-000123",
+      "project_id": "P1",
+      "session_id": "VS-1a08cbbb9c0-007268",
+      "spoken_text": "C-4 column pe tie spacing 200 hai, drawing A-109 mein bhi 200 hi hai | oh sorry, A-102 bola tha, rev 4. log kar do",
+      "structured_summary": "P1:C-4:L3 · column rebar_spacing = 200 mm · linked A-102@R4 (latest 200mm ±10) · no contradictions",
+      "location_id": "P1:C-4:L3",
+      "element": "column",
+      "attribute": "rebar_spacing",
+      "value_claimed": 200.0,
+      "unit": "mm",
+      "drawing_id": "A-102@R4",
+      "revision_claimed": "R4",
+      "contradiction_flag": 0,
+      "contradiction_kinds": null,
+      "clarification_asked": null,
+      "final_decision": "log_observation",
+      "linked_rfi_id": null,
+      "linked_template_id": "QC-SPW-REG-004",
+      "audio_url": null,
+      "photo_url": null,
+      "gps_lat": null,
+      "gps_lng": null,
+      "created_at": "2026-09-10T19:11:48.162919+00:00"
+     }
+    ],
+    "transcript": [
+     {
+      "role": "user",
+      "text": "C-4 column pe tie spacing 200 hai, drawing A-109 mein bhi 200 hi hai",
+      "bargeIn": false,
+      "noise": "none"
+     },
+     {
+      "role": "agent",
+      "text": "Drawing A-109 register mein nahi mili. Kripya drawing number dobara bataiye — register mein A-101, A-102, A-103, A-201 hain. Tab tak kuch log nahi hoga.",
+      "state": "challenging"
+     },
+     {
+      "role": "user",
+      "text": "oh sorry, A-102 bola tha, rev 4. log kar do",
+      "bargeIn": false,
+      "noise": "none"
+     },
+     {
+      "role": "agent",
+      "text": "Observation OBS-000123 log ho gaya, drawing A-102 R4 ke saath link kiya.",
+      "state": "logged"
+     }
+    ]
+   }
+  ]
+ },
+ "health": {
+  "db": true,
+  "llm": "cerebras",
+  "rime": true,
+  "voiceid": true,
+  "engine": true
+ }
+}

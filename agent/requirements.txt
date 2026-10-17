@@ -1,0 +1,8 @@
+livekit-agents[groq,silero,turn-detector]==1.8.0
+livekit-plugins-openai==1.8.0
+livekit-plugins-rime==1.8.0
+# Sarvam saaras:v3-realtime streaming STT (matches livekit-agents 1.8.0)
+livekit-plugins-sarvam==1.8.0
+sarvamai==0.1.31a4
+httpx
+python-dotenv

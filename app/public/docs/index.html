@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vesper MCP — Docs</title>
+<meta name="description" content="Connect any agent to Vesper's construction site memory over MCP: tools, protocol, auth and copy-ready clients for Python, TypeScript, Go and cURL.">
+<link rel="icon" href="/brand/vesper-mark.png">
+<style>
+:root{--bg:#07070a;--panel:#0e0e13;--panel2:#13131a;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.14);--text:#ececf1;--muted:#9a9aa6;--dim:#6b6b76;--accent:#bad0ff;--ok:#6ee7b7;--warn:#fbbf24;--red:#f87171;
+--sans:"SF Pro Text",-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Helvetica,Arial,sans-serif;--mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace}
+:root[data-theme="light"]{--bg:#fbfbfc;--panel:#fff;--panel2:#f4f4f7;--line:rgba(0,0,0,.08);--line2:rgba(0,0,0,.14);--text:#16161d;--muted:#5d5d68;--dim:#8a8a94;--accent:#3553c9}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+header{position:sticky;top:0;z-index:20;height:60px;display:flex;align-items:center;gap:16px;padding:0 20px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:600;letter-spacing:-.01em}.brand:hover{text-decoration:none}
+.brand img{width:22px;height:22px;border-radius:5px}.brand .tag{font:500 11px var(--mono);color:var(--muted);border:1px solid var(--line2);border-radius:6px;padding:1px 6px}
+.hsp{flex:1}
+.search{display:flex;align-items:center;gap:8px;width:min(320px,34vw);height:34px;padding:0 10px;border:1px solid var(--line2);border-radius:9px;background:var(--panel);color:var(--dim);font-size:13px}
+.search input{all:unset;flex:1;color:var(--text);min-width:0}.kbd{font:11px var(--mono);border:1px solid var(--line2);border-radius:5px;padding:0 5px}
+.hbtn{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border:1px solid var(--line2);border-radius:9px;background:var(--panel);color:var(--text);font-size:13px;cursor:pointer;white-space:nowrap}
+.hbtn:hover{border-color:var(--muted);text-decoration:none}.hbtn svg{width:16px;height:16px}
+.star{padding:0}.star>span{display:inline-flex;align-items:center;gap:7px;height:100%;padding:0 11px}.star .cnt{border-left:1px solid var(--line2);font-family:var(--mono);color:var(--muted)}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr) 220px;max-width:1380px;margin:0 auto}
+aside.nav{position:sticky;top:60px;height:calc(100vh - 60px);overflow:auto;padding:24px 14px 40px 20px;border-right:1px solid var(--line)}
+.nav h6{margin:18px 0 6px;font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.nav a{display:block;padding:5px 10px;border-radius:7px;color:var(--muted);font-size:14px}.nav a:hover{background:var(--panel2);color:var(--text);text-decoration:none}
+.nav a.on{background:var(--panel2);color:var(--text);box-shadow:inset 2px 0 0 var(--accent)}
+main{padding:40px 48px 120px;min-width:0}
+.toc{position:sticky;top:60px;height:calc(100vh - 60px);overflow:auto;padding:28px 20px;font-size:13px}
+.toc h6{margin:0 0 8px;font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.toc a{display:block;padding:3px 0;color:var(--muted)}.toc a.on{color:var(--text)}
+.crumb{font:12px var(--mono);color:var(--dim);margin-bottom:10px}
+h1{font-size:40px;line-height:1.1;letter-spacing:-.03em;margin:0 0 12px}
+h2{font-size:26px;letter-spacing:-.02em;margin:64px 0 12px;padding-top:12px;border-top:1px solid var(--line)}
+h3{font-size:17px;margin:32px 0 8px}
+p{color:var(--muted);margin:10px 0}p b,li b{color:var(--text)}
+.lede{font-size:17px;max-width:760px}
+code{font:13px var(--mono);background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:var(--text)}
+ul{color:var(--muted);padding-left:20px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.pill{font:12px var(--mono);border:1px solid var(--line2);border-radius:999px;padding:3px 10px;color:var(--muted)}
+.pill.ok{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 40%,transparent)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:22px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--panel);color:var(--text)}.card:hover{border-color:var(--line2);text-decoration:none}
+.card b{display:block;margin-bottom:4px}.card span{color:var(--muted);font-size:13.5px}
+.code{border:1px solid var(--line);border-radius:12px;background:var(--panel);margin:16px 0;overflow:hidden}
+.tabs{display:flex;align-items:center;gap:2px;padding:6px 6px 0;border-bottom:1px solid var(--line);background:var(--panel2);overflow-x:auto}
+.tab{all:unset;cursor:pointer;padding:7px 12px;font:12.5px var(--mono);color:var(--muted);border-radius:7px 7px 0 0;white-space:nowrap}
+.tab.on{color:var(--text);background:var(--panel);box-shadow:inset 0 -2px 0 var(--accent)}
+.fname{padding:8px 12px;font:12px var(--mono);color:var(--dim);border-bottom:1px solid var(--line);background:var(--panel2);display:flex}
+.copy{all:unset;cursor:pointer;margin-left:auto;font:12px var(--mono);color:var(--muted);padding:4px 9px;border:1px solid var(--line2);border-radius:6px}
+.tabs .copy{margin:0 4px 6px auto}.copy:hover{color:var(--text)}
+pre{margin:0;padding:16px 18px;overflow-x:auto;font:13px/1.6 var(--mono);color:var(--text)}pre[hidden]{display:none}
+.k{color:#c4a7ff}.s{color:#9ee6b8}.c{color:var(--dim)}.n{color:#ffcf8a}
+:root[data-theme="light"] .k{color:#7c3aed}:root[data-theme="light"] .s{color:#047857}:root[data-theme="light"] .n{color:#b45309}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 11.5px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--dim);background:var(--panel2)}tr:last-child td{border:0}td{color:var(--muted)}td code{white-space:nowrap}
+.call{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:12px 16px;background:var(--panel);margin:18px 0}.call p{margin:0}
+.call.warn{border-left-color:var(--warn)}
+.steps{counter-reset:s;list-style:none;padding:0}.steps>li{counter-increment:s;position:relative;padding:0 0 18px 42px}
+.steps>li:before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;font:12px var(--mono);color:var(--text)}
+footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--dim);font-size:13px}
+.menu{display:none}
+@media (max-width:1180px){.layout{grid-template-columns:230px minmax(0,1fr)}.toc{display:none}}
+@media (max-width:820px){.layout{grid-template-columns:1fr}aside.nav{display:none;position:fixed;inset:60px 0 0;background:var(--bg);z-index:15;border:0}aside.nav.open{display:block}
+main{padding:28px 16px 90px}h1{font-size:30px}.search{display:none}.menu{display:inline-flex}.hide-sm{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <button class="hbtn menu" id="menu" aria-label="Toggle navigation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a class="brand" href="/landing/index.html"><img src="/brand/vesper-mark.png" alt="">Vesper<span class="tag">MCP docs</span></a>
+  <div class="hsp"></div>
+  <label class="search"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" placeholder="Search docs…" aria-label="Search docs"><span class="kbd">/</span></label>
+  <a class="hbtn hide-sm" href="/app/">Open demo</a>
+  <button class="hbtn" id="theme" aria-label="Toggle theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
+  <a class="hbtn star" href="https://github.com/atharvavdeo/vesper-ai" target="_blank" rel="noopener" aria-label="Star Vesper on GitHub">
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9L12 3Z"/></svg>Star</span><span class="cnt" id="stars">—</span>
+  </a>
+</header>
+
+<div class="layout">
+<aside class="nav" id="nav">
+  <h6>Getting started</h6>
+  <a href="#introduction">Introduction</a>
+  <a href="#quickstart">Quickstart</a>
+  <a href="#connect">Connect a client</a>
+  <h6>Reference</h6>
+  <a href="#tools">Tools</a>
+  <a href="#protocol">Protocol</a>
+  <a href="#rest">REST API</a>
+  <a href="#auth">Authentication</a>
+  <a href="#errors">Errors</a>
+  <h6>Backends</h6>
+  <a href="#python">Python</a>
+  <a href="#typescript">TypeScript / Node</a>
+  <a href="#go">Go</a>
+  <a href="#curl">cURL</a>
+  <a href="#server">Add a tool (server)</a>
+  <h6>Operate</h6>
+  <a href="#self-host">Self-host</a>
+  <a href="#production">Production checklist</a>
+  <a href="#faq">FAQ</a>
+</aside>
+
+<main id="doc">
+  <div class="crumb">Docs / Getting started</div>
+  <h1 id="introduction">Vesper MCP server</h1>
+  <p class="lede">Give any AI agent a construction project's <b>verified site record</b> and <b>memory</b> — drawings with revisions, RFIs, permits, hold points, IS codes, 550 QA/QC templates and your PDFs. Vesper answers with citations, abstains when the evidence is weak, and refuses to log work that contradicts the latest drawing or an open permit.</p>
+  <div class="pills"><span class="pill ok">MCP 2025-06-18</span><span class="pill">Streamable HTTP</span><span class="pill">11 tools</span><span class="pill">Clerk JWT auth</span><span class="pill">Per-project scoping</span><span class="pill">Open source</span></div>
+  <div class="cards">
+    <a class="card" href="#quickstart"><b>Quickstart →</b><span>Run the server and call your first tool in two minutes.</span></a>
+    <a class="card" href="#connect"><b>Connect a client →</b><span>Claude Code, Claude Desktop, Cursor, VS Code.</span></a>
+    <a class="card" href="#tools"><b>Tools reference →</b><span>Inputs, outputs and safety annotations.</span></a>
+    <a class="card" href="#python"><b>Backends →</b><span>Copy-ready Python, TypeScript, Go and cURL.</span></a>
+  </div>
+  <div class="call"><p><b>Endpoint.</b> <code>POST {BASE_URL}/mcp</code> — JSON-RPC 2.0. The same tools are also plain REST at <code>GET /api/tools</code> and <code>POST /api/tools/{name}</code>. The public demo on this site is static; run the backend locally or on your own host to call tools.</p></div>
+
+  <h2 id="quickstart">Quickstart</h2>
+  <ol class="steps">
+    <li><b>Clone and start the backend</b>
+      <div class="code"><div class="fname">terminal<button class="copy">Copy</button></div><pre>git clone https://github.com/atharvavdeo/vesper-ai.git
+cd vesper-ai/backend
+python3 -m venv .venv &amp;&amp; .venv/bin/pip install -r requirements.txt
+ollama pull bge-m3
+.venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000</pre></div></li>
+    <li><b>List the tools</b>
+      <div class="code"><div class="fname">terminal<button class="copy">Copy</button></div><pre>curl -s http://127.0.0.1:8000/mcp -H <span class="s">'Content-Type: application/json'</span> \
+  -d <span class="s">'{"jsonrpc":"2.0","id":1,"method":"tools/list"}'</span></pre></div></li>
+    <li><b>Ask the Nashik project a question</b>
+      <div class="code"><div class="fname">terminal<button class="copy">Copy</button></div><pre>curl -s http://127.0.0.1:8000/mcp -H <span class="s">'Content-Type: application/json'</span> -d <span class="s">'{
+  "jsonrpc":"2.0","id":2,"method":"tools/call",
+  "params":{"name":"ask_memory","arguments":{"query":"Who is the structural consultant?","projectId":"NSK"}}}'</span></pre></div>
+      <p>→ <i>“The structural consultant is Sthapatya Structural Engineers – Dr. V. N. Rao …”</i> with citations.</p></li>
+  </ol>
+
+  <h2 id="connect">Connect a client</h2>
+  <div class="code" data-tabs>
+    <div class="tabs"><button class="tab on">Claude Code</button><button class="tab">Claude Desktop</button><button class="tab">Cursor</button><button class="tab">VS Code</button><button class="copy">Copy</button></div>
+<pre>claude mcp add --transport http vesper http://127.0.0.1:8000/mcp</pre>
+<pre hidden>{
+  <span class="s">"mcpServers"</span>: {
+    <span class="s">"vesper"</span>: { <span class="s">"type"</span>: <span class="s">"http"</span>, <span class="s">"url"</span>: <span class="s">"http://127.0.0.1:8000/mcp"</span> }
+  }
+}</pre>
+<pre hidden><span class="c">// ~/.cursor/mcp.json</span>
+{
+  <span class="s">"mcpServers"</span>: {
+    <span class="s">"vesper"</span>: { <span class="s">"url"</span>: <span class="s">"http://127.0.0.1:8000/mcp"</span>, <span class="s">"headers"</span>: { <span class="s">"Authorization"</span>: <span class="s">"Bearer ${VESPER_TOKEN}"</span> } }
+  }
+}</pre>
+<pre hidden><span class="c">// .vscode/mcp.json</span>
+{
+  <span class="s">"servers"</span>: {
+    <span class="s">"vesper"</span>: { <span class="s">"type"</span>: <span class="s">"http"</span>, <span class="s">"url"</span>: <span class="s">"http://127.0.0.1:8000/mcp"</span> }
+  }
+}</pre>
+  </div>
+  <p>Replace the URL with your deployed backend. In production add <code>Authorization: Bearer &lt;Clerk JWT&gt;</code>.</p>
+
+  <h2 id="tools">Tools</h2>
+  <p>Call <code>list_projects</code> first, then pass <code>projectId</code> to every project tool. Seeded projects: <code>P1</code> (Pithoragarh District Hospital) and <code>NSK</code> (Nashik Civil Hospital).</p>
+  <div class="tbl"><table>
+    <tr><th>Tool</th><th>Arguments</th><th>Returns</th><th>Read-only</th></tr>
+    <tr><td><code>list_projects</code></td><td>—</td><td>Projects the caller can access, with role</td><td>yes</td></tr>
+    <tr><td><code>project_overview</code></td><td><code>projectId</code></td><td>KPIs, blockers, recent activity</td><td>yes</td></tr>
+    <tr><td><code>search_memory</code></td><td><code>query</code>, <code>projectId?</code>, <code>k?</code> 1–20</td><td>Ranked passages with scores, citations, timings</td><td>yes</td></tr>
+    <tr><td><code>ask_memory</code></td><td><code>query</code>, <code>projectId?</code></td><td>Short grounded answer + citations, or <code>abstain: true</code></td><td>yes</td></tr>
+    <tr><td><code>list_drawings</code></td><td><code>projectId</code></td><td>Every revision, status, latest For Construction</td><td>yes</td></tr>
+    <tr><td><code>list_rfis</code></td><td><code>projectId</code></td><td>RFIs with status and responses</td><td>yes</td></tr>
+    <tr><td><code>list_permits</code></td><td><code>projectId</code></td><td>Permits, mandatory checks, blocking state</td><td>yes</td></tr>
+    <tr><td><code>list_observations</code></td><td><code>projectId</code></td><td>Logged observations, newest first</td><td>yes</td></tr>
+    <tr><td><code>get_observation</code></td><td><code>projectId</code>, <code>id</code></td><td>One observation with evidence trail</td><td>yes</td></tr>
+    <tr><td><code>memory_graph</code></td><td><code>projectId</code>, <code>q?</code>, <code>limit?</code></td><td>Knowledge-graph nodes and edges</td><td>yes</td></tr>
+    <tr><td><code>check_site_statement</code></td><td><code>projectId</code>, <code>text</code>, <code>sessionId?</code>, <code>language?</code></td><td>Engine verdict (<code>state</code>, spoken <code>reply</code>, contradictions) + <code>sessionId</code></td><td><b>no</b></td></tr>
+  </table></div>
+  <h3>check_site_statement</h3>
+  <p>Runs an English or Hinglish site statement through the deterministic contradiction engine: superseded revisions, tolerance breaches, unmet permit checks and unreleased hold points. Pass <code>sessionId</code> back for follow-ups and corrections. It may create a pending observation when the user confirms, so it is annotated <code>readOnlyHint: false</code>.</p>
+  <div class="code"><div class="fname">result (abridged)<button class="copy">Copy</button></div><pre>{
+  <span class="s">"sessionId"</span>: <span class="s">"VS-1a0a7062e0d-5e630a"</span>,
+  <span class="s">"state"</span>: <span class="s">"blocked"</span>,
+  <span class="s">"reply"</span>: { <span class="s">"text"</span>: <span class="s">"Logging the observation is not allowed yet. At Zone C, Level 4, the hot work permit HWP-2031 has mandatory checks still pending: Fire watcher assigned …"</span> }
+}</pre></div>
+
+  <h2 id="protocol">Protocol</h2>
+  <p>Protocol version <code>2025-06-18</code> over Streamable HTTP with single JSON responses (no SSE stream, no batching).</p>
+  <div class="tbl"><table>
+    <tr><th>Method</th><th>Result</th></tr>
+    <tr><td><code>initialize</code></td><td><code>protocolVersion</code>, <code>serverInfo</code>, <code>capabilities.tools</code>, <code>instructions</code></td></tr>
+    <tr><td><code>notifications/initialized</code></td><td><code>202 Accepted</code> (any message without <code>id</code>)</td></tr>
+    <tr><td><code>ping</code></td><td><code>{}</code></td></tr>
+    <tr><td><code>tools/list</code></td><td><code>{ tools: [...] }</code> with JSON Schema <code>inputSchema</code> and annotations</td></tr>
+    <tr><td><code>tools/call</code></td><td><code>{ content: [{type:"text", text}], structuredContent, isError }</code></td></tr>
+  </table></div>
+
+  <h2 id="rest">REST API</h2>
+  <p>Same tools without JSON-RPC — handy for webhooks, n8n, LangChain or any HTTP client.</p>
+  <div class="code"><div class="fname">terminal<button class="copy">Copy</button></div><pre><span class="c"># manifest</span>
+curl -s http://127.0.0.1:8000/api/tools
+
+<span class="c"># call a tool</span>
+curl -s http://127.0.0.1:8000/api/tools/list_permits -H <span class="s">'Content-Type: application/json'</span> -d <span class="s">'{"projectId":"NSK"}'</span>
+<span class="c"># → {"ok": true, "tool": "list_permits", "result": [...]}</span></pre></div>
+
+  <h2 id="auth">Authentication</h2>
+  <div class="tbl"><table>
+    <tr><th>Mode</th><th>When</th><th>Send</th></tr>
+    <tr><td>Local dev</td><td><code>CLERK_JWT_ISSUER</code> empty</td><td>Nothing, or <code>X-Vesper-User</code> / <code>X-Vesper-Org</code> / <code>X-Vesper-Role</code></td></tr>
+    <tr><td>Production</td><td><code>CLERK_JWT_ISSUER</code> set</td><td><code>Authorization: Bearer &lt;Clerk session JWT&gt;</code></td></tr>
+  </table></div>
+  <div class="call"><p><b>Isolation.</b> The org is always read from the verified project row, never from tool arguments. A caller outside the org gets <code>404 project not found</code> — it cannot probe other tenants by guessing ids.</p></div>
+
+  <h2 id="errors">Errors</h2>
+  <div class="tbl"><table>
+    <tr><th>Case</th><th>Response</th></tr>
+    <tr><td>Unknown method</td><td>JSON-RPC error <code>-32601</code></td></tr>
+    <tr><td>Unknown tool</td><td>JSON-RPC error <code>-32602</code></td></tr>
+    <tr><td>Malformed JSON</td><td><code>-32700</code>, HTTP 400</td></tr>
+    <tr><td>Tool failure (401, 403, 404, 422)</td><td><code>isError: true</code>, text <code>"404: project not found"</code></td></tr>
+  </table></div>
+
+  <h2 id="python">Python</h2>
+  <div class="code" data-tabs>
+    <div class="tabs"><button class="tab on">MCP SDK</button><button class="tab">httpx (no SDK)</button><button class="tab">OpenAI Agents</button><button class="copy">Copy</button></div>
+<pre><span class="c"># pip install mcp</span>
+<span class="k">import</span> asyncio, os
+<span class="k">from</span> mcp <span class="k">import</span> ClientSession
+<span class="k">from</span> mcp.client.streamable_http <span class="k">import</span> streamablehttp_client
+
+URL = os.getenv(<span class="s">"VESPER_MCP_URL"</span>, <span class="s">"http://127.0.0.1:8000/mcp"</span>)
+HEADERS = {<span class="s">"Authorization"</span>: <span class="s">f"Bearer {os.environ['VESPER_TOKEN']}"</span>} <span class="k">if</span> os.getenv(<span class="s">"VESPER_TOKEN"</span>) <span class="k">else</span> {}
+
+<span class="k">async def</span> main():
+    <span class="k">async with</span> streamablehttp_client(URL, headers=HEADERS) <span class="k">as</span> (read, write, _):
+        <span class="k">async with</span> ClientSession(read, write) <span class="k">as</span> s:
+            <span class="k">await</span> s.initialize()
+            tools = <span class="k">await</span> s.list_tools()
+            print([t.name <span class="k">for</span> t <span class="k">in</span> tools.tools])
+            r = <span class="k">await</span> s.call_tool(<span class="s">"ask_memory"</span>, {<span class="s">"query"</span>: <span class="s">"Which permits are blocking work today?"</span>, <span class="s">"projectId"</span>: <span class="s">"NSK"</span>})
+            print(r.structuredContent[<span class="s">"answer"</span>])
+
+asyncio.run(main())</pre>
+<pre hidden><span class="c"># pip install httpx</span>
+<span class="k">import</span> itertools, os, httpx
+
+<span class="k">class</span> Vesper:
+    <span class="k">def</span> __init__(self, url=<span class="s">"http://127.0.0.1:8000/mcp"</span>, token=os.getenv(<span class="s">"VESPER_TOKEN"</span>)):
+        self.url, self.ids = url, itertools.count(1)
+        self.http = httpx.Client(timeout=180, headers={<span class="s">"Authorization"</span>: <span class="s">f"Bearer {token}"</span>} <span class="k">if</span> token <span class="k">else</span> {})
+
+    <span class="k">def</span> rpc(self, method, params=None):
+        r = self.http.post(self.url, json={<span class="s">"jsonrpc"</span>: <span class="s">"2.0"</span>, <span class="s">"id"</span>: next(self.ids), <span class="s">"method"</span>: method, <span class="s">"params"</span>: params <span class="k">or</span> {}})
+        body = r.json()
+        <span class="k">if</span> <span class="s">"error"</span> <span class="k">in</span> body: <span class="k">raise</span> RuntimeError(body[<span class="s">"error"</span>])
+        <span class="k">return</span> body[<span class="s">"result"</span>]
+
+    <span class="k">def</span> call(self, name, **args):
+        res = self.rpc(<span class="s">"tools/call"</span>, {<span class="s">"name"</span>: name, <span class="s">"arguments"</span>: args})
+        <span class="k">if</span> res[<span class="s">"isError"</span>]: <span class="k">raise</span> RuntimeError(res[<span class="s">"content"</span>][<span class="n">0</span>][<span class="s">"text"</span>])
+        <span class="k">return</span> res[<span class="s">"structuredContent"</span>]
+
+v = Vesper()
+v.rpc(<span class="s">"initialize"</span>)
+print(v.call(<span class="s">"ask_memory"</span>, query=<span class="s">"Who is the structural consultant?"</span>, projectId=<span class="s">"NSK"</span>)[<span class="s">"answer"</span>])
+verdict = v.call(<span class="s">"check_site_statement"</span>, projectId=<span class="s">"NSK"</span>, text=<span class="s">"Sump ki excavation restart karo"</span>)
+print(verdict[<span class="s">"state"</span>], verdict[<span class="s">"reply"</span>][<span class="s">"text"</span>])</pre>
+<pre hidden><span class="c"># pip install openai-agents</span>
+<span class="k">import</span> asyncio
+<span class="k">from</span> agents <span class="k">import</span> Agent, Runner
+<span class="k">from</span> agents.mcp <span class="k">import</span> MCPServerStreamableHttp
+
+<span class="k">async def</span> main():
+    <span class="k">async with</span> MCPServerStreamableHttp(url=<span class="s">"http://127.0.0.1:8000/mcp"</span>) <span class="k">as</span> vesper:
+        agent = Agent(name=<span class="s">"Site QA"</span>, mcp_servers=[vesper],
+                      instructions=<span class="s">"Answer only from Vesper tools. Always pass projectId."</span>)
+        out = <span class="k">await</span> Runner.run(agent, <span class="s">"What blocks the L3 OT slab pour on project NSK?"</span>)
+        print(out.final_output)
+
+asyncio.run(main())</pre>
+  </div>
+
+  <h2 id="typescript">TypeScript / Node</h2>
+  <div class="code" data-tabs>
+    <div class="tabs"><button class="tab on">MCP SDK</button><button class="tab">fetch (no SDK)</button><button class="copy">Copy</button></div>
+<pre><span class="c">// npm i @modelcontextprotocol/sdk</span>
+<span class="k">import</span> { Client } <span class="k">from</span> <span class="s">"@modelcontextprotocol/sdk/client/index.js"</span>;
+<span class="k">import</span> { StreamableHTTPClientTransport } <span class="k">from</span> <span class="s">"@modelcontextprotocol/sdk/client/streamableHttp.js"</span>;
+
+<span class="k">const</span> transport = <span class="k">new</span> StreamableHTTPClientTransport(<span class="k">new</span> URL(process.env.VESPER_MCP_URL ?? <span class="s">"http://127.0.0.1:8000/mcp"</span>), {
+  requestInit: { headers: process.env.VESPER_TOKEN ? { Authorization: <span class="s">`Bearer ${process.env.VESPER_TOKEN}`</span> } : {} },
+});
+<span class="k">const</span> client = <span class="k">new</span> Client({ name: <span class="s">"my-app"</span>, version: <span class="s">"1.0.0"</span> });
+<span class="k">await</span> client.connect(transport);
+
+<span class="k">const</span> { tools } = <span class="k">await</span> client.listTools();
+console.log(tools.map((t) =&gt; t.name));
+
+<span class="k">const</span> res = <span class="k">await</span> client.callTool({ name: <span class="s">"list_permits"</span>, arguments: { projectId: <span class="s">"NSK"</span> } });
+console.log(res.structuredContent);</pre>
+<pre hidden><span class="k">const</span> URL_ = process.env.VESPER_MCP_URL ?? <span class="s">"http://127.0.0.1:8000/mcp"</span>;
+<span class="k">let</span> id = <span class="n">0</span>;
+
+<span class="k">export async function</span> vesper&lt;T = unknown&gt;(name: string, args: Record&lt;string, unknown&gt; = {}): Promise&lt;T&gt; {
+  <span class="k">const</span> r = <span class="k">await</span> fetch(URL_, {
+    method: <span class="s">"POST"</span>,
+    headers: { <span class="s">"Content-Type"</span>: <span class="s">"application/json"</span>, ...(process.env.VESPER_TOKEN ? { Authorization: <span class="s">`Bearer ${process.env.VESPER_TOKEN}`</span> } : {}) },
+    body: JSON.stringify({ jsonrpc: <span class="s">"2.0"</span>, id: ++id, method: <span class="s">"tools/call"</span>, params: { name, arguments: args } }),
+  });
+  <span class="k">const</span> body = <span class="k">await</span> r.json();
+  <span class="k">if</span> (body.error) <span class="k">throw new</span> Error(body.error.message);
+  <span class="k">if</span> (body.result.isError) <span class="k">throw new</span> Error(body.result.content[<span class="n">0</span>].text);
+  <span class="k">return</span> body.result.structuredContent <span class="k">as</span> T;
+}
+
+<span class="k">const</span> a = <span class="k">await</span> vesper&lt;{ answer: string; abstain: boolean }&gt;(<span class="s">"ask_memory"</span>, { query: <span class="s">"Who is the structural consultant?"</span>, projectId: <span class="s">"NSK"</span> });
+console.log(a.abstain ? <span class="s">"not in the record"</span> : a.answer);</pre>
+  </div>
+
+  <h2 id="go">Go</h2>
+  <div class="code"><div class="fname">main.go<button class="copy">Copy</button></div><pre><span class="k">package</span> main
+
+<span class="k">import</span> (
+	<span class="s">"bytes"</span>
+	<span class="s">"encoding/json"</span>
+	<span class="s">"fmt"</span>
+	<span class="s">"net/http"</span>
+	<span class="s">"os"</span>
+)
+
+<span class="k">func</span> call(name <span class="k">string</span>, args <span class="k">map</span>[<span class="k">string</span>]any) (<span class="k">map</span>[<span class="k">string</span>]any, <span class="k">error</span>) {
+	body, _ := json.Marshal(<span class="k">map</span>[<span class="k">string</span>]any{<span class="s">"jsonrpc"</span>: <span class="s">"2.0"</span>, <span class="s">"id"</span>: <span class="n">1</span>, <span class="s">"method"</span>: <span class="s">"tools/call"</span>,
+		<span class="s">"params"</span>: <span class="k">map</span>[<span class="k">string</span>]any{<span class="s">"name"</span>: name, <span class="s">"arguments"</span>: args}})
+	req, _ := http.NewRequest(<span class="s">"POST"</span>, <span class="s">"http://127.0.0.1:8000/mcp"</span>, bytes.NewReader(body))
+	req.Header.Set(<span class="s">"Content-Type"</span>, <span class="s">"application/json"</span>)
+	<span class="k">if</span> t := os.Getenv(<span class="s">"VESPER_TOKEN"</span>); t != <span class="s">""</span> {
+		req.Header.Set(<span class="s">"Authorization"</span>, <span class="s">"Bearer "</span>+t)
+	}
+	resp, err := http.DefaultClient.Do(req)
+	<span class="k">if</span> err != <span class="k">nil</span> {
+		<span class="k">return nil</span>, err
+	}
+	<span class="k">defer</span> resp.Body.Close()
+	<span class="k">var</span> out <span class="k">struct</span> {
+		Result <span class="k">struct</span> {
+			StructuredContent <span class="k">map</span>[<span class="k">string</span>]any <span class="s">`json:"structuredContent"`</span>
+			IsError           <span class="k">bool</span>           <span class="s">`json:"isError"`</span>
+		} <span class="s">`json:"result"`</span>
+	}
+	<span class="k">return</span> out.Result.StructuredContent, json.NewDecoder(resp.Body).Decode(&amp;out)
+}
+
+<span class="k">func</span> main() {
+	r, err := call(<span class="s">"ask_memory"</span>, <span class="k">map</span>[<span class="k">string</span>]any{<span class="s">"query"</span>: <span class="s">"What cover does IS 456 require for columns?"</span>, <span class="s">"projectId"</span>: <span class="s">"P1"</span>})
+	fmt.Println(r[<span class="s">"answer"</span>], err)
+}</pre></div>
+
+  <h2 id="curl">cURL</h2>
+  <div class="code" data-tabs>
+    <div class="tabs"><button class="tab on">initialize</button><button class="tab">tools/call</button><button class="tab">REST</button><button class="copy">Copy</button></div>
+<pre>curl -s $VESPER_MCP_URL -H <span class="s">'Content-Type: application/json'</span> -H <span class="s">"Authorization: Bearer $VESPER_TOKEN"</span> \
+  -d <span class="s">'{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}'</span></pre>
+<pre hidden>curl -s $VESPER_MCP_URL -H <span class="s">'Content-Type: application/json'</span> -H <span class="s">"Authorization: Bearer $VESPER_TOKEN"</span> -d <span class="s">'{
+  "jsonrpc":"2.0","id":2,"method":"tools/call",
+  "params":{"name":"check_site_statement","arguments":{"projectId":"NSK","text":"Level 3 OT slab ka concrete pour start karte hain"}}}'</span></pre>
+<pre hidden>curl -s http://127.0.0.1:8000/api/tools/search_memory -H <span class="s">'Content-Type: application/json'</span> \
+  -d <span class="s">'{"query":"IS 456 clause 26.4 cover","projectId":"P1","k":5}'</span></pre>
+  </div>
+
+  <h2 id="server">Add a tool (server side)</h2>
+  <p>Tools live in <code>backend/routes/tools.py</code>. Each is a JSON Schema entry plus a branch in <code>run_tool()</code> that calls an existing REST endpoint, so auth and scoping come for free.</p>
+  <div class="code"><div class="fname">backend/routes/tools.py<button class="copy">Copy</button></div><pre>TOOLS.append({
+    <span class="s">"name"</span>: <span class="s">"list_submittals"</span>,
+    <span class="s">"title"</span>: <span class="s">"List submittals"</span>,
+    <span class="s">"description"</span>: <span class="s">"Submittals with review status and spec references."</span>,
+    <span class="s">"inputSchema"</span>: {<span class="s">"type"</span>: <span class="s">"object"</span>, <span class="s">"properties"</span>: {<span class="s">"projectId"</span>: _PID}, <span class="s">"required"</span>: [<span class="s">"projectId"</span>]},
+    <span class="s">"annotations"</span>: _RO,
+})
+_BY_NAME[<span class="s">"list_submittals"</span>] = TOOLS[-<span class="n">1</span>]
+
+<span class="c"># in run_tool():</span>
+<span class="k">if</span> name == <span class="s">"list_submittals"</span>:
+    <span class="k">return await</span> _call(request, <span class="s">"GET"</span>, <span class="s">"/api/submittals"</span>, params={<span class="s">"projectId"</span>: pid})</pre></div>
+  <p>Need SSE or batching? Wrap <code>run_tool()</code> with the official <code>mcp</code> Python SDK (<code>FastMCP</code>); names, schemas and handlers stay the same.</p>
+
+  <h2 id="self-host">Self-host</h2>
+  <div class="tbl"><table>
+    <tr><th>Service</th><th>Port</th><th>Needed for</th></tr>
+    <tr><td>FastAPI backend (<code>backend/</code>)</td><td>8000</td><td>MCP, REST, engine, memory</td></tr>
+    <tr><td>Ollama <code>bge-m3</code></td><td>11434</td><td>Query embeddings</td></tr>
+    <tr><td>Next.js dashboard (<code>app/</code>)</td><td>3000</td><td>Optional UI</td></tr>
+    <tr><td>LiveKit agent (<code>agent/</code>)</td><td>—</td><td>Optional voice</td></tr>
+  </table></div>
+  <div class="code"><div class="fname">backend/.env.local<button class="copy">Copy</button></div><pre>GROQ_API_KEY=            <span class="c"># answer phrasing (Cerebras fallback: CEREBRAS_API_KEY)</span>
+CLERK_JWT_ISSUER=        <span class="c"># empty = local header auth; set in production</span>
+MEMORY_COGNEE_ENABLED=1  <span class="c"># knowledge graph (optional)</span></pre></div>
+
+  <h2 id="production">Production checklist</h2>
+  <ol class="steps">
+    <li><b>Deploy the backend behind HTTPS</b> — Fly.io, Render, Railway or a VPS. The Cloudflare site is static and has no <code>/mcp</code>.</li>
+    <li><b>Set <code>CLERK_JWT_ISSUER</code></b> so every call needs a Clerk JWT; front it with an OAuth 2.1 proxy for MCP-spec authorization if clients need it.</li>
+    <li><b>Allow your client origins in CORS</b> for browser-based agents.</li>
+    <li><b>Rate-limit <code>/mcp</code> and <code>/api/tools/*</code></b> — reranking is the main cost (~0.4 s per uncached search).</li>
+    <li><b>Smoke test</b> with <code>tools/list</code> and one <code>ask_memory</code> call, then register the public URL in your client or an MCP directory.</li>
+  </ol>
+
+  <h2 id="faq">FAQ</h2>
+  <h3>Does Vesper hallucinate answers?</h3>
+  <p>Answers are built only from retrieved passages. If the reranked evidence is weak, <code>ask_memory</code> returns <code>abstain: true</code>, and sentences quoting numbers absent from the sources are removed.</p>
+  <h3>Can an agent write bad data?</h3>
+  <p>Only <code>check_site_statement</code> can lead to a write, and the deterministic engine blocks logs that contradict the latest drawing revision, tolerances, open permits or hold points.</p>
+  <h3>Which languages are supported?</h3>
+  <p>English, Hindi and Hinglish statements; answers are returned in English with citations.</p>
+
+  <footer><span>Vesper.ai · MIT-style open source</span><span><a href="https://github.com/atharvavdeo/vesper-ai" target="_blank" rel="noopener">GitHub</a> · <a href="/landing/index.html">Home</a> · <a href="/app/">Demo</a></span></footer>
+</main>
+
+<nav class="toc" aria-label="On this page"><h6>On this page</h6><div id="toc"></div></nav>
+</div>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  try { const t = localStorage.getItem("vesper-docs-theme"); if (t) root.dataset.theme = t; } catch {}
+  document.getElementById("theme").onclick = () => {
+    root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
+    try { localStorage.setItem("vesper-docs-theme", root.dataset.theme); } catch {}
+  };
+  document.getElementById("menu").onclick = () => document.getElementById("nav").classList.toggle("open");
+  document.querySelectorAll("#nav a").forEach(a => a.addEventListener("click", () => document.getElementById("nav").classList.remove("open")));
+
+  // tabs
+  document.querySelectorAll("[data-tabs]").forEach(box => {
+    const tabs = [...box.querySelectorAll(".tab")], panes = [...box.querySelectorAll("pre")];
+    tabs.forEach((t, i) => t.onclick = () => { tabs.forEach((x, j) => x.classList.toggle("on", i === j)); panes.forEach((p, j) => p.hidden = i !== j); });
+  });
+  // copy
+  document.querySelectorAll(".copy").forEach(b => b.onclick = async () => {
+    const box = b.closest(".code"), pre = [...box.querySelectorAll("pre")].find(p => !p.hidden);
+    try { await navigator.clipboard.writeText(pre.innerText); b.textContent = "Copied"; } catch { b.textContent = "Select + ⌘C"; }
+    setTimeout(() => b.textContent = "Copy", 1400);
+  });
+
+  // right-hand TOC + scroll spy
+  const heads = [...document.querySelectorAll("main h1[id], main h2[id]")];
+  document.getElementById("toc").innerHTML = heads.map(h => `<a href="#${h.id}">${h.textContent}</a>`).join("");
+  const links = id => document.querySelectorAll(`a[href="#${id}"]`);
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    document.querySelectorAll(".on[href^='#']").forEach(a => a.classList.remove("on"));
+    links(e.target.id).forEach(a => a.classList.add("on"));
+  }), { rootMargin: "-70px 0px -70% 0px" });
+  heads.forEach(h => spy.observe(h));
+
+  // search: filter sections by text
+  const q = document.getElementById("q");
+  document.addEventListener("keydown", e => { if (e.key === "/" && document.activeElement !== q) { e.preventDefault(); q.focus(); } });
+  q.addEventListener("keydown", e => {
+    if (e.key !== "Enter") return;
+    const term = q.value.trim().toLowerCase(); if (!term) return;
+    const hit = [...document.querySelectorAll("main h2, main h3, main p, main td")].find(el => el.textContent.toLowerCase().includes(term));
+    if (hit) { hit.scrollIntoView({ block: "center" }); hit.animate([{ background: "rgba(186,208,255,.25)" }, { background: "transparent" }], { duration: 1600 }); }
+  });
+
+  // GitHub stars
+  fetch("https://api.github.com/repos/atharvavdeo/vesper-ai").then(r => r.ok ? r.json() : null)
+    .then(d => { if (d && typeof d.stargazers_count === "number") document.getElementById("stars").textContent = d.stargazers_count.toLocaleString(); })
+    .catch(() => {});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+[
+  {
+    "item": "open_rfis",
+    "variant": "raw",
+    "first_audio_ms": null,
+    "total_ms": 25001,
+    "error": "TimeoutError",
+    "chars": 231,
+    "clip": null,
+    "text": "Open RFIs: RFI-049, Plumbing sleeve clash with beam at Zone B; RFI-050, Electrical conduit density in L4 slab near core; RFI-055, Staircase waist slab thickness at mid-landing L3\u2013L4; RFI-061, OPD block monsoon concrete-pour access."
+  },
+  {
+    "item": "open_rfis",
+    "variant": "speakable",
+    "first_audio_ms": 1165,
+    "total_ms": 3214,
+    "error": null,
+    "chars": 234,
+    "clip": "open_rfis.speakable.mp3",
+    "text": "Open RFIs: RFI-049, Plumbing sleeve clash with beam at Zone B. RFI-050, Electrical conduit density in L4 slab near core. RFI-055, Staircase waist slab thickness at mid-landing L3 to L4. RFI-061, OPD block monsoon concrete-pour access."
+  },
+  {
+    "item": "cover_answer",
+    "variant": "raw",
+    "first_audio_ms": 852,
+    "total_ms": 1563,
+    "error": null,
+    "chars": 159,
+    "clip": "cover_answer.raw.mp3",
+    "text": "At E-1, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August (IS 456 Cl. 26.4). Open RFI-061 (OPD block monsoon concrete-pour access)."
+  },
+  {
+    "item": "cover_answer",
+    "variant": "speakable",
+    "first_audio_ms": 389,
+    "total_ms": 1118,
+    "error": null,
+    "chars": 157,
+    "clip": "cover_answer.speakable.mp3",
+    "text": "At E-1, Level 1: column cover is 40 mm plus or minus 5, per A-201 R1 issued 26 August, IS 456 Cl. 26.4. Open RFI-061, OPD block monsoon concrete-pour access."
+  },
+  {
+    "item": "challenge",
+    "variant": "raw",
+    "first_audio_ms": 332,
+    "total_ms": 782,
+    "error": null,
+    "chars": 177,
+    "clip": "challenge.raw.mp3",
+    "text": "You reported cover at E-1, Level 1 as 30 mm, but A-201 R1 shows 40 mm, with a tolerance of plus or minus 5. Would you like to log the observation, raise an RFI, or raise an NCR?"
+  },
+  {
+    "item": "challenge",
+    "variant": "speakable",
+    "first_audio_ms": 330,
+    "total_ms": 750,
+    "error": null,
+    "chars": 177,
+    "clip": "challenge.speakable.mp3",
+    "text": "You reported cover at E-1, Level 1 as 30 mm, but A-201 R1 shows 40 mm, with a tolerance of plus or minus 5. Would you like to log the observation, raise an RFI, or raise an NCR?"
+  }
+]

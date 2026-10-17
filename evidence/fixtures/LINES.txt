@@ -1,0 +1,11 @@
+enroll_1	Samantha	Morning. I am checking the O P D block columns before the rain comes in.
+enroll_2	Samantha	The retaining wall shuttering on the ambulance road looks straight today.
+enroll_3	Samantha	Please keep the pre pour inspection notes for the level four slab ready.
+q_cover_e1	Samantha	What is the cover at E one?
+q_rfis	Samantha	Any open R F I s?
+q_cover_e2	Samantha	What is the cover at E two?
+obs_e1_30	Samantha	E one column cover measured thirty millimetres.
+barge_e2_38	Samantha	Wait, not E one. E two. Cover is thirty eight millimetres.
+log_it_manager	Samantha	Okay, log that observation.
+log_it_intruder	Daniel	Okay, log that observation.
+q_cover_e1_drill5db	Samantha+drill	q_cover_e1 mixed with synthetic drill at 5 dB SNR

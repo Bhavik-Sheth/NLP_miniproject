@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "app",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "/Users/atharvadeo/Documents/VoiceAgent/app", "run", "dev", "--", "--port", "3100"],
+      "port": 3100
+    },
+    {
+      "name": "static-demo",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8090", "--directory", "/Users/atharvadeo/Documents/VoiceAgent/app/.next-static"],
+      "port": 8090
+    }
+  ]
+}

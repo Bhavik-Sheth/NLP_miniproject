@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vesper.ai — Voice-Led Operational Memory Presentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&family=Instrument+Serif:ital@1&display=swap">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeVariables: {
+        darkMode: true,
+        background: '#040508',
+        mainBkg: '#0b0d12',
+        nodeBorder: '#30363d',
+        clusterBkg: '#06070a',
+        clusterBorder: '#21262d',
+        defaultLinkColor: '#8fb3ff',
+        titleColor: '#f0f6fc',
+        edgeLabelBackground: '#0b0d12',
+        fontFamily: 'Inter, system-ui, sans-serif',
+        fontSize: '11px'
+      },
+      flowchart: {
+        useMaxWidth: false,
+        htmlLabels: true,
+        curve: 'basis',
+        nodeSpacing: 40,
+        rankSpacing: 38
+      }
+    });
+
+    function fitMermaid() {
+      document.querySelectorAll('.mermaid svg').forEach(function (svg) {
+        svg.style.maxHeight = '96%';
+        svg.style.maxWidth = '98%';
+        svg.style.height = 'auto';
+        svg.style.width = 'auto';
+        svg.removeAttribute('height');
+        svg.removeAttribute('width');
+      });
+    }
+    window.addEventListener('load', function () {
+      setTimeout(fitMermaid, 150);
+      setTimeout(fitMermaid, 400);
+      setTimeout(fitMermaid, 1000);
+    });
+    window.addEventListener('resize', fitMermaid);
+  </script>
+  <style>
+    /* ==========================================================================
+       Professional PPT Slide Deck Styling (Clean Executive Pitch Deck)
+       Pure Black #000000, Inter + Instrument Serif Italic accents
+       No distracting RGB dots, no internal dev citations.
+       ========================================================================== */
+    :root {
+      --bg: #000000;
+      --card-bg: rgba(255, 255, 255, 0.035);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text: #ffffff;
+      --text-muted: #9e9e9e;
+      --text-sub: #c8c8c8;
+      --accent: #8fb3ff;
+      --border-line: rgba(255, 255, 255, 0.12);
+      --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: #000000 !important;
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      line-height: 1.4;
+    }
+
+    /* Subtle Film Grain */
+    .grain {
+      position: fixed;
+      inset: -60%;
+      z-index: 100;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 220px 220px;
+    }
+
+    /* Elegant Serif Accent */
+    .serif-italic {
+      font-family: "Instrument Serif", "Times New Roman", Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      color: #ffffff;
+      padding: 0 2px;
+    }
+
+    /* Top Action Bar (Hidden on Print) */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 120;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+      background: rgba(0, 0, 0, 0.9);
+      border-bottom: 1px solid var(--border-line);
+      backdrop-filter: blur(12px);
+    }
+
+    .top-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14.5px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .top-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      background: #ffffff;
+      color: #000000;
+      font-size: 12.5px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .top-btn:hover { background: #e0e0e0; }
+
+    /* PPT Deck Canvas */
+    .deck-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 24px 20px 80px 20px;
+    }
+
+    /* 16:9 Widescreen Slide */
+    .slide {
+      width: 1440px;
+      height: 810px;
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000000;
+      border: 1px solid var(--border-line);
+      border-radius: 12px;
+      padding: 32px 42px 24px 42px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.04);
+      page-break-after: always;
+      break-after: page;
+    }
+
+    /* Slide Header */
+    .slide-header {
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-line);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .slide-cat-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+
+    .slide-category {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .slide-meta-badge {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      border: 1px solid var(--card-border);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .slide-title {
+      font-size: 27px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .slide-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* Slide 1: Unified Elevator Pitch Opening */
+    .elevator-pitch-box {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid var(--card-border);
+      border-left: 3.5px solid #8fb3ff;
+      border-radius: 0 8px 8px 0;
+      padding: 13px 22px;
+      margin-bottom: 12px;
+    }
+
+    .pitch-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8fb3ff;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .elevator-pitch-text {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: #d1d5db;
+    }
+
+    .elevator-pitch-text strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .elevator-pitch-text em {
+      color: #bae6fd;
+      font-style: italic;
+    }
+
+    /* Slide 1 Middle 2-Col Grid */
+    .slide1-mid-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    /* Problems Faced & How We Solved Them */
+    .ps-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .ps-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      padding: 6px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .ps-problem {
+      font-size: 11.5px;
+      color: #fca5a5;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      line-height: 1.34;
+    }
+
+    .ps-problem strong {
+      color: #f87171;
+      font-weight: 600;
+    }
+
+    .ps-solution {
+      font-size: 11.5px;
+      color: #cbd5e1;
+      line-height: 1.34;
+      padding-left: 10px;
+    }
+
+    .ps-solution strong {
+      color: #38bdf8;
+      font-weight: 600;
+    }
+
+    /* Tech Stack Table */
+    .tech-table-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tech-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+      text-align: left;
+    }
+
+    .tech-table th {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 7px;
+      border-bottom: 1px solid var(--border-line);
+    }
+
+    .tech-table td {
+      padding: 5px 7px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-sub);
+      vertical-align: middle;
+      line-height: 1.28;
+    }
+
+    .tech-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .tech-layer {
+      font-weight: 600;
+      color: #e2e8f0;
+      white-space: nowrap;
+      font-size: 11px;
+    }
+
+    .tech-badge {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 1.5px 5.5px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
+    .tech-why {
+      font-size: 11px;
+      color: #94a3b8;
+      line-height: 1.28;
+    }
+
+    /* Slide 1 Bottom Diagram Strip */
+    .slide1-diagram-bottom {
+      background: rgba(8, 10, 14, 0.9);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      height: 155px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide1-diagram-bottom pre.mermaid {
+      margin: 0;
+      background: transparent !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide1-diagram-bottom svg {
+      max-height: 94% !important;
+      max-width: 96% !important;
+      height: auto !important;
+      width: auto !important;
+      display: block !important;
+      margin: 0 auto !important;
+    }
+
+    /* Presentation Cards */
+    .ppt-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ppt-card-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ppt-card-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* Bullet Points - clean, minimal text */
+    .ppt-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .ppt-bullets li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.45;
+    }
+
+    .ppt-bullets li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      top: -1px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .ppt-bullets li strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Full Stage for Diagrams */
+    .slide-grid-full {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .mermaid-stage {
+      flex: 1;
+      min-height: 0;
+      background: rgba(8, 10, 14, 0.9);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .mermaid-stage pre.mermaid {
+      margin: 0;
+      background: transparent !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .mermaid-stage svg {
+      max-height: 96% !important;
+      max-width: 98% !important;
+      height: auto !important;
+      width: auto !important;
+      display: block !important;
+      margin: 0 auto !important;
+    }
+
+    /* 2-Column Presentation Grid */
+    .slide-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 20px;
+      flex: 1;
+      min-height: 0;
+      align-items: stretch;
+    }
+
+    /* Stat Box Banner */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .stat-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 8px 12px;
+    }
+
+    .stat-box .num {
+      font-family: var(--mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .stat-box .lbl {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    /* Slide Footer */
+    .slide-footer {
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-line);
+      margin-top: auto;
+      padding-top: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .slide-footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       Print & PDF Export Styling (Ctrl+P -> Save as PDF)
+       ========================================================================== */
+    @page {
+      size: 16in 9in;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        background: #000000 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .no-print { display: none !important; }
+
+      .deck-wrap {
+        padding: 0 !important;
+        gap: 0 !important;
+      }
+
+      .slide {
+        width: 16in !important;
+        height: 9in !important;
+        max-width: none !important;
+        border-radius: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        padding: 0.45in 0.6in 0.35in 0.6in !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <!-- Top Action Bar (Hidden in PDF) -->
+  <header class="top-bar no-print">
+    <div class="top-logo">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+        <g transform="rotate(-30 12 12)">
+          <circle cx="7.3" cy="3.2" r="1.45"/>
+          <rect x="5.5" y="4.7" width="3.6" height="14.6" rx="1.8"/>
+          <rect x="14.9" y="4.7" width="3.6" height="14.6" rx="1.8"/>
+          <circle cx="16.7" cy="20.8" r="1.45"/>
+        </g>
+      </svg>
+      <span>Vesper<span style="font-weight:400;color:var(--text-muted)">.ai</span></span>
+      <span style="font-size:12px;color:var(--text-muted);margin-left:8px;">Executive Presentation</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <span style="font-size:12px;color:var(--text-muted);">Print / Save as PDF: <kbd style="background:#181818;padding:2px 6px;border-radius:4px;border:1px solid #333;">Ctrl + P</kbd></span>
+      <button class="top-btn" onclick="window.print()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M6 9V2h12v7"></path>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        Save as PDF
+      </button>
+    </div>
+  </header>
+
+  <main class="deck-wrap">
+
+    <!-- ======================================================================
+         SLIDE 1: 2 Lines about Project -> The Diagram -> The Other Text
+         ====================================================================== -->
+    <section class="slide" id="slide-1">
+      <header class="slide-header">
+        <div class="slide-cat-row">
+          <span class="slide-category">01 · Voice Safety Gate & Frontline Challenge</span>
+          <span class="slide-meta-badge">Full-Duplex WebRTC · 1065 ms Barge-In</span>
+        </div>
+        <h1 class="slide-title">Voice is the <span class="serif-italic">Safety Gate</span>, Not a Transcription Box</h1>
+      </header>
+
+      <!-- 1. Unified Elevator Pitch Opening -->
+      <div class="elevator-pitch-box">
+        <div class="pitch-tag">The Premise & The Solution</div>
+        <p class="elevator-pitch-text">
+          Indian construction sites suffer from chronic divergence between what was tendered, what is built, and what is reported — where standard dictation tools blindly log flawed numbers under 5 dB machinery noise, cementing costly structural errors once concrete cures. <strong>Vesper</strong> transforms voice into an active operational safety gate: listening to field engineers in Hinglish, English, and Hindi, it deterministically validates spoken observations against live drawings and IS codes, verbally challenging discrepancies on site <em>before an invalid entry ever reaches the permanent record</em>.
+        </p>
+      </div>
+
+      <!-- 2. Middle Section: Left (Problems Faced & How We Solved Them) | Right (Tech Stack Table) -->
+      <div class="slide1-mid-grid">
+        <!-- Left: Problems Faced & How We Solved Them -->
+        <div class="ps-card">
+          <div class="ppt-card-title">
+            <span>Problems Faced & How We Solved Them</span>
+            <span class="ppt-card-tag">Frontline Engineering</span>
+          </div>
+          <div class="ps-list">
+            <div class="ps-item">
+              <div class="ps-problem"><strong>Problem 1 · Dictation Trap:</strong> Blind STT transcribes mistakes into permanent logs</div>
+              <div class="ps-solution"><strong>Solved · Deterministic Safety Engine:</strong> Validates facts against SQL views before commit</div>
+            </div>
+            <div class="ps-item">
+              <div class="ps-problem"><strong>Problem 2 · 5 dB Noise & Hinglish:</strong> Machinery noise breaks standard cloud speech models</div>
+              <div class="ps-solution"><strong>Solved · Sarvam STT + Custom Normaliser:</strong> Native Indian accents & civil site terms</div>
+            </div>
+            <div class="ps-item">
+              <div class="ps-problem"><strong>Problem 3 · Mid-Sentence Hesitations:</strong> Managers self-correct mid-speech, confusing turns</div>
+              <div class="ps-solution"><strong>Solved · LiveKit WebRTC 1065 ms Barge-In:</strong> Cancels stale claims and binds live corrections</div>
+            </div>
+            <div class="ps-item">
+              <div class="ps-problem"><strong>Problem 4 · Superseded Drawings:</strong> Inspecting from memory against outdated revisions</div>
+              <div class="ps-solution"><strong>Solved · Automated Revision Grounding:</strong> Flags superseded drawing citations out loud</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Tech Stack Table -->
+        <div class="tech-table-card">
+          <div class="ppt-card-title">
+            <span>Tech Stack Rationale</span>
+            <span class="ppt-card-tag">Why We Used This Tech</span>
+          </div>
+          <table class="tech-table">
+            <thead>
+              <tr>
+                <th style="width:24%;">Layer</th>
+                <th style="width:28%;">Technology</th>
+                <th>Why We Used It (Role)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tech-layer">Voice Transport</td>
+                <td><span class="tech-badge">LiveKit WebRTC</span></td>
+                <td class="tech-why">Sub-second full-duplex stream; 1065 ms instant barge-in cut-off</td>
+              </tr>
+              <tr>
+                <td class="tech-layer">Speech Recognition</td>
+                <td><span class="tech-badge">Sarvam AI STT</span></td>
+                <td class="tech-why">Native Hinglish/Hindi under 5 dB noise + custom entity normaliser</td>
+              </tr>
+              <tr>
+                <td class="tech-layer">Spoken Challenge</td>
+                <td><span class="tech-badge">Rime TTS (mistv3)</span></td>
+                <td class="tech-why">Natural conversational cadence for immediate field challenges</td>
+              </tr>
+              <tr>
+                <td class="tech-layer">Speaker Biometrics</td>
+                <td><span class="tech-badge">SpeechBrain ECAPA</span></td>
+                <td class="tech-why">118 ms on-device voiceprint check; fails closed on unauthorized voices</td>
+              </tr>
+              <tr>
+                <td class="tech-layer">Safety Decision</td>
+                <td><span class="tech-badge">Python + SQLite</span></td>
+                <td class="tech-why">Zero LLM in verdict; pure deterministic SQL rules & blockers</td>
+              </tr>
+              <tr>
+                <td class="tech-layer">Hybrid Memory</td>
+                <td><span class="tech-badge">LanceDB + BM25</span></td>
+                <td class="tech-why">Dense vectors + exact code citations (IS 456) with RRF reranking</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 3. Bottom: Slide 1 Diagram Shifted to Bottom -->
+      <div class="slide1-diagram-bottom">
+        <span class="slide-meta-badge" style="position:absolute;top:6px;left:10px;font-size:9px;letter-spacing:0.06em;background:rgba(0,0,0,0.6);z-index:2;">VOICE SAFETY GATE WORKFLOW</span>
+        <pre class="mermaid">
+flowchart LR
+    classDef human fill:#181510,stroke:#d4a359,color:#f5eed8,stroke-width:1.5px
+    classDef voice fill:#161224,stroke:#8b5cf6,color:#ede9fe,stroke-width:1.5px
+    classDef logic fill:#0e1726,stroke:#38bdf8,color:#e0f2fe,stroke-width:1.5px
+    classDef gate fill:#241012,stroke:#ef4444,color:#fee2e2,stroke-width:1.8px
+    classDef good fill:#0e1f16,stroke:#22c55e,color:#dcfce7,stroke-width:1.5px
+
+    A["🎙️ Manager speaks<br/>Hinglish · 5 dB SNR"] --> S["Sarvam STT<br/>+ normaliser"]
+    S --> B["Entity extraction<br/>element · value · rev"]
+    B --> C["Site record<br/>current facts<br/>permit blockers"]
+    D{"Deterministic<br/>contradiction rules"}
+    C --> D
+    D -->|clean| E["✅ Log observation<br/>verified IDs"]
+    D -->|conflict| F["🔊 Spoken challenge<br/>Rime mistv3"]
+    F --> G{"Manager decides"}
+    G --> E
+    G --> H["📄 Raise RFI / NCR<br/>⛔ Stop work"]
+
+    class A,G human
+    class S,F voice
+    class B,C logic
+    class D gate
+    class E,H good
+        </pre>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-logo">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><g transform="rotate(-30 12 12)"><circle cx="7.3" cy="3.2" r="1.45"/><rect x="5.5" y="4.7" width="3.6" height="14.6" rx="1.8"/><rect x="14.9" y="4.7" width="3.6" height="14.6" rx="1.8"/><circle cx="16.7" cy="20.8" r="1.45"/></g></svg>
+          <span>Vesper.ai · Operational Memory for Construction Sites</span>
+        </div>
+        <div>01 / 04</div>
+      </footer>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 2: Application Architecture Diagram
+         ====================================================================== -->
+    <section class="slide" id="slide-2" style="padding: 22px 36px 14px 36px;">
+      <header class="slide-header" style="margin-bottom: 8px; padding-bottom: 6px;">
+        <div class="slide-cat-row">
+          <span class="slide-category">02 · Application Architecture & Tech Rationale</span>
+          <span class="slide-meta-badge">4 Processes · Server-Side Secrets</span>
+        </div>
+        <h1 class="slide-title" style="font-size: 24px;">Four Processes, <span class="serif-italic">One Source of Truth</span></h1>
+        <p class="slide-desc" style="font-size: 12px;">Why we used this stack: Browser holds zero provider keys; judgment never leaves the laptop.</p>
+      </header>
+
+      <div class="slide-grid-full" style="gap: 8px;">
+        <!-- Top Tech Rationale Strip -->
+        <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:10px;">
+          <div class="ppt-card" style="padding:6px 10px;">
+            <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:2px;">💻 Frontend & Edge</div>
+            <p style="font-size:10.5px;color:var(--text-sub);line-height:1.25;">Next.js 16 + React 19 (Dashboard & Console)</p>
+          </div>
+          <div class="ppt-card" style="padding:6px 10px;">
+            <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:2px;">⚡ Backend Core</div>
+            <p style="font-size:10.5px;color:var(--text-sub);line-height:1.25;">FastAPI · Pure Python deterministic engine</p>
+          </div>
+          <div class="ppt-card" style="padding:6px 10px;">
+            <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:2px;">🔒 Tenancy & Voice</div>
+            <p style="font-size:10.5px;color:var(--text-sub);line-height:1.25;">Clerk RS256 JWKS · LiveKit Worker · VoiceID</p>
+          </div>
+          <div class="ppt-card" style="padding:6px 10px;">
+            <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:2px;">💾 Local Data Stores</div>
+            <p style="font-size:10.5px;color:var(--text-sub);line-height:1.25;">SQLite Records + LanceDB Vectors & Graph</p>
+          </div>
+        </div>
+
+        <!-- Center: Clean Architectural Mermaid Diagram -->
+        <div class="mermaid-stage">
+          <pre class="mermaid">
+flowchart TB
+    classDef client fill:#152238,stroke:#3b82f6,color:#dbeafe,stroke-width:1.5px
+    classDef edgec fill:#1b1b38,stroke:#6366f1,color:#e0e7ff,stroke-width:1.5px
+    classDef voicec fill:#201438,stroke:#a855f7,color:#ede9fe,stroke-width:1.5px
+    classDef svc fill:#11261b,stroke:#22c55e,color:#dcfce7,stroke-width:1.5px
+    classDef guard fill:#291113,stroke:#ef4444,color:#fee2e2,stroke-width:1.8px
+    classDef storec fill:#29180d,stroke:#f97316,color:#ffedd5,stroke-width:1.5px
+    classDef extc fill:#291220,stroke:#ec4899,color:#fce7f3,stroke-width:1.5px
+
+    subgraph L1["1 · CLIENTS & INGRESS LAYER"]
+        direction LR
+        PH["📱 Phone Console<br/>field audio & UI"]
+        LT["💻 Web Dashboard<br/>site manager console"]
+        MC["🤖 Enterprise AI Agents<br/>BIM & ERP · JSON-RPC"]
+        MW["🌐 Next.js 16 Edge Gateway<br/>React 19 · Clerk proxy"]
+    end
+
+    subgraph L2["2 · EXECUTION & SAFETY RUNTIMES"]
+        direction LR
+        subgraph VTRACK["🎙️ Real-Time Voice Safety Pipeline"]
+            direction TB
+            W["LiveKit Agent Worker<br/>full-duplex 1065 ms loop"]
+            VP["VoiceID Biometrics<br/>ECAPA-TDNN gate"]
+            VEXT["Voice Cloud APIs<br/>Sarvam STT · Rime TTS"]
+            W <--> VP
+            W <--> VEXT
+        end
+
+        subgraph BTRACK["⚡ FastAPI Backend Core"]
+            direction TB
+            AUTH["Tenancy Auth Gateway<br/>RS256 JWT via JWKS"]
+            ENG["Deterministic Safety Engine<br/>rules · numbers · blockers"]
+            TOOL["Agent Tools API<br/>JSON-RPC interface"]
+            MEM["Memory & Retrieval API<br/>hybrid search · rerank"]
+            TEN["Tenancy Service<br/>orgs · projects · members"]
+            AUTH --> ENG & MEM & TEN
+            TOOL --> ENG & MEM
+        end
+    end
+
+    subgraph L3["3 · OPERATIONAL DATA & CLOUD SERVICES"]
+        direction LR
+        SITE[("📐 Verified Site Record<br/>site.db · drawings & permits")]
+        APP[("📁 Tenancy & Doc Store<br/>app.db · chunks & FTS5")]
+        VEC[("🔍 Hybrid Vector Store<br/>LanceDB vectors & graph")]
+        EXT["☁️ External Cloud Services<br/>Clerk · LLMs · Supabase · Resend"]
+    end
+
+    %% Ingress Connections
+    PH <-->|"WebRTC"| W
+    PH & LT --> MW -->|"Bearer Token"| AUTH
+    MC -->|"JSON-RPC"| TOOL
+
+    %% Cross-Pipeline Rule Verification
+    W -->|"rule check"| ENG
+
+    %% Grounding Connections (Zero Cloud Leaks)
+    ENG --> SITE
+    MEM --> VEC & APP
+    TEN --> APP
+    MEM & TEN & APP -.-> EXT
+
+    class PH,LT,MC client
+    class MW edgec
+    class W,VEXT voicec
+    class VP,AUTH guard
+    class ENG,TOOL,MEM,TEN svc
+    class SITE,APP,VEC storec
+    class EXT extc
+          </pre>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-logo">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><g transform="rotate(-30 12 12)"><circle cx="7.3" cy="3.2" r="1.45"/><rect x="5.5" y="4.7" width="3.6" height="14.6" rx="1.8"/><rect x="14.9" y="4.7" width="3.6" height="14.6" rx="1.8"/><circle cx="16.7" cy="20.8" r="1.45"/></g></svg>
+          <span>Vesper.ai · System Architecture</span>
+        </div>
+        <div>02 / 04</div>
+      </footer>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 3: Deterministic Safety Engine & Contradiction Rules
+         ====================================================================== -->
+    <section class="slide" id="slide-3">
+      <header class="slide-header">
+        <div class="slide-cat-row">
+          <span class="slide-category">03 · Deterministic Safety Engine</span>
+          <span class="slide-meta-badge">Pure Python Rules · SQLite Views · VoiceID Gate</span>
+        </div>
+        <h1 class="slide-title">Deterministic Rules Over SQL — Not an <span class="serif-italic">LLM Vibe Check</span></h1>
+        <p class="slide-desc">Safety decisions come from SQL views over the verified record. Zero model participation in safety verdicts.</p>
+      </header>
+
+      <div class="slide-grid-2col">
+        <!-- Left: Why Deterministic & VoiceID Gate -->
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div class="ppt-card">
+            <div class="ppt-card-title">
+              <span>Why Deterministic Logic</span>
+              <span class="ppt-card-tag">Safety Principle</span>
+            </div>
+            <ul class="ppt-bullets">
+              <li><strong>Zero LLM in the verdict:</strong> Contradictions are evaluated via SQL views: <code>current_facts</code>, <code>permit_blockers</code>, and <code>open_hold_points</code>.</li>
+              <li><strong>No hallucination risk:</strong> The LLM is restricted to phrasing words; it never decides whether work is compliant.</li>
+              <li><strong>Stops errors before rework:</strong> Cover 25 mm vs 40 ± 5 mm cannot be logged as "done" — it triggers an immediate challenge and NCR.</li>
+            </ul>
+          </div>
+
+          <div class="ppt-card">
+            <div class="ppt-card-title">
+              <span>Speaker Authorization Gate</span>
+              <span class="ppt-card-tag">SpeechBrain Voiceprint</span>
+            </div>
+            <ul class="ppt-bullets">
+              <li><strong>Utterance-level verification:</strong> Verifies the speaker on the specific command utterance, not once at login.</li>
+              <li><strong>Fails closed:</strong> Unenrolled voice scores <strong>0.03</strong> vs <strong>0.70</strong> threshold; writes are locked while questions remain active.</li>
+              <li><strong>Audit trail:</strong> Every turn is stored alongside the drawing revision it was checked against.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: The 5 Hard Rules -->
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="font-size:11.5px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px;">
+            The 5 Hard Safety Rules
+          </div>
+
+          <div class="ppt-card" style="padding:9px 14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+              <strong style="font-family:var(--mono);font-size:12px;color:#ffffff;">dimension_mismatch</strong>
+              <span class="ppt-card-tag">Tolerance Check</span>
+            </div>
+            <p style="font-size:11px;color:var(--text-muted);">Spoken value contradicts latest drawing fact beyond stated tolerance.</p>
+          </div>
+
+          <div class="ppt-card" style="padding:9px 14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+              <strong style="font-family:var(--mono);font-size:12px;color:#ffffff;">revision_mismatch</strong>
+              <span class="ppt-card-tag">Superseded Drawing</span>
+            </div>
+            <p style="font-size:11px;color:var(--text-muted);">Cited revision ≠ latest <em>For Construction</em> revision in register.</p>
+          </div>
+
+          <div class="ppt-card" style="padding:9px 14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+              <strong style="font-family:var(--mono);font-size:12px;color:#ffffff;">unknown_drawing</strong>
+              <span class="ppt-card-tag">Register Check</span>
+            </div>
+            <p style="font-size:11px;color:var(--text-muted);">Drawing cited does not exist in official project documentation.</p>
+          </div>
+
+          <div class="ppt-card" style="padding:9px 14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+              <strong style="font-family:var(--mono);font-size:12px;color:#ffffff;">permit_blocker</strong>
+              <span class="ppt-card-tag">Safety Mandatory</span>
+            </div>
+            <p style="font-size:11px;color:var(--text-muted);">Mandatory safety check unsatisfied (e.g. hot work lacking assigned fire watch).</p>
+          </div>
+
+          <div class="ppt-card" style="padding:9px 14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+              <strong style="font-family:var(--mono);font-size:12px;color:#ffffff;">hold_point_blocker</strong>
+              <span class="ppt-card-tag">QA/QC Hold</span>
+            </div>
+            <p style="font-size:11px;color:var(--text-muted);">Pre-pour hold point unreleased (e.g. pour held while cover shortfall is open).</p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-logo">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><g transform="rotate(-30 12 12)"><circle cx="7.3" cy="3.2" r="1.45"/><rect x="5.5" y="4.7" width="3.6" height="14.6" rx="1.8"/><rect x="14.9" y="4.7" width="3.6" height="14.6" rx="1.8"/><circle cx="16.7" cy="20.8" r="1.45"/></g></svg>
+          <span>Vesper.ai · Deterministic Safety Rules</span>
+        </div>
+        <div>03 / 04</div>
+      </footer>
+    </section>
+
+    <!-- ======================================================================
+         SLIDE 4: Local Hybrid Memory Layer & Verified Results
+         ====================================================================== -->
+    <section class="slide" id="slide-4">
+      <header class="slide-header">
+        <div class="slide-cat-row">
+          <span class="slide-category">04 · Hybrid Memory & Measured Results</span>
+          <span class="slide-meta-badge">Recall@8 1.000 · 0 Wrong Logs</span>
+        </div>
+        <h1 class="slide-title">Hybrid Memory with Receipts & <span class="serif-italic">Zero Wrong Logs</span></h1>
+        <p class="slide-desc">Dense vectors alone miss exact codes; BM25 alone misses semantics. RRF + Cross-Encoder reranking prevents hallucinations.</p>
+      </header>
+
+      <div class="slide-grid-2col">
+        <!-- Left: Memory Tech & Results Bullets -->
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <!-- Stats Strip -->
+          <div class="stat-row">
+            <div class="stat-box">
+              <div class="num">0</div>
+              <div class="lbl">Wrong Logs Written</div>
+            </div>
+            <div class="stat-box">
+              <div class="num">1.000</div>
+              <div class="lbl">Abstain Precision</div>
+            </div>
+            <div class="stat-box">
+              <div class="num">92</div>
+              <div class="lbl">Onboarding Fields</div>
+            </div>
+            <div class="stat-box">
+              <div class="num">20,734</div>
+              <div class="lbl">Ingested Chunks</div>
+            </div>
+          </div>
+
+          <div class="ppt-card">
+            <div class="ppt-card-title">
+              <span>Why Hybrid Retrieval</span>
+              <span class="ppt-card-tag">Dense + Sparse</span>
+            </div>
+            <ul class="ppt-bullets">
+              <li><strong>Vectors alone miss exact codes:</strong> Fails on <code>IS 456 Cl. 26.4</code> or <code>RFI-047</code>; BM25 alone misses semantics.</li>
+              <li><strong>LanceDB + SQLite FTS5:</strong> Merged via <strong>Reciprocal Rank Fusion (RRF)</strong>.</li>
+              <li><strong>Cross-Encoder reranking:</strong> Cross-encoder reads query and passage together, eliminating false hits.</li>
+            </ul>
+          </div>
+
+          <div class="ppt-card">
+            <div class="ppt-card-title">
+              <span>Receipts & Proven Safety</span>
+              <span class="ppt-card-tag">Grounding & Results</span>
+            </div>
+            <ul class="ppt-bullets">
+              <li><strong>Official citations:</strong> IS codes, 550 QA/QC templates, and 1,399 CPWD DSR rate items.</li>
+              <li><strong>Abstention is a feature:</strong> Below threshold, explicitly says <em>"not in the record"</em> instead of hallucinating.</li>
+              <li><strong>Project isolation:</strong> Pre-filtered datasets guarantee zero cross-project data leaks.</li>
+              <li><strong>External Integrations:</strong> Exposes 11 tools over JSON-RPC for external agent workflows.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: Mermaid Ingest & Retrieval Flowchart -->
+        <div class="mermaid-stage">
+          <pre class="mermaid">
+flowchart TB
+    subgraph ing["Document Ingest Pipeline"]
+        SRC["PDF · DOCX · XLSX · CSV<br/>IS codes · templates · DPRs"] --> PARSE["Document Parser"]
+        PARSE --> CH["Structured Chunking<br/>heading & table-aware"]
+        CH --> EMB["Dense Embeddings<br/>1024-dim vectors"]
+    end
+
+    subgraph st["Dual Storage Layer"]
+        LV[("LanceDB Vector Store<br/>dense similarity index")]
+        FT[("SQLite Full-Text Search<br/>BM25 keyword index")]
+    end
+
+    subgraph ret["Hybrid Query & Rerank"]
+        Q["Question + Project Scope"]
+        Q --> VS["Vector Search"]
+        Q --> BM["Keyword Search"]
+        VS --> RRF["Reciprocal Rank Fusion"]
+        BM --> RRF
+        RRF --> RR["Cross-Encoder Reranker<br/>joint relevance scoring"]
+        RR --> AB{"Score &gt;<br/>threshold?"}
+        AB -->|yes| ANS["Cited Fact Answer<br/>grounded phrasing"]
+        AB -->|no| NO["🚫 'Not in the record'<br/>explicit abstention"]
+    end
+
+    classDef ingest fill:#0e1726,stroke:#38bdf8,color:#e0f2fe,stroke-width:1.5px
+    classDef storec fill:#201438,stroke:#8b5cf6,color:#ede9fe,stroke-width:1.5px
+    classDef query fill:#11261b,stroke:#22c55e,color:#dcfce7,stroke-width:1.5px
+    classDef gate fill:#291113,stroke:#ef4444,color:#fee2e2,stroke-width:1.5px
+
+    EMB --> LV
+    CH --> FT
+    LV --> VS
+    FT --> BM
+
+    class SRC,PARSE,CH,EMB ingest
+    class LV,FT storec
+    class Q,VS,BM,RRF,RR,ANS query
+    class AB,NO gate
+          </pre>
+        </div>
+      </div>
+
+      <footer class="slide-footer">
+        <div class="slide-footer-logo">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><g transform="rotate(-30 12 12)"><circle cx="7.3" cy="3.2" r="1.45"/><rect x="5.5" y="4.7" width="3.6" height="14.6" rx="1.8"/><rect x="14.9" y="4.7" width="3.6" height="14.6" rx="1.8"/><circle cx="16.7" cy="20.8" r="1.45"/></g></svg>
+          <span>Vesper.ai · Hybrid Memory Layer</span>
+        </div>
+        <div>04 / 04</div>
+      </footer>
+    </section>
+
+  </main>
+</body>
+</html>

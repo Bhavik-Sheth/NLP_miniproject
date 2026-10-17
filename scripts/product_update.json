@@ -1,0 +1,13 @@
+{
+  "TAG": "Release · September",
+  "HEADLINE": "Vesper now answers from your PDFs",
+  "INTRO": "This month: document memory, an MCP server, and a faster voice loop.",
+  "ITEM_1_TITLE": "Upload any drawing set or spec",
+  "ITEM_1_BODY": "PDFs are parsed, chunked and indexed, and answers come back with citations you can open.",
+  "ITEM_2_TITLE": "Vesper as an MCP server",
+  "ITEM_2_BODY": "Connect Claude Code, Claude Desktop or Cursor and call the site record as tools.",
+  "ITEM_3_TITLE": "Multi-project voice",
+  "ITEM_3_BODY": "Switch projects mid-session without leaking records between sites.",
+  "CTA_LABEL": "See what changed",
+  "CTA_URL": "https://vesper-ai.pages.dev/docs/index.html"
+}

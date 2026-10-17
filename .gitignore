@@ -1,0 +1,37 @@
+.env
+.env.local
+node_modules/
+.next/
+__pycache__/
+*.pyc
+*.db-wal
+*.db-shm
+.DS_Store
+.venv-local/
+.venv/
+venv/
+voiceid/models/
+.next-static/
+out/
+
+# v2 generated stores (rebuild locally; see data/DATA.md)
+data/app.db
+data/app.db-*
+data/memory/
+data/site.db.bak-*
+data/raw/sections/*/
+data/raw/sections/_nohup.txt
+data/raw/sections/_crawl_log.txt
+data/raw/sections/_sitemap.xml
+backend/.venv-cognee/
+**/.venv-cognee/
+# Added by code-review-graph
+.code-review-graph/
+data/vendor/
+data/app.db.bak-*
+
+# rendered email previews (scripts/send_product_update.py --preview)
+*_preview.html
+
+# presentation notes, kept local
+docs/ROUND2_BRIEF.md

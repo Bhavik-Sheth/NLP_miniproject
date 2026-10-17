@@ -1,0 +1,10 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+torchaudio
+speechbrain>=1.0
+fastapi
+uvicorn[standard]
+numpy<2
+soundfile
+python-multipart
+requests
